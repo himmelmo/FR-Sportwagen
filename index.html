@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="FR Sportwagen – Exklusive Sportwagen. Ehrlich gehandelt. Verkauf, Ankauf und Beratung.">
   <title>FR Sportwagen</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <style>
     :root {
       --black: #0a0a0a;
@@ -39,10 +40,15 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 6vw;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.35s ease, border-color 0.35s ease;
+    }
+    header.scrolled {
       background: rgba(10, 10, 10, 0.85);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom-color: rgba(255, 255, 255, 0.08);
     }
     .brand {
       color: var(--white);
@@ -239,6 +245,16 @@
     .footer-bar a { color: #7a7a7a; text-decoration: none; }
     .footer-bar a:hover { color: var(--white); }
 
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
     @media (max-width: 640px) {
       nav a:not(.cta) { display: none; }
       .about-inner { flex-direction: column; text-align: center; }
@@ -264,7 +280,7 @@
     <!-- Hero-Video: Datei unter assets/hero.mp4 ablegen (Sportwagen fährt durch Landschaft).
          Solange keine Datei vorhanden ist, zeigt die Seite den dunklen Hintergrund. -->
     <video autoplay muted loop playsinline poster="">
-      <source src="assets/hero.mp4" type="video/mp4">
+      <source src="assets/hero-landstrasse-alpen.mp4" type="video/mp4">
     </video>
     <div class="hero-content">
       <svg viewBox="140 380 815 320" role="img" aria-label="FR Sportwagen" style="display:block; margin:0 auto; width:min(520px, 72vw); fill:#ffffff;">
@@ -286,7 +302,7 @@
     <div class="scroll-hint"><svg class="ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 9l6 6l6 -6"/></svg></div>
   </section>
 
-  <section class="about" id="ueber-mich">
+  <section class="about reveal" id="ueber-mich">
     <p class="section-label"><span>1</span>Über mich</p>
     <div class="about-inner">
       <div class="about-portrait">
@@ -303,7 +319,7 @@
     </div>
   </section>
 
-  <section class="services" id="leistungen">
+  <section class="services reveal" id="leistungen">
     <p class="section-label"><span>2</span>Leistungen</p>
     <div class="cards">
       <div class="card">
@@ -324,7 +340,7 @@
     </div>
   </section>
 
-  <section id="fahrzeuge">
+  <section id="fahrzeuge" class="reveal">
     <p class="section-label"><span>3</span>Fahrzeuge</p>
     <div class="cars-grid">
       <div class="car-tile">
@@ -351,7 +367,7 @@
     </div>
   </section>
 
-  <section class="contact" id="kontakt">
+  <section class="contact reveal" id="kontakt">
     <p class="section-label"><span>4</span>Kontakt</p>
     <div class="contact-items">
       <a href="tel:+490000000000"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></svg> Telefon</a>
@@ -364,5 +380,23 @@
     </div>
   </section>
 
+  <script>
+    var header = document.querySelector('header');
+    var onScroll = function () {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+  </script>
 </body>
 </html>
