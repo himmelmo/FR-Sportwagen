@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FR Sportwagen – Wunschfahrzeug finden: Sagen Sie mir, was Sie suchen.">
+  <title>Fahrzeugsuche – FR Sportwagen</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --gray-line: #c4c4c4;
+      --gray-text: #767676;
+      --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: #1a1a1a;
+      background: var(--white);
+      line-height: 1.6;
+    }
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 6vw;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .brand { display: block; text-decoration: none; }
+    nav { display: flex; align-items: center; gap: 2rem; }
+    nav a {
+      color: #b5b5b5;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--white); }
+    nav a.cta {
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav a.cta:hover { background: var(--white); color: var(--black); }
+
+    .page-head {
+      background: var(--black);
+      color: var(--white);
+      padding: 9rem 6vw 4rem;
+    }
+    .page-head h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .page-head p { color: #999999; margin-top: 0.75rem; max-width: 620px; }
+
+    .form-wrap { padding: 4rem 6vw 6rem; }
+    form { max-width: 720px; }
+    fieldset { border: none; margin-bottom: 2.5rem; }
+    legend {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--gray-text);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+    .field { display: flex; flex-direction: column; gap: 0.35rem; }
+    label { font-size: 0.88rem; font-weight: 600; }
+    label small { font-weight: 400; color: var(--gray-text); }
+    input, textarea, select {
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: #1a1a1a;
+      background: var(--white);
+      border: 1px solid var(--gray-line);
+      border-radius: 6px;
+      padding: 0.7rem 0.9rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--black);
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.08);
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    .submit-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.85rem 2.2rem;
+      border-radius: 4px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+    .submit-note { font-size: 0.82rem; color: var(--gray-text); max-width: 380px; }
+
+    .site-footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 2rem 6vw;
+    }
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: #7a7a7a;
+    }
+    .footer-bar a { color: #7a7a7a; text-decoration: none; }
+    .footer-bar a:hover { color: var(--white); }
+
+    @media (max-width: 640px) {
+      nav a:not(.cta) { display: none; }
+      .form-wrap { padding: 3rem 6vw 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="brand" href="index.html" aria-label="FR Sportwagen – Startseite">
+      <svg viewBox="130 390 825 300" width="78" role="img" aria-hidden="true" style="display:block; fill:#ffffff;"><path d="M899.35,401.75h-266.23l-.12.21h-334.1l-159.52,276.3h107.72l42.85-74.21h192.86l46.65-80.79h-192.86l19.47-33.72h226.38l-108.84,188.52h107.72l38.93-67.43h96.21l13.08,67.43h114.71l-15.49-77.5c22.96-8.43,44.91-21.17,65.42-37.83,20.83-16.86,37.3-35.77,49.29-56.53,33.82-57.15,13.16-105.05-44.14-104.43ZM835.56,506.19c-3.68,6.37-9.15,11.92-16.6,16.65-7.13,4.52-13.99,6.78-20.57,6.78h-131.37l27.18-47.08h131.37c13.16,0,17.59,10.48,9.99,23.64Z"/></svg>
+    </a>
+    <nav>
+      <a href="index.html#ueber-mich">Über mich</a>
+      <a href="index.html#leistungen">Leistungen</a>
+      <a href="index.html#fahrzeuge">Fahrzeuge</a>
+      <a href="referenzen.html">Referenzen</a>
+      <a href="verkauf.html">Verkauf</a>
+      <a class="cta" href="index.html#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <div class="page-head">
+    <h1>Ihr Wunschfahrzeug, meine Suche.</h1>
+    <p>Sagen Sie mir so genau wie möglich, wonach Sie suchen — ich finde Ihr Traumauto über mein internationales Netzwerk und melde mich persönlich bei Ihnen.</p>
+  </div>
+
+  <div class="form-wrap">
+    <form id="such-formular">
+      <fieldset>
+        <legend>Das gesuchte Fahrzeug</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="marke">Marke und Modell <small>(Pflichtfeld)</small></label>
+            <input type="text" id="marke" name="Marke und Modell" placeholder="z. B. Porsche 911 Carrera 4S" required>
+          </div>
+          <div class="field">
+            <label for="variante">Ausstattung / Variante</label>
+            <input type="text" id="variante" name="Ausstattung" placeholder="z. B. Schalter, Chrono-Paket">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="baujahr">Baujahr ab</label>
+            <input type="text" id="baujahr" name="Baujahr ab" placeholder="z. B. 2018" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="km">Kilometer bis</label>
+            <input type="text" id="km" name="Kilometer bis" placeholder="z. B. 50.000 km" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="budget">Budget bis</label>
+            <input type="text" id="budget" name="Budget bis" placeholder="z. B. 120.000 €" inputmode="numeric">
+          </div>
+        </div>
+        <div class="field">
+          <label for="wuensche">Weitere Wünsche</label>
+          <textarea id="wuensche" name="Weitere Wuensche" placeholder="Farbe, Historie, Zeitrahmen — alles, was mir bei der Suche hilft."></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Ihre Kontaktdaten</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Name <small>(Pflichtfeld)</small></label>
+            <input type="text" id="name" name="Name" required>
+          </div>
+          <div class="field">
+            <label for="email">E-Mail <small>(Pflichtfeld)</small></label>
+            <input type="email" id="email" name="E-Mail" required>
+          </div>
+          <div class="field">
+            <label for="telefon">Telefon</label>
+            <input type="tel" id="telefon" name="Telefon">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="submit-row">
+        <button type="submit" class="btn">Suchauftrag senden</button>
+        <p class="submit-note">Beim Absenden öffnet sich Ihr E-Mail-Programm mit der fertigen Anfrage — Sie senden sie selbst ab.</p>
+      </div>
+    </form>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-bar">
+      <span>&copy; 2026 FR Sportwagen &middot; Fabian Rupp</span>
+      <span><a href="#">Impressum</a> &middot; <a href="#">Datenschutz</a></span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('such-formular').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var lines = ['Guten Tag Herr Rupp,', '', 'ich habe folgenden Suchauftrag:', ''];
+      this.querySelectorAll('input, textarea').forEach(function (el) {
+        if (el.value.trim()) { lines.push(el.name + ': ' + el.value.trim()); }
+      });
+      lines.push('', 'Mit freundlichen Grüßen');
+      var subject = 'Suchauftrag: ' + document.getElementById('marke').value.trim();
+      window.location.href = 'mailto:info@example.de?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+    });
+  </script>
+</body>
+</html>
