@@ -3,59 +3,354 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>MHH Tech Solutions – Testseite</title>
+  <meta name="description" content="FR Sportwagen – Exklusive Sportwagen. Ehrlich gehandelt. Verkauf, Ankauf und Beratung.">
+  <title>FR Sportwagen</title>
   <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --gray-line: #e8e8e8;
+      --gray-text: #767676;
+      --white: #ffffff;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: #1a1a1a;
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 6vw;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .brand {
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-decoration: none;
+    }
+    nav { display: flex; align-items: center; gap: 2rem; }
+    nav a {
+      color: #b5b5b5;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--white); }
+    nav a.cta {
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav a.cta:hover { background: var(--white); color: var(--black); }
+
+    /* Hero mit Video */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 560px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #0f172a, #1e3a5f);
-      color: #e2e8f0;
-      padding: 2rem;
+      text-align: center;
+      background: linear-gradient(160deg, #0a0a0a 0%, #1c1c1c 55%, #0a0a0a 100%);
+      overflow: hidden;
+    }
+    .hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; padding: 0 1.5rem; }
+    .hero-logo {
+      color: var(--white);
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 600;
+      letter-spacing: 0.4em;
+      margin-right: -0.4em;
+    }
+    .hero-sub {
+      color: var(--white);
+      font-size: clamp(0.85rem, 1.6vw, 1.1rem);
+      letter-spacing: 0.55em;
+      margin-right: -0.55em;
+      margin-top: 0.25rem;
+    }
+    .hero-claim {
+      color: #c9c9c9;
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      margin: 2rem 0 2.5rem;
+      font-weight: 300;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--white);
+      color: var(--black);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.85rem 2.2rem;
+      border-radius: 4px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255,255,255,0.5);
+      font-size: 1.4rem;
+      animation: bob 2s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 8px); }
+    }
+
+    /* Abschnitte */
+    section { padding: 6rem 6vw; }
+    .section-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--gray-text);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+    .section-label span { color: #bbbbbb; margin-right: 0.5rem; }
+
+    /* Über mich */
+    .about { border-bottom: 1px solid var(--gray-line); }
+    .about-inner { display: flex; gap: 2.5rem; align-items: center; max-width: 900px; }
+    .about-portrait {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: #f2f2f2;
+      border: 1px solid var(--gray-line);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: #c0c0c0;
+      font-size: 2.2rem;
+      overflow: hidden;
+    }
+    .about-portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .about-text h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; }
+    .about-text p { color: var(--gray-text); max-width: 560px; }
+
+    /* Leistungen */
+    .services { border-bottom: 1px solid var(--gray-line); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
     }
     .card {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
-      padding: 3rem 2.5rem;
-      max-width: 480px;
+      border: 1px solid var(--gray-line);
+      border-radius: 10px;
+      padding: 2.5rem 1.8rem;
       text-align: center;
-      backdrop-filter: blur(8px);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    h1 { font-size: 1.6rem; margin-bottom: 0.75rem; }
-    p { color: #94a3b8; line-height: 1.6; margin-bottom: 1.5rem; }
-    .status {
-      display: inline-block;
-      padding: 0.5rem 1.25rem;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.95rem;
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); }
+    .card .icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card p { color: var(--gray-text); font-size: 0.92rem; }
+
+    /* Fahrzeuge */
+    .cars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
     }
-    .status.ok { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.4); }
-    .status.warn { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.4); }
-    footer { margin-top: 2rem; font-size: 0.8rem; color: #64748b; }
+    .car-tile {
+      border: 1px solid var(--gray-line);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .car-tile:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); }
+    .car-photo {
+      height: 180px;
+      background: #f2f2f2;
+      display: flex; align-items: center; justify-content: center;
+      color: #c0c0c0;
+      font-size: 2rem;
+    }
+    .car-info { padding: 1.1rem 1.3rem; }
+    .car-info h3 { font-size: 1rem; font-weight: 600; }
+    .car-info p { color: var(--gray-text); font-size: 0.88rem; margin-top: 0.2rem; }
+
+    /* Kontakt */
+    .contact {
+      background: var(--black);
+      color: var(--white);
+    }
+    .contact .section-label { color: #8a8a8a; }
+    .contact-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .contact-items a {
+      color: #d8d8d8;
+      text-decoration: none;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: color 0.2s;
+    }
+    .contact-items a:hover { color: var(--white); }
+    .footer-bar {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: #7a7a7a;
+    }
+    .footer-bar a { color: #7a7a7a; text-decoration: none; }
+    .footer-bar a:hover { color: var(--white); }
+
+    @media (max-width: 640px) {
+      nav a:not(.cta) { display: none; }
+      .about-inner { flex-direction: column; text-align: center; }
+      section { padding: 4rem 6vw; }
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>MHH Tech Solutions</h1>
-    <p>Diese Seite dient als Platzhalter zum Testen der Server- und SSL-Konfiguration. Die eigentliche Website folgt in Kürze.</p>
-    <span id="ssl-status" class="status warn">Verbindung wird geprüft …</span>
-    <footer>Testseite · Website für Fabian Rupp</footer>
-  </div>
-  <script>
-    var el = document.getElementById('ssl-status');
-    if (location.protocol === 'https:') {
-      el.textContent = '🔒 HTTPS aktiv – SSL funktioniert';
-      el.className = 'status ok';
-    } else {
-      el.textContent = '⚠️ Keine HTTPS-Verbindung (HTTP)';
-      el.className = 'status warn';
-    }
-  </script>
+
+  <header>
+    <a class="brand" href="#top">FR</a>
+    <nav>
+      <a href="#ueber-mich">Über mich</a>
+      <a href="#leistungen">Leistungen</a>
+      <a href="#fahrzeuge">Fahrzeuge</a>
+      <a class="cta" href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="top" style="padding: 0;">
+    <!-- Hero-Video: Datei unter assets/hero.mp4 ablegen (Sportwagen fährt durch Landschaft).
+         Solange keine Datei vorhanden ist, zeigt die Seite den dunklen Hintergrund. -->
+    <video autoplay muted loop playsinline poster="">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <div class="hero-logo">FR</div>
+      <div class="hero-sub">SPORTWAGEN</div>
+      <p class="hero-claim">Exklusive Sportwagen. Ehrlich gehandelt.</p>
+      <a class="btn" href="#fahrzeuge">Fahrzeuge ansehen</a>
+    </div>
+    <div class="scroll-hint">&#x2304;</div>
+  </section>
+
+  <section class="about" id="ueber-mich">
+    <p class="section-label"><span>1</span>Über mich</p>
+    <div class="about-inner">
+      <div class="about-portrait">
+        <!-- Später: <img src="assets/fabian.jpg" alt="Fabian Rupp"> -->
+        &#9786;
+      </div>
+      <div class="about-text">
+        <h2>Fabian Rupp</h2>
+        <p>Leidenschaft für besondere Fahrzeuge – seit Jahren im Handel zuhause. Jeder Sportwagen wird persönlich ausgesucht, geprüft und mit klarer Historie übergeben. Ehrlich, direkt und ohne Umwege.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="leistungen">
+    <p class="section-label"><span>2</span>Leistungen</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">&#128663;</div>
+        <h3>Verkauf</h3>
+        <p>Geprüfte Sportwagen mit klarer Historie und fairer Preisgestaltung.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#128176;</div>
+        <h3>Ankauf</h3>
+        <p>Faire Bewertung deines Fahrzeugs – unkompliziert und schnell.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#128172;</div>
+        <h3>Beratung</h3>
+        <p>Vermittlung und Suche nach deinem Wunschfahrzeug auf Anfrage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="fahrzeuge">
+    <p class="section-label"><span>3</span>Fahrzeuge</p>
+    <div class="cars-grid">
+      <div class="car-tile">
+        <div class="car-photo">&#128247;</div>
+        <div class="car-info">
+          <h3>Demnächst verfügbar</h3>
+          <p>Details auf Anfrage</p>
+        </div>
+      </div>
+      <div class="car-tile">
+        <div class="car-photo">&#128247;</div>
+        <div class="car-info">
+          <h3>Demnächst verfügbar</h3>
+          <p>Details auf Anfrage</p>
+        </div>
+      </div>
+      <div class="car-tile">
+        <div class="car-photo">&#128247;</div>
+        <div class="car-info">
+          <h3>Demnächst verfügbar</h3>
+          <p>Details auf Anfrage</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontakt">
+    <p class="section-label"><span>4</span>Kontakt</p>
+    <div class="contact-items">
+      <a href="tel:+490000000000">&#9742; Telefon</a>
+      <a href="mailto:info@example.de">&#9993; E-Mail</a>
+      <a href="#">&#9906; Standort</a>
+    </div>
+    <div class="footer-bar">
+      <span>&copy; 2026 FR Sportwagen &middot; Fabian Rupp</span>
+      <span><a href="#">Impressum</a> &middot; <a href="#">Datenschutz</a></span>
+    </div>
+  </section>
+
 </body>
 </html>
