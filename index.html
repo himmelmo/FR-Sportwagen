@@ -97,20 +97,6 @@
       z-index: 1;
     }
     .hero-content { position: relative; z-index: 2; padding: 0 1.5rem; }
-    .hero-logo {
-      color: var(--white);
-      font-size: clamp(3rem, 7vw, 5rem);
-      font-weight: 600;
-      letter-spacing: 0.4em;
-      margin-right: -0.4em;
-    }
-    .hero-sub {
-      color: var(--white);
-      font-size: clamp(0.85rem, 1.6vw, 1.1rem);
-      letter-spacing: 0.55em;
-      margin-right: -0.55em;
-      margin-top: 0.25rem;
-    }
     .hero-claim {
       color: #c9c9c9;
       font-size: clamp(1rem, 1.8vw, 1.2rem);
@@ -170,8 +156,10 @@
       overflow: hidden;
     }
     .about-portrait img { width: 100%; height: 100%; object-fit: cover; }
-    .about-text h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; }
-    .about-text p { color: var(--gray-text); max-width: 560px; }
+    .about-text h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+    .about-text p { color: var(--gray-text); max-width: 620px; margin-bottom: 0.9rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-intro { font-style: italic; }
 
     /* Leistungen */
     .services { border-bottom: 1px solid var(--gray-line); }
@@ -261,7 +249,9 @@
 <body>
 
   <header>
-    <a class="brand" href="#top">FR</a>
+    <a class="brand" href="#top" aria-label="FR Sportwagen – Startseite">
+      <svg viewBox="130 390 825 300" width="78" role="img" aria-hidden="true" style="display:block; fill:#ffffff;"><path d="M899.35,401.75h-266.23l-.12.21h-334.1l-159.52,276.3h107.72l42.85-74.21h192.86l46.65-80.79h-192.86l19.47-33.72h226.38l-108.84,188.52h107.72l38.93-67.43h96.21l13.08,67.43h114.71l-15.49-77.5c22.96-8.43,44.91-21.17,65.42-37.83,20.83-16.86,37.3-35.77,49.29-56.53,33.82-57.15,13.16-105.05-44.14-104.43ZM835.56,506.19c-3.68,6.37-9.15,11.92-16.6,16.65-7.13,4.52-13.99,6.78-20.57,6.78h-131.37l27.18-47.08h131.37c13.16,0,17.59,10.48,9.99,23.64Z"/></svg>
+    </a>
     <nav>
       <a href="#ueber-mich">Über mich</a>
       <a href="#leistungen">Leistungen</a>
@@ -277,8 +267,19 @@
       <source src="assets/hero.mp4" type="video/mp4">
     </video>
     <div class="hero-content">
-      <div class="hero-logo">FR</div>
-      <div class="hero-sub">SPORTWAGEN</div>
+      <svg viewBox="140 380 815 320" role="img" aria-label="FR Sportwagen" style="display:block; margin:0 auto; width:min(520px, 72vw); fill:#ffffff;">
+        <path d="M814.45,392.53h-208.89l-.09.16h-262.15l-125.17,216.79h84.52l33.62-58.23h151.32l36.6-63.39h-151.32l15.27-26.45h177.62l-85.4,147.92h84.52l30.55-52.91h75.49l10.26,52.91h90.01l-12.15-60.81c18.01-6.61,35.24-16.61,51.33-29.68,16.35-13.23,29.27-28.07,38.68-44.36,26.53-44.84,10.33-82.43-34.63-81.94ZM764.4,474.48c-2.89,5-7.18,9.36-13.03,13.07-5.6,3.55-10.98,5.32-16.14,5.32h-103.07l21.33-36.94h103.07c10.32,0,13.8,8.23,7.84,18.55Z"/>
+        <path d="M152.99,671.46c7.01.35,16.86.84,16.84,7.14,0,7.18-8.23,8.87-17.05,8.87-8.8-.01-16.12-1.08-17.05-8.87h10.26c1.12,1.94,3.72,2.45,6.79,2.45s6.79-.51,6.79-2.45c0-1.1-3.05-1.27-6.99-1.46-7.01-.35-16.86-.84-16.84-7.12,0-7.18,8.23-8.89,17.05-8.89,8.8.05,16.11,1.04,17.05,8.89h-10.26c-1.12-1.98-3.72-2.45-6.79-2.45s-6.79.45-6.79,2.45c0,1.11,3.04,1.25,6.99,1.44Z"/>
+        <path d="M245,661.77c5.18-.06,9.57,4.3,9.49,9.49.08,5.18-4.32,9.57-9.49,9.49h-14.41v6.13h-9.79v-25.12h24.21ZM242.55,673.4c.58,0,1.09-.21,1.49-.62.43-.43.64-.93.64-1.51s-.21-1.1-.64-1.51c-.41-.43-.91-.63-1.49-.63h-11.96v4.28h11.96Z"/>
+        <path d="M339.43,673.38v1.83c.04,9.49-7.7,12.25-17.14,12.26-9.46-.01-17.2-2.77-17.16-12.26v-1.83c-.04-9.51,7.7-12.24,17.16-12.26,9.46,0,17.14,2.77,17.14,12.26ZM329.63,673.98c.06-4.09-3.35-4.84-7.35-4.89-4.02.05-7.42.8-7.36,4.89v.62c-.06,4.11,3.35,4.86,7.36,4.91,4-.05,7.4-.8,7.35-4.91v-.62Z"/>
+        <path d="M414.88,661.75c5.18-.06,9.57,4.3,9.49,9.49,0,1.89-.5,3.61-1.51,5.14-.99,1.51-2.32,2.68-3.96,3.44l5.48,7.04h-10.43l-4.73-6.13h-8.75v6.13h-9.79v-25.12h24.21ZM400.47,669.1v4.28h11.94c.6,0,1.1-.21,1.51-.62.43-.43.64-.93.64-1.51,0-1.2-.95-2.15-2.15-2.15h-11.94Z"/>
+        <path d="M485.96,686.9v-17.16h-11.65v-7.96h33.08v7.96h-11.64v17.16h-9.79Z"/>
+        <path d="M601.83,661.77h11.03l-11.03,25.12h-11.64l-5.52-12.56-5.51,12.56h-11.65l-11.03-25.12h11.03l5.82,15.91,5.83-15.91h11.03l5.81,15.91,5.83-15.91Z"/>
+        <path d="M668.19,661.77h11.65l13.48,25.12h-11.03l-1.98-4.3h-12.58l-1.98,4.3h-11.03l13.48-25.12ZM670.57,676.46h6.9l-3.44-7.42-3.46,7.42Z"/>
+        <path d="M757.13,673.07h17.06v14.41h-4.89l-.49-3.91c-2.92,2.88-7.35,3.91-11.61,3.91-9.46-.03-17.2-2.77-17.16-12.26v-1.83c-.04-9.51,7.7-12.24,17.16-12.26,8.71,0,15.89,2.37,16.99,10.11h-10.41c-.62-.84-1.52-1.4-2.68-1.7-1.16-.3-2.47-.45-3.91-.45-4.02.05-7.42.8-7.37,4.89v.62c-.05,4.13,3.35,4.84,7.37,4.9,3.87,0,6.34-.23,7.81-2.13h-7.89v-4.3Z"/>
+        <path d="M827.01,661.77h29.4v6.43h-19.6v3.22h19.6v5.81h-19.6v3.22h19.6v6.45h-29.4v-25.12Z"/>
+        <path d="M934.45,661.74h9.81v25.12h-11.03l-13.5-15.34v15.34h-9.79v-25.12h13.48l11.03,13.31v-13.31Z"/>
+      </svg>
       <p class="hero-claim">Exklusive Sportwagen. Ehrlich gehandelt.</p>
       <a class="btn" href="#fahrzeuge">Fahrzeuge ansehen</a>
     </div>
@@ -293,8 +294,11 @@
         <svg class="ico" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/></svg>
       </div>
       <div class="about-text">
-        <h2>Fabian Rupp</h2>
-        <p>Leidenschaft für besondere Fahrzeuge – seit Jahren im Handel zuhause. Jeder Sportwagen wird persönlich ausgesucht, geprüft und mit klarer Historie übergeben. Ehrlich, direkt und ohne Umwege.</p>
+        <h2>Sportwagen-DNA trifft auf persönlichen Service.</h2>
+        <p class="about-intro">Hinter jedem exklusiven Fahrzeug steht eine Geschichte – und hier ist meine:</p>
+        <p>Mein Name ist Fabian Rupp, Gründer und Herz dieses Unternehmens. Mit 30 Jahren blicke ich bereits auf eine Dekade operativer Erfahrung im Porsche Zentrum zurück.</p>
+        <p>Ich freue mich, Ihnen als zertifizierter Porsche Verkaufsberater, Porsche Gebrauchtwagenmanager &amp; Porsche Finanzberater beim Erwerb Ihres Traumautos zur Seite zu stehen.</p>
+        <p>Ich biete Ihnen das Know-how eines Premium-Autohauses, kombiniert mit der Agilität und Diskretion eines persönlichen Partners.</p>
       </div>
     </div>
   </section>
@@ -303,19 +307,19 @@
     <p class="section-label"><span>2</span>Leistungen</p>
     <div class="cards">
       <div class="card">
-        <div class="icon"><svg class="ico" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5"/></svg></div>
-        <h3>Verkauf</h3>
-        <p>Geprüfte Sportwagen mit klarer Historie und fairer Preisgestaltung.</p>
-      </div>
-      <div class="card">
         <div class="icon"><svg class="ico" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1"/><path d="M12 7v2"/><path d="M12 15v2"/></svg></div>
         <h3>Ankauf</h3>
-        <p>Faire Bewertung deines Fahrzeugs – unkompliziert und schnell.</p>
+        <p>Seriös, transparent und unkompliziert.</p>
       </div>
       <div class="card">
-        <div class="icon"><svg class="ico" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M8 9h8"/><path d="M8 13h6"/><path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"/></svg></div>
-        <h3>Beratung</h3>
-        <p>Vermittlung und Suche nach deinem Wunschfahrzeug auf Anfrage.</p>
+        <div class="icon"><svg class="ico" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></div>
+        <h3>Suche</h3>
+        <p>Wenn Ihr Traumwagen nicht auf dem Hof steht, finde ich ihn über mein internationales Netzwerk.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg class="ico" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M7 10h14l-4 -4"/><path d="M17 14h-14l4 4"/></svg></div>
+        <h3>Vermittlung</h3>
+        <p>Profitieren Sie von meinem Verhandlungsgeschick für das beste Preis-Leistungs-Verhältnis bei Ihrem Neuwagen.</p>
       </div>
     </div>
   </section>
