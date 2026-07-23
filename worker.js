@@ -159,16 +159,23 @@ export default {
         return json({ error: "mobile.de-Zugang nicht konfiguriert" }, 503);
       }
       try {
+        /* Der Einbindungs-Benutzer (dlr_) ist serverseitig auf den eigenen Bestand
+           beschraenkt — ein customerNumber-Parameter wird mit 405 abgelehnt. */
         const kandidaten = [
-          "https://services.mobile.de/search-api/search?customerNumber=" + MOBILE_KUNDENNUMMER +
-            "&classification=refdata%2Fclasses%2FCar&page.size=100",
-          "https://services.mobile.de/seller-api/sellers/" + MOBILE_KUNDENNUMMER + "/ads",
+          "https://services.mobile.de/search-api/search?page.size=100",
         ];
         const headers = {
           Authorization: "Basic " + btoa(env.MOBILEDE_USER + ":" + env.MOBILEDE_PASSWORD),
           Accept: "application/vnd.de.mobile.api+json",
           "User-Agent": "FR-Sportwagen-Website/1.0 (frsportwagen.de)",
         };
+        if (url.searchParams.get("debug") === "6") {
+          const resp = await fetch(kandidaten[0], { headers });
+          if (!resp.ok) return json({ status: resp.status });
+          const daten = await resp.json();
+          const erstes = (daten.ads && daten.ads[0]) || null;
+          return json({ total: daten.total, erstesInserat: erstes });
+        }
         if (url.searchParams.get("debug") === "5") {
           const varianten = [
             "https://services.mobile.de/search-api/search?classification=refdata%2Fclasses%2FCar",
