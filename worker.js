@@ -160,8 +160,9 @@ export default {
       }
       try {
         const kandidaten = [
+          "https://services.mobile.de/search-api/search?customerNumber=" + MOBILE_KUNDENNUMMER +
+            "&classification=refdata%2Fclasses%2FCar&page.size=100",
           "https://services.mobile.de/seller-api/sellers/" + MOBILE_KUNDENNUMMER + "/ads",
-          "https://services.mobile.de/search-api/search?customerNumber=" + MOBILE_KUNDENNUMMER + "&page.size=100",
         ];
         const headers = {
           Authorization: "Basic " + btoa(env.MOBILEDE_USER + ":" + env.MOBILEDE_PASSWORD),
