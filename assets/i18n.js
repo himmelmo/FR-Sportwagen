@@ -306,7 +306,46 @@
       fr: "L'avis d'un client satisfait apparaîtra ici prochainement.",
       it: 'Qui apparirà presto la recensione di un cliente soddisfatto.'
     },
-    '— Kunde': { en: '— Customer', fr: '— Client', it: '— Cliente' }
+    '— Kunde': { en: '— Customer', fr: '— Client', it: '— Cliente' },
+
+    /* Gallardo-Seite */
+    'Die Seitenlinie — flach, klar und bis heute zeitlos.': {
+      en: 'The side profile — low, clean and timeless to this day.',
+      fr: 'La ligne latérale — basse, épurée et toujours intemporelle.',
+      it: 'La linea laterale — bassa, pulita e ancora oggi senza tempo.'
+    },
+    'Die Heckpartie mit den charakteristischen Lüftungsschlitzen.': {
+      en: 'The rear end with its characteristic ventilation slats.',
+      fr: "L'arrière avec ses fentes d'aération caractéristiques.",
+      it: 'La coda con le caratteristiche feritoie di ventilazione.'
+    },
+    'Die Front in Arancio Borealis — eine Farbe, die man nicht vergisst.': {
+      en: 'The front in Arancio Borealis — a colour you never forget.',
+      fr: "L'avant en Arancio Borealis — une couleur inoubliable.",
+      it: 'Il frontale in Arancio Borealis — un colore che non si dimentica.'
+    },
+    'Aus der Vogelperspektive zeigt der Gallardo seine perfekten Proportionen.': {
+      en: "From above, the Gallardo reveals its perfect proportions.",
+      fr: "Vu d'en haut, la Gallardo révèle ses proportions parfaites.",
+      it: "Dall'alto la Gallardo rivela le sue proporzioni perfette."
+    },
+    'Der frei saugende 5,0-Liter-V10 — die „screaming" Seele dieses Autos.': {
+      en: 'The naturally aspirated 5.0-litre V10 — the screaming soul of this car.',
+      fr: "Le V10 5,0 litres atmosphérique — l'âme hurlante de cette voiture.",
+      it: "Il V10 5.0 aspirato — l'anima urlante di questa vettura."
+    },
+    'Innenraum in schwarzem Leder mit orangefarbenen Ziernähten.': {
+      en: 'Interior in black leather with orange stitching.',
+      fr: 'Intérieur en cuir noir avec surpiqûres orange.',
+      it: 'Interni in pelle nera con cuciture arancioni.'
+    },
+    'Das Herzstück: die offene Schaltkulisse des Gated Manual.': {
+      en: 'The centrepiece: the open gate of the gated manual.',
+      fr: 'La pièce maîtresse : la grille apparente de la boîte mécanique.',
+      it: 'Il cuore: la griglia a vista del cambio manuale.'
+    },
+    'Alle Fotos': { en: 'All photos', fr: 'Toutes les photos', it: 'Tutte le foto' },
+    'Zurück zu den Referenzen': { en: 'Back to references', fr: 'Retour aux références', it: 'Torna alle referenze' }
   };
 
   var lang = 'de';

@@ -153,7 +153,9 @@
       grid-column: 1 / -1;
       aspect-ratio: 21 / 8;
     }
-    .pride-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .pride-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    a.pride-photo { cursor: pointer; }
+    a.pride-photo:hover img { transform: scale(1.03); }
 
     /* Verkaufte Fahrzeuge */
     .sold-grid {
@@ -313,18 +315,18 @@
     <p class="section-label">Mein stolzester Besitz</p>
     <h2 class="pride-title">Lamborghini Gallardo 5.0 Gated Manual</h2>
     <div class="pride-grid">
-      <div class="pride-photo wide">
+      <a class="pride-photo wide" href="gallardo.html">
         <img src="assets/verkauft/gallardo/gallardo-haupt.jpg" alt="Lamborghini Gallardo 5.0 Gated Manual in Arancio Borealis – Frontansicht">
-      </div>
-      <div class="pride-photo">
+      </a>
+      <a class="pride-photo" href="gallardo.html">
         <img src="assets/verkauft/gallardo/gallardo-00.jpg" alt="Lamborghini Gallardo – Seitenansicht">
-      </div>
-      <div class="pride-photo">
+      </a>
+      <a class="pride-photo" href="gallardo.html">
         <img src="assets/verkauft/gallardo/gallardo-01.jpg" alt="Lamborghini Gallardo – Heckansicht">
-      </div>
-      <div class="pride-photo">
+      </a>
+      <a class="pride-photo" href="gallardo.html">
         <img src="assets/verkauft/gallardo/gallardo-56.jpg" alt="Lamborghini Gallardo – offene Schaltkulisse">
-      </div>
+      </a>
     </div>
   </section>
 
