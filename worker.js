@@ -148,7 +148,8 @@ function mapAd(ad) {
 
     /* modelDescription wie "A5 Cabrio 3.0 TDI | S-Line Plus | ..." aufteilen */
     const beschreibung = entitiesDecode(ad.modelDescription || ad.model || "Fahrzeug");
-    const teile = beschreibung.split("|").map((t) => t.trim()).filter(Boolean);
+    /* Trenner: "|" oder alleinstehendes grosses I (z. B. "Taycan GTS I PTS I Carbon") */
+    const teile = beschreibung.split(/\s*\|\s*|\s+I\s+/).map((t) => t.trim()).filter(Boolean);
     const titel = teile[0] || "Fahrzeug";
     const untertitel = teile.slice(1).join(" · ");
 
