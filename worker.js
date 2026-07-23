@@ -169,6 +169,26 @@ export default {
           Accept: "application/vnd.de.mobile.api+json",
           "User-Agent": "FR-Sportwagen-Website/1.0 (frsportwagen.de)",
         };
+        if (url.searchParams.get("debug") === "4") {
+          const testUrl = kandidaten[0];
+          const faelle = [
+            ["ohne Auth", null],
+            ["Dummy-Auth", "Basic " + btoa("test:test")],
+            ["Echte Auth", headers.Authorization],
+          ];
+          const matrix = [];
+          for (const [name, auth] of faelle) {
+            const h = { Accept: headers.Accept, "User-Agent": headers["User-Agent"] };
+            if (auth) h.Authorization = auth;
+            try {
+              const resp = await fetch(testUrl, { headers: h });
+              matrix.push({ fall: name, status: resp.status, wwwAuth: resp.headers.get("www-authenticate") || "" });
+            } catch (e) {
+              matrix.push({ fall: name, fehler: String(e) });
+            }
+          }
+          return json({ testUrl, matrix });
+        }
         if (url.searchParams.get("debug") === "3") {
           const u = env.MOBILEDE_USER || "";
           const p = env.MOBILEDE_PASSWORD || "";
