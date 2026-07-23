@@ -1,0 +1,315 @@
+/* FR Sportwagen – Mehrsprachigkeit (DE Standard, EN/FR/IT per Umschalter in der Nav).
+   Deutsche Texte stehen im HTML; dieses Skript tauscht sie anhand des Wörterbuchs aus.
+   Neue Texte: deutschen String als Schlüssel ergänzen, drei Übersetzungen dazu. */
+(function () {
+  var LANGS = ['de', 'en', 'fr', 'it'];
+  var PREFIX = { en: 'e.g. ', fr: 'p. ex. ', it: 'es. ' };
+
+  var D = {
+    /* Navigation */
+    'Über mich': { en: 'About me', fr: 'À propos', it: 'Chi sono' },
+    'Leistungen': { en: 'Services', fr: 'Prestations', it: 'Servizi' },
+    'Fahrzeuge': { en: 'Vehicles', fr: 'Véhicules', it: 'Veicoli' },
+    'Referenzen': { en: 'References', fr: 'Références', it: 'Referenze' },
+    'Ankauf': { en: 'Purchase', fr: 'Rachat', it: 'Acquisto' },
+    'Kontakt': { en: 'Contact', fr: 'Contact', it: 'Contatti' },
+
+    /* Startseite – Hero */
+    'Exklusive Sportwagen. Ehrlich gehandelt.': {
+      en: 'Exclusive sports cars. Honestly traded.',
+      fr: "Voitures de sport d'exception. Négociées en toute honnêteté.",
+      it: 'Auto sportive esclusive. Trattate con onestà.'
+    },
+    'Fahrzeuge ansehen': { en: 'View vehicles', fr: 'Voir les véhicules', it: 'Vedi i veicoli' },
+
+    /* Startseite – Über mich */
+    'Sportwagen-DNA trifft auf persönlichen Service.': {
+      en: 'Sports car DNA meets personal service.',
+      fr: "L'ADN de la voiture de sport rencontre le service personnalisé.",
+      it: 'DNA sportivo unito a un servizio personale.'
+    },
+    'Hinter jedem exklusiven Fahrzeug steht eine Geschichte – und hier ist meine:': {
+      en: 'Behind every exceptional car there is a story – and here is mine:',
+      fr: "Derrière chaque voiture d'exception se cache une histoire – voici la mienne :",
+      it: "Dietro ogni auto esclusiva c'è una storia – ecco la mia:"
+    },
+    'Mein Name ist Fabian Rupp, Gründer und Herz dieses Unternehmens. Mit 30 Jahren blicke ich bereits auf eine Dekade operativer Erfahrung im Porsche Zentrum zurück.': {
+      en: 'My name is Fabian Rupp, founder and heart of this company. At 30, I can already look back on a decade of hands-on experience at a Porsche Centre.',
+      fr: "Je m'appelle Fabian Rupp, fondateur et âme de cette entreprise. À 30 ans, je compte déjà dix années d'expérience opérationnelle en Centre Porsche.",
+      it: 'Mi chiamo Fabian Rupp, fondatore e anima di questa azienda. A 30 anni ho già alle spalle dieci anni di esperienza operativa presso un Centro Porsche.'
+    },
+    'Ich freue mich, Ihnen als zertifizierter Porsche Verkaufsberater, Porsche Gebrauchtwagenmanager & Porsche Finanzberater beim Erwerb Ihres Traumautos zur Seite zu stehen.': {
+      en: 'As a certified Porsche sales consultant, Porsche pre-owned car manager and Porsche financial advisor, I look forward to assisting you with the purchase of your dream car.',
+      fr: "En tant que conseiller commercial Porsche certifié, responsable véhicules d'occasion Porsche et conseiller financier Porsche, je serai heureux de vous accompagner dans l'acquisition de la voiture de vos rêves.",
+      it: "Come consulente vendite Porsche certificato, responsabile usato Porsche e consulente finanziario Porsche, sarò lieto di assistervi nell'acquisto dell'auto dei vostri sogni."
+    },
+    'Ich biete Ihnen das Know-how eines Premium-Autohauses, kombiniert mit der Agilität und Diskretion eines persönlichen Partners.': {
+      en: 'I offer you the expertise of a premium dealership combined with the agility and discretion of a personal partner.',
+      fr: "Je vous offre le savoir-faire d'une concession premium, allié à l'agilité et à la discrétion d'un partenaire personnel.",
+      it: "Vi offro il know-how di una concessionaria premium, unito all'agilità e alla discrezione di un partner personale."
+    },
+
+    /* Startseite – Leistungen */
+    'Seriös, transparent und unkompliziert.': {
+      en: 'Reputable, transparent and straightforward.',
+      fr: 'Sérieux, transparent et simple.',
+      it: 'Serio, trasparente e senza complicazioni.'
+    },
+    'Suche': { en: 'Search', fr: 'Recherche', it: 'Ricerca' },
+    'Wenn Ihr Traumwagen nicht auf dem Hof steht, finde ich ihn über mein internationales Netzwerk.': {
+      en: "If your dream car isn't on my lot, I will find it through my international network.",
+      fr: "Si la voiture de vos rêves n'est pas sur place, je la trouverai grâce à mon réseau international.",
+      it: "Se l'auto dei vostri sogni non è nel mio piazzale, la troverò attraverso la mia rete internazionale."
+    },
+    'Vermittlung': { en: 'Brokerage', fr: 'Intermédiation', it: 'Intermediazione' },
+    'Profitieren Sie von meinem Verhandlungsgeschick für das beste Preis-Leistungs-Verhältnis bei Ihrem Neuwagen.': {
+      en: 'Benefit from my negotiating skills for the best value on your new car.',
+      fr: 'Profitez de mon talent de négociateur pour obtenir le meilleur rapport qualité-prix sur votre voiture neuve.',
+      it: 'Approfittate della mia abilità negoziale per ottenere il miglior rapporto qualità-prezzo sulla vostra auto nuova.'
+    },
+
+    /* Startseite – Fahrzeuge & Referenzen */
+    'Mehr anzeigen': { en: 'Show more', fr: 'Voir plus', it: 'Mostra di più' },
+    'Demnächst verfügbar': { en: 'Available soon', fr: 'Bientôt disponible', it: 'Presto disponibile' },
+    'Details auf Anfrage': { en: 'Details on request', fr: 'Détails sur demande', it: 'Dettagli su richiesta' },
+    'Verkauft': { en: 'Sold', fr: 'Vendue', it: 'Venduta' },
+    'Fahrzeug': { en: 'Vehicle', fr: 'Véhicule', it: 'Veicolo' },
+
+    /* Kontakt & Footer */
+    'Telefon': { en: 'Phone', fr: 'Téléphone', it: 'Telefono' },
+    'E-Mail': { en: 'Email', fr: 'E-mail', it: 'E-mail' },
+    'Standort': { en: 'Location', fr: 'Adresse', it: 'Sede' },
+    'Wir sprechen': { en: 'We speak', fr: 'Nous parlons', it: 'Parliamo' },
+    'Impressum': { en: 'Legal Notice', fr: 'Mentions légales', it: 'Note legali' },
+    'Datenschutz': { en: 'Privacy', fr: 'Confidentialité', it: 'Privacy' },
+
+    /* Referenzen-Seite */
+    'Ein Blick zurück: Fahrzeuge, die ihren Weg über mich zu neuen Besitzern gefunden haben.': {
+      en: 'A look back: vehicles that found their way to new owners through me.',
+      fr: 'Rétrospective : des véhicules qui ont trouvé de nouveaux propriétaires par mon intermédiaire.',
+      it: 'Uno sguardo al passato: veicoli che hanno trovato nuovi proprietari grazie a me.'
+    },
+    'Mein stolzester Besitz': { en: 'My proudest possession', fr: 'Ma plus grande fierté', it: 'Il mio orgoglio più grande' },
+    'Verkaufte Fahrzeuge': { en: 'Sold vehicles', fr: 'Véhicules vendus', it: 'Veicoli venduti' },
+
+    /* Suche-Seite */
+    'Ihr Wunschfahrzeug, meine Suche.': {
+      en: 'Your dream car, my search.',
+      fr: 'La voiture de vos rêves, ma mission.',
+      it: "L'auto dei vostri sogni, la mia ricerca."
+    },
+    'Sagen Sie mir so genau wie möglich, wonach Sie suchen — ich finde Ihr Traumauto über mein internationales Netzwerk und melde mich persönlich bei Ihnen.': {
+      en: 'Tell me as precisely as possible what you are looking for — I will find your dream car through my international network and get back to you personally.',
+      fr: 'Dites-moi aussi précisément que possible ce que vous recherchez — je trouverai la voiture de vos rêves grâce à mon réseau international et vous recontacterai personnellement.',
+      it: "Ditemi nel modo più preciso possibile cosa cercate — troverò l'auto dei vostri sogni attraverso la mia rete internazionale e vi ricontatterò personalmente."
+    },
+    'Das gesuchte Fahrzeug': { en: 'The vehicle you are looking for', fr: 'Le véhicule recherché', it: 'Il veicolo cercato' },
+    'Marke und Modell': { en: 'Make and model', fr: 'Marque et modèle', it: 'Marca e modello' },
+    '(Pflichtfeld)': { en: '(required)', fr: '(obligatoire)', it: '(obbligatorio)' },
+    'Ausstattung / Variante': { en: 'Specification / variant', fr: 'Équipement / variante', it: 'Allestimento / variante' },
+    'Baujahr ab': { en: 'Year from', fr: 'Année à partir de', it: 'Anno da' },
+    'Kilometer bis': { en: 'Mileage up to', fr: 'Kilométrage max.', it: 'Chilometri max.' },
+    'Budget bis': { en: 'Budget up to', fr: 'Budget max.', it: 'Budget max.' },
+    'Weitere Wünsche': { en: 'Further wishes', fr: 'Autres souhaits', it: 'Altre richieste' },
+    'Ihre Kontaktdaten': { en: 'Your contact details', fr: 'Vos coordonnées', it: 'I vostri contatti' },
+    'Name': { en: 'Name', fr: 'Nom', it: 'Nome' },
+    'Suchauftrag senden': { en: 'Send search request', fr: 'Envoyer la demande', it: 'Invia la richiesta' },
+    'Ihr Suchauftrag wird direkt und sicher an mich übermittelt.': {
+      en: 'Your search request is sent directly and securely to me.',
+      fr: "Votre demande m'est transmise directement et en toute sécurité.",
+      it: 'La vostra richiesta mi viene trasmessa direttamente e in modo sicuro.'
+    },
+    'Farbe, Historie, Zeitrahmen — alles, was mir bei der Suche hilft.': {
+      en: 'Colour, history, timeframe — anything that helps my search.',
+      fr: "Couleur, historique, délai — tout ce qui peut aider ma recherche.",
+      it: 'Colore, storia, tempistiche — tutto ciò che aiuta la mia ricerca.'
+    },
+    'z. B. Schalter, Chrono-Paket': { en: 'e.g. manual, Chrono Package', fr: 'p. ex. boîte manuelle, Pack Chrono', it: 'es. cambio manuale, Pacchetto Chrono' },
+
+    /* Ankauf-Seite (verkauf.html) */
+    'Ihr Fahrzeug, mein Angebot.': {
+      en: 'Your car, my offer.',
+      fr: 'Votre voiture, mon offre.',
+      it: 'La vostra auto, la mia offerta.'
+    },
+    'Sie möchten Ihren Sportwagen verkaufen? Je genauer Ihre Angaben, desto schneller erhalten Sie eine seriöse, transparente Bewertung — unkompliziert und diskret.': {
+      en: 'Looking to sell your sports car? The more precise your details, the faster you will receive a fair, transparent valuation — straightforward and discreet.',
+      fr: 'Vous souhaitez vendre votre voiture de sport ? Plus vos informations sont précises, plus vite vous recevrez une évaluation sérieuse et transparente — simple et discrète.',
+      it: 'Volete vendere la vostra auto sportiva? Più precise sono le informazioni, più rapidamente riceverete una valutazione seria e trasparente — semplice e discreta.'
+    },
+    'Ihr Fahrzeug': { en: 'Your vehicle', fr: 'Votre véhicule', it: 'Il vostro veicolo' },
+    'Die Eckdaten Ihres Fahrzeugs.': { en: 'The key facts about your car.', fr: 'Les données clés de votre véhicule.', it: 'I dati principali del vostro veicolo.' },
+    'Erstzulassung': { en: 'First registration', fr: 'Première immatriculation', it: 'Prima immatricolazione' },
+    'Kilometerstand': { en: 'Mileage', fr: 'Kilométrage', it: 'Chilometraggio' },
+    'Leistung': { en: 'Power', fr: 'Puissance', it: 'Potenza' },
+    'Getriebe': { en: 'Transmission', fr: 'Boîte de vitesses', it: 'Cambio' },
+    'Bitte wählen': { en: 'Please select', fr: 'Veuillez choisir', it: 'Selezionare' },
+    'Automatik / Doppelkupplung': { en: 'Automatic / dual-clutch', fr: 'Automatique / double embrayage', it: 'Automatico / doppia frizione' },
+    'Schaltgetriebe': { en: 'Manual', fr: 'Boîte manuelle', it: 'Cambio manuale' },
+    'Außenfarbe': { en: 'Exterior colour', fr: 'Couleur extérieure', it: 'Colore esterno' },
+    'Innenausstattung': { en: 'Interior', fr: 'Intérieur', it: 'Interni' },
+    'Anzahl Vorbesitzer': { en: 'Previous owners', fr: 'Nombre de propriétaires', it: 'Proprietari precedenti' },
+    'Unfallfrei': { en: 'Accident-free', fr: 'Sans accident', it: 'Senza incidenti' },
+    'Ja, unfallfrei': { en: 'Yes, accident-free', fr: 'Oui, sans accident', it: 'Sì, senza incidenti' },
+    'Nein': { en: 'No', fr: 'Non', it: 'No' },
+    'Reparierter Vorschaden': { en: 'Repaired previous damage', fr: 'Dommage antérieur réparé', it: 'Danno precedente riparato' },
+    'Scheckheftgepflegt': { en: 'Full service history', fr: "Carnet d'entretien complet", it: 'Tagliandi documentati' },
+    'Ja': { en: 'Yes', fr: 'Oui', it: 'Sì' },
+    'Teilweise': { en: 'Partially', fr: 'Partiellement', it: 'Parzialmente' },
+    '(PLZ / Ort)': { en: '(postcode / city)', fr: '(code postal / ville)', it: '(CAP / città)' },
+    'Preisvorstellung': { en: 'Asking price', fr: 'Prix souhaité', it: 'Prezzo richiesto' },
+    'Gewünschter Zeitrahmen': { en: 'Preferred timeframe', fr: 'Délai souhaité', it: 'Tempistica desiderata' },
+    'So schnell wie möglich': { en: 'As soon as possible', fr: 'Dès que possible', it: 'Il prima possibile' },
+    'Innerhalb von 3 Monaten': { en: 'Within 3 months', fr: 'Sous 3 mois', it: 'Entro 3 mesi' },
+    'Flexibel': { en: 'Flexible', fr: 'Flexible', it: 'Flessibile' },
+    'Zustand, Historie und Besonderheiten': { en: 'Condition, history and special features', fr: 'État, historique et particularités', it: 'Condizioni, storia e particolarità' },
+    'Sonderausstattung, Wartungshistorie, Garantie, Umbauten — alles, was für die Bewertung wichtig ist.': {
+      en: 'Optional equipment, service history, warranty, modifications — anything relevant for the valuation.',
+      fr: "Options, historique d'entretien, garantie, modifications — tout ce qui compte pour l'évaluation.",
+      it: 'Optional, storia di manutenzione, garanzia, modifiche — tutto ciò che conta per la valutazione.'
+    },
+    'z. B. Leder Schwarz, Alcantara': { en: 'e.g. black leather, Alcantara', fr: 'p. ex. cuir noir, Alcantara', it: 'es. pelle nera, Alcantara' },
+    'Fotos Ihres Fahrzeugs': { en: 'Photos of your car', fr: 'Photos de votre véhicule', it: 'Foto del vostro veicolo' },
+    'Bitte fotografieren Sie Ihr Fahrzeug aus genau diesen 6 Perspektiven — die Beispielbilder zeigen den jeweiligen Winkel. So kann ich Ihr Fahrzeug bestmöglich einschätzen.': {
+      en: 'Please photograph your car from exactly these 6 angles — the example images show each perspective. This allows me to assess your car as accurately as possible.',
+      fr: "Veuillez photographier votre véhicule sous ces 6 angles précis — les images d'exemple montrent chaque perspective. Cela me permet d'évaluer votre véhicule au mieux.",
+      it: 'Fotografate il vostro veicolo esattamente da queste 6 prospettive — le immagini di esempio mostrano ogni angolazione. Così potrò valutare al meglio il vostro veicolo.'
+    },
+    '1 · Front schräg': { en: '1 · Front angle', fr: '1 · Avant en biais', it: '1 · Frontale in diagonale' },
+    '(vorne links)': { en: '(front left)', fr: '(avant gauche)', it: '(anteriore sinistra)' },
+    '2 · Heck schräg': { en: '2 · Rear angle', fr: '2 · Arrière en biais', it: '2 · Posteriore in diagonale' },
+    '(hinten rechts)': { en: '(rear right)', fr: '(arrière droit)', it: '(posteriore destra)' },
+    '3 · Seitenansicht': { en: '3 · Side view', fr: '3 · Vue de profil', it: '3 · Vista laterale' },
+    '(komplett)': { en: '(full view)', fr: '(complète)', it: '(completa)' },
+    '(Lenkrad und Konsole)': { en: '(steering wheel and console)', fr: '(volant et console)', it: '(volante e consolle)' },
+    '5 · Sitze': { en: '5 · Seats', fr: '5 · Sièges', it: '5 · Sedili' },
+    '(Innenraum gesamt)': { en: '(full interior)', fr: '(intérieur complet)', it: '(interni completi)' },
+    '6 · Tacho': { en: '6 · Odometer', fr: '6 · Compteur', it: '6 · Contachilometri' },
+    '(Kilometerstand ablesbar)': { en: '(mileage readable)', fr: '(kilométrage lisible)', it: '(chilometraggio leggibile)' },
+    'Foto auswählen': { en: 'Choose photo', fr: 'Choisir une photo', it: 'Scegli foto' },
+    'Foto ausgewählt': { en: 'Photo selected', fr: 'Photo sélectionnée', it: 'Foto selezionata' },
+    'Damit ich mich persönlich bei Ihnen melden kann.': {
+      en: 'So that I can get back to you personally.',
+      fr: 'Pour que je puisse vous recontacter personnellement.',
+      it: 'Per potervi ricontattare personalmente.'
+    },
+    'Verkaufsanfrage senden': { en: 'Send sale request', fr: 'Envoyer la demande', it: 'Invia la richiesta' },
+    'Ihre Anfrage wird mitsamt der ausgewählten Fotos direkt und sicher an mich übermittelt.': {
+      en: 'Your request, including the selected photos, is sent directly and securely to me.',
+      fr: "Votre demande, photos comprises, m'est transmise directement et en toute sécurité.",
+      it: 'La vostra richiesta, foto incluse, mi viene trasmessa direttamente e in modo sicuro.'
+    },
+
+    /* Formular-Statusmeldungen (per FR_T aus den Seiten-Skripten) */
+    'Wird gesendet …': { en: 'Sending …', fr: 'Envoi en cours …', it: 'Invio in corso …' },
+    'Vielen Dank für Ihren Suchauftrag!': { en: 'Thank you for your search request!', fr: 'Merci pour votre demande !', it: 'Grazie per la vostra richiesta!' },
+    'Ihre Anfrage wurde erfolgreich übermittelt. Ich melde mich zeitnah persönlich bei Ihnen.': {
+      en: 'Your request has been sent successfully. I will get back to you personally very soon.',
+      fr: 'Votre demande a bien été transmise. Je vous recontacterai personnellement très prochainement.',
+      it: 'La vostra richiesta è stata inviata con successo. Vi ricontatterò personalmente al più presto.'
+    },
+    'Vielen Dank für Ihre Anfrage!': { en: 'Thank you for your request!', fr: 'Merci pour votre demande !', it: 'Grazie per la vostra richiesta!' },
+    'Ihre Verkaufsanfrage wurde erfolgreich übermittelt. Ich melde mich zeitnah persönlich bei Ihnen.': {
+      en: 'Your sale request has been sent successfully. I will get back to you personally very soon.',
+      fr: 'Votre demande de vente a bien été transmise. Je vous recontacterai personnellement très prochainement.',
+      it: 'La vostra richiesta di vendita è stata inviata con successo. Vi ricontatterò personalmente al più presto.'
+    },
+    'Der Versand hat leider nicht geklappt': { en: 'Unfortunately, sending failed', fr: "L'envoi a malheureusement échoué", it: "Purtroppo l'invio non è riuscito" },
+    'Bitte senden Sie Ihre Anfrage direkt an': { en: 'Please send your request directly to', fr: 'Veuillez envoyer votre demande directement à', it: 'Inviate la vostra richiesta direttamente a' }
+  };
+
+  var lang = 'de';
+  try {
+    var saved = localStorage.getItem('fr-lang');
+    if (LANGS.indexOf(saved) > -1) lang = saved;
+  } catch (e) {}
+
+  var textNodes = [];
+  var placeholders = [];
+
+  function collect() {
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+    var n;
+    while ((n = walker.nextNode())) {
+      var p = n.parentNode;
+      if (!p || p.nodeName === 'SCRIPT' || p.nodeName === 'STYLE') continue;
+      if (!n.nodeValue || !n.nodeValue.trim()) continue;
+      textNodes.push({ node: n, de: n.nodeValue });
+    }
+    var fields = document.querySelectorAll('input[placeholder], textarea[placeholder]');
+    for (var i = 0; i < fields.length; i++) {
+      placeholders.push({ el: fields[i], de: fields[i].getAttribute('placeholder') });
+    }
+  }
+
+  function t(s) {
+    if (lang === 'de') return s;
+    var e = D[s];
+    return (e && e[lang]) || s;
+  }
+  window.FR_T = t;
+
+  function apply() {
+    document.documentElement.lang = lang;
+    textNodes.forEach(function (it) {
+      if (lang === 'de') { it.node.nodeValue = it.de; return; }
+      var key = it.de.trim();
+      var e = D[key];
+      it.node.nodeValue = (e && e[lang]) ? it.de.replace(key, e[lang]) : it.de;
+    });
+    placeholders.forEach(function (it) {
+      if (lang === 'de') { it.el.setAttribute('placeholder', it.de); return; }
+      var e = D[it.de];
+      if (e && e[lang]) {
+        it.el.setAttribute('placeholder', e[lang]);
+      } else if (it.de.indexOf('z. B. ') === 0) {
+        it.el.setAttribute('placeholder', PREFIX[lang] + it.de.slice(6));
+      } else {
+        it.el.setAttribute('placeholder', it.de);
+      }
+    });
+    var buttons = document.querySelectorAll('.lang-switch button');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.toggle('active', buttons[i].getAttribute('data-lang') === lang);
+    }
+  }
+
+  function buildSwitcher() {
+    var nav = document.querySelector('header nav');
+    if (!nav) return;
+    var style = document.createElement('style');
+    style.textContent =
+      '.lang-switch{display:flex;gap:0.1rem;margin-left:0.5rem;}' +
+      '.lang-switch button{background:none;border:none;color:#8a8a8a;font-family:inherit;font-size:0.78rem;letter-spacing:0.08em;cursor:pointer;padding:0.2rem 0.3rem;transition:color 0.2s;}' +
+      '.lang-switch button:hover{color:#ffffff;}' +
+      '.lang-switch button.active{color:#ffffff;font-weight:600;}';
+    document.head.appendChild(style);
+    var wrap = document.createElement('div');
+    wrap.className = 'lang-switch';
+    LANGS.forEach(function (l) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('data-lang', l);
+      b.setAttribute('aria-label', 'Sprache: ' + l.toUpperCase());
+      b.textContent = l.toUpperCase();
+      b.addEventListener('click', function () {
+        lang = l;
+        try { localStorage.setItem('fr-lang', l); } catch (e) {}
+        apply();
+      });
+      wrap.appendChild(b);
+    });
+    nav.appendChild(wrap);
+  }
+
+  function init() {
+    collect();
+    buildSwitcher();
+    apply();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();

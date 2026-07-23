@@ -453,7 +453,9 @@
     </div>
   </footer>
 
+  <script src="assets/i18n.js"></script>
   <script>
+    var T = window.FR_T || function (s) { return s; };
     document.querySelectorAll('.photo-upload input[type=file]').forEach(function (input) {
       input.addEventListener('change', function () {
         var slot = input.closest('.photo-slot');
@@ -480,20 +482,20 @@
       var btn = vForm.querySelector('.btn');
       var note = vForm.querySelector('.submit-note');
       btn.disabled = true;
-      btn.textContent = 'Wird gesendet …';
+      btn.textContent = T('Wird gesendet …');
       var fd = new FormData(vForm);
       fd.append('_typ', 'Verkaufsanfrage');
       fetch('/api/anfrage', { method: 'POST', body: fd })
         .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
         .then(function (res) {
           if (!res.ok) { throw new Error(res.d && res.d.error ? res.d.error : 'Unbekannter Fehler'); }
-          vForm.innerHTML = '<div class="form-card submit-card"><h2 style="font-size:1.3rem; margin-bottom:0.5rem;">Vielen Dank für Ihre Anfrage!</h2><p style="color:var(--gray-text);">Ihre Verkaufsanfrage wurde erfolgreich übermittelt. Ich melde mich zeitnah persönlich bei Ihnen.</p></div>';
+          vForm.innerHTML = '<div class="form-card submit-card"><h2 style="font-size:1.3rem; margin-bottom:0.5rem;">' + T('Vielen Dank für Ihre Anfrage!') + '</h2><p style="color:var(--gray-text);">' + T('Ihre Verkaufsanfrage wurde erfolgreich übermittelt. Ich melde mich zeitnah persönlich bei Ihnen.') + '</p></div>';
           window.scrollTo({ top: 0, behavior: 'smooth' });
         })
         .catch(function (err) {
           btn.disabled = false;
-          btn.textContent = 'Verkaufsanfrage senden';
-          note.innerHTML = 'Der Versand hat leider nicht geklappt (' + err.message + '). Bitte senden Sie Ihre Anfrage direkt an <a href="mailto:kontakt@frsportwagen.de">kontakt@frsportwagen.de</a>.';
+          btn.textContent = T('Verkaufsanfrage senden');
+          note.innerHTML = T('Der Versand hat leider nicht geklappt') + ' (' + err.message + '). ' + T('Bitte senden Sie Ihre Anfrage direkt an') + ' <a href="mailto:kontakt@frsportwagen.de">kontakt@frsportwagen.de</a>.';
           note.style.color = '#a33';
         });
     });

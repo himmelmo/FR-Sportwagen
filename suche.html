@@ -227,27 +227,29 @@
     </div>
   </footer>
 
+  <script src="assets/i18n.js"></script>
   <script>
+    var T = window.FR_T || function (s) { return s; };
     var sForm = document.getElementById('such-formular');
     sForm.addEventListener('submit', function (e) {
       e.preventDefault();
       var btn = sForm.querySelector('.btn');
       var note = sForm.querySelector('.submit-note');
       btn.disabled = true;
-      btn.textContent = 'Wird gesendet …';
+      btn.textContent = T('Wird gesendet …');
       var fd = new FormData(sForm);
       fd.append('_typ', 'Suchauftrag');
       fetch('/api/anfrage', { method: 'POST', body: fd })
         .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
         .then(function (res) {
           if (!res.ok) { throw new Error(res.d && res.d.error ? res.d.error : 'Unbekannter Fehler'); }
-          sForm.innerHTML = '<h2 style="font-size:1.3rem; margin-bottom:0.5rem;">Vielen Dank für Ihren Suchauftrag!</h2><p style="color:var(--gray-text);">Ihre Anfrage wurde erfolgreich übermittelt. Ich melde mich zeitnah persönlich bei Ihnen.</p>';
+          sForm.innerHTML = '<h2 style="font-size:1.3rem; margin-bottom:0.5rem;">' + T('Vielen Dank für Ihren Suchauftrag!') + '</h2><p style="color:var(--gray-text);">' + T('Ihre Anfrage wurde erfolgreich übermittelt. Ich melde mich zeitnah persönlich bei Ihnen.') + '</p>';
           window.scrollTo({ top: 0, behavior: 'smooth' });
         })
         .catch(function (err) {
           btn.disabled = false;
-          btn.textContent = 'Suchauftrag senden';
-          note.innerHTML = 'Der Versand hat leider nicht geklappt (' + err.message + '). Bitte senden Sie Ihre Anfrage direkt an <a href="mailto:kontakt@frsportwagen.de">kontakt@frsportwagen.de</a>.';
+          btn.textContent = T('Suchauftrag senden');
+          note.innerHTML = T('Der Versand hat leider nicht geklappt') + ' (' + err.message + '). ' + T('Bitte senden Sie Ihre Anfrage direkt an') + ' <a href="mailto:kontakt@frsportwagen.de">kontakt@frsportwagen.de</a>.';
           note.style.color = '#a33';
         });
     });
