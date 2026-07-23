@@ -166,11 +166,32 @@ export default {
         const headers = {
           Authorization: "Basic " + btoa(env.MOBILEDE_USER + ":" + env.MOBILEDE_PASSWORD),
           Accept: "application/vnd.de.mobile.api+json",
+          "User-Agent": "FR-Sportwagen-Website/1.0 (frsportwagen.de)",
         };
+        if (url.searchParams.get("debug") === "2") {
+          const diagnose = [];
+          for (const apiUrl of kandidaten) {
+            try {
+              const resp = await fetch(apiUrl, { headers });
+              const body = await resp.text();
+              diagnose.push({
+                url: apiUrl,
+                status: resp.status,
+                server: resp.headers.get("server") || "",
+                contentType: resp.headers.get("content-type") || "",
+                allow: resp.headers.get("allow") || "",
+                bodyAnfang: body.slice(0, 400),
+              });
+            } catch (e) {
+              diagnose.push({ url: apiUrl, fehler: String(e) });
+            }
+          }
+          return json({ diagnose });
+        }
         let daten = null;
         let letzterStatus = 0;
         for (const apiUrl of kandidaten) {
-          const resp = await fetch(apiUrl, { headers, cf: { cacheTtl: 600, cacheEverything: true } });
+          const resp = await fetch(apiUrl, { headers });
           letzterStatus = resp.status;
           if (resp.ok) {
             daten = await resp.json();
