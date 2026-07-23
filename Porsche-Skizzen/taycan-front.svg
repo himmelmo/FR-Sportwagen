@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520">
+  <title>Porsche Taycan – Front</title>
+  <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Dicke Hauptkontur: Seiten, Kotflügelschultern, flache Dachkuppel -->
+    <path stroke-width="12" d="M 132 470
+      C 116 440, 114 390, 124 344
+      C 132 300, 152 270, 196 256
+      C 220 248, 244 244, 268 242
+      C 300 180, 360 130, 450 124
+      C 540 130, 600 180, 632 242
+      C 656 244, 680 248, 704 256
+      C 748 270, 768 300, 776 344
+      C 786 390, 784 440, 768 470" />
+    <!-- Zittrig auslaufende Enden unten -->
+    <path stroke-width="5" d="M 132 470 C 124 480, 126 490, 136 494" />
+    <path stroke-width="5" d="M 768 470 C 776 480, 774 490, 764 494" />
+    <!-- Haube: Mulde zwischen den Kotflügeln -->
+    <path stroke-width="4" d="M 268 242 C 320 262, 580 262, 632 242" />
+    <path stroke-width="2.5" d="M 302 256 C 360 270, 540 270, 598 256" />
+    <!-- Haubenfugen außen -->
+    <path stroke-width="3" d="M 296 252 C 282 300, 274 350, 270 396" />
+    <path stroke-width="3" d="M 604 252 C 618 300, 626 350, 630 396" />
+    <!-- Breite, flache Frontscheibe mit Doppellinie -->
+    <path stroke-width="5" d="M 296 236
+      C 330 160, 390 132, 450 130
+      C 510 132, 570 160, 604 236
+      C 555 214, 500 206, 450 206
+      C 400 206, 345 214, 296 236 Z" />
+    <path stroke-width="2.5" d="M 314 226 C 346 166, 398 140, 450 138 C 502 140, 554 166, 586 226" />
+    <!-- Dachantenne -->
+    <path stroke-width="3" d="M 436 126 C 444 120, 456 120, 464 126" />
+    <!-- Vier-Punkt-Tagfahrlicht links -->
+    <path stroke-width="4" d="M 150 316 C 186 306, 226 300, 264 296" />
+    <path stroke-width="7" d="M 166 328 L 178 326 M 192 324 L 204 322 M 218 320 L 230 318 M 244 316 L 256 314" />
+    <path stroke-width="2.5" d="M 170 340 C 198 334, 228 330, 256 326" />
+    <!-- Vier-Punkt-Tagfahrlicht rechts -->
+    <path stroke-width="4" d="M 636 296 C 674 300, 714 306, 750 316" />
+    <path stroke-width="7" d="M 644 314 L 656 316 M 670 318 L 682 320 M 696 322 L 708 324 M 722 326 L 734 328" />
+    <path stroke-width="2.5" d="M 644 326 C 672 330, 702 334, 730 340" />
+    <!-- Seitliche Lufteinlässe -->
+    <path stroke-width="4" d="M 152 404 C 192 394, 236 390, 276 392 L 270 414 C 236 412, 198 414, 164 420 Z" />
+    <path stroke-width="4" d="M 624 392 C 664 390, 708 394, 748 404 L 736 420 C 702 414, 664 412, 630 414 Z" />
+    <!-- Zentraler Lufteinlass mit Finnen -->
+    <path stroke-width="4" d="M 336 418 L 564 418 L 552 446 L 348 446 Z" />
+    <path stroke-width="2.5" d="M 392 422 L 390 442 M 450 422 L 450 442 M 508 422 L 510 442" />
+    <!-- Außenspiegel mit Innenzeichnung -->
+    <path stroke-width="4" d="M 272 246 C 246 236, 222 240, 214 256 C 226 268, 254 264, 274 254" />
+    <path stroke-width="2.5" d="M 228 252 C 238 258, 252 258, 262 252" />
+    <path stroke-width="4" d="M 628 246 C 654 236, 678 240, 686 256 C 674 268, 646 264, 626 254" />
+    <path stroke-width="2.5" d="M 672 252 C 662 258, 648 258, 638 252" />
+  </g>
+</svg>

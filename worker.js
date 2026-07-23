@@ -101,6 +101,10 @@ function leistungFormat(kw) {
   return typeof kw === "number" ? kw + " kW (" + Math.round(kw * 1.35962) + " PS)" : "";
 }
 
+function euro(zahl) {
+  return zahl.toLocaleString("de-DE", { maximumFractionDigits: 0 }) + " €";
+}
+
 function preisFormat(ad) {
   const p = ad.price || {};
   const betrag =
@@ -110,7 +114,25 @@ function preisFormat(ad) {
   if (!betrag) return "Preis auf Anfrage";
   const zahl = parseFloat(String(betrag).replace(",", "."));
   if (isNaN(zahl)) return String(betrag);
-  return zahl.toLocaleString("de-DE", { maximumFractionDigits: 0 }) + " €";
+  return euro(zahl);
+}
+
+/* MwSt-Kennzeichnung automatisch aus den mobile.de-Preisdaten:
+   - vatRate vorhanden (gewerblich): "inkl. 19 % MwSt." + Netto-Preis darunter
+   - sonst (privat angekauft): differenzbesteuert nach § 25a UStG */
+function preisSteuer(ad) {
+  const p = ad.price || {};
+  const vatRate = parseFloat(p.vatRate || p.vat || "");
+  if (vatRate > 0) {
+    const brutto = parseFloat(String(p.consumerPriceGross || "").replace(",", "."));
+    let netto = parseFloat(String(p.consumerPriceNet || "").replace(",", "."));
+    if (!netto && brutto) netto = brutto / (1 + vatRate / 100);
+    return {
+      hinweis: "inkl. " + Math.round(vatRate) + " % MwSt.",
+      netto: netto ? "Netto: " + euro(netto) : "",
+    };
+  }
+  return { hinweis: "(differenzbesteuert nach § 25a UStG)", netto: "" };
 }
 
 function titleCase(s) {
@@ -212,7 +234,8 @@ function mapAd(ad) {
       titel,
       untertitel,
       preis: preisFormat(ad),
-      preisHinweis: "(Brutto)",
+      preisHinweis: preisSteuer(ad).hinweis,
+      preisNetto: preisSteuer(ad).netto,
       bilder,
       mobileUrl: ad.detailPageUrl || "",
       topFakten: fakten.slice(0, 12),

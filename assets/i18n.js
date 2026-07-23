@@ -15,10 +15,10 @@
     'Kontakt': { en: 'Contact', fr: 'Contact', it: 'Contatti' },
 
     /* Startseite – Hero */
-    'Exklusive Sportwagen. Ehrlich gehandelt.': {
-      en: 'Exclusive sports cars. Honestly traded.',
-      fr: "Voitures de sport d'exception. Négociées en toute honnêteté.",
-      it: 'Auto sportive esclusive. Trattate con onestà.'
+    'Auserwählte und exklusive Sportwagen.': {
+      en: 'Selected and exclusive sports cars.',
+      fr: 'Des voitures de sport sélectionnées et exclusives.',
+      it: 'Auto sportive selezionate ed esclusive.'
     },
     'Fahrzeuge ansehen': { en: 'View vehicles', fr: 'Voir les véhicules', it: 'Vedi i veicoli' },
 
@@ -269,7 +269,44 @@
       en: 'Note: test view with example images — real photos and data will follow automatically via the mobile.de interface.',
       fr: "Remarque : aperçu de test avec des images d'exemple — les photos et données réelles suivront automatiquement via l'interface mobile.de.",
       it: "Nota: anteprima di prova con immagini di esempio — foto e dati reali arriveranno automaticamente tramite l'interfaccia mobile.de."
-    }
+    },
+
+    /* Ankauf-Formular: neue Felder */
+    'Fahrgestellnummer (FIN)': { en: 'VIN', fr: 'Numéro de châssis (VIN)', it: 'Telaio (VIN)' },
+    'Karosserieform': { en: 'Body style', fr: 'Carrosserie', it: 'Carrozzeria' },
+    'Cabrio / Roadster': { en: 'Convertible / roadster', fr: 'Cabriolet / roadster', it: 'Cabrio / roadster' },
+    'Limousine': { en: 'Sedan', fr: 'Berline', it: 'Berlina' },
+    'SUV / Geländewagen': { en: 'SUV / off-road', fr: 'SUV / tout-terrain', it: 'SUV / fuoristrada' },
+    'Kombi': { en: 'Estate', fr: 'Break', it: 'Station wagon' },
+    'Sonstige': { en: 'Other', fr: 'Autre', it: 'Altro' },
+    'Verkauf als': { en: 'Selling as', fr: 'Vente en tant que', it: 'Vendita come' },
+    'Privatperson (MwSt. nicht ausweisbar)': {
+      en: 'Private seller (VAT not itemisable)',
+      fr: 'Particulier (TVA non récupérable)',
+      it: 'Privato (IVA non esposta)'
+    },
+    'Gewerblich (MwSt. ausweisbar)': {
+      en: 'Commercial (VAT itemisable)',
+      fr: 'Professionnel (TVA récupérable)',
+      it: 'Azienda (IVA esposta)'
+    },
+
+    /* Preis-Kennzeichnung */
+    '(differenzbesteuert nach § 25a UStG)': {
+      en: '(margin scheme, sec. 25a German VAT Act)',
+      fr: '(régime de la marge, § 25a UStG)',
+      it: '(regime del margine, § 25a UStG)'
+    },
+    'inkl. 19 % MwSt.': { en: 'incl. 19% VAT', fr: 'TVA de 19 % incluse', it: 'IVA 19% inclusa' },
+
+    /* Kundenstimmen */
+    'Kundenstimmen': { en: 'Customer reviews', fr: 'Avis clients', it: 'Recensioni' },
+    'Hier erscheint in Kürze die Stimme eines zufriedenen Kunden.': {
+      en: 'A satisfied customer review will appear here soon.',
+      fr: "L'avis d'un client satisfait apparaîtra ici prochainement.",
+      it: 'Qui apparirà presto la recensione di un cliente soddisfatto.'
+    },
+    '— Kunde': { en: '— Customer', fr: '— Client', it: '— Cliente' }
   };
 
   var lang = 'de';

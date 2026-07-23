@@ -121,6 +121,7 @@
       margin-top: 1.6rem;
     }
     .station .price small { font-size: 0.85rem; font-weight: 400; color: #8a8a8a; margin-left: 0.4rem; }
+    .station .price-net { font-size: 0.95rem; color: #8a8a8a; margin-top: 0.15rem; }
     .facts {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -496,6 +497,7 @@
           '<h1>' + fz.titel + '</h1>' +
           '<p class="subtitle">' + (fz.untertitel || '') + '</p>' +
           '<p class="price">' + fz.preis + '<small>' + (fz.preisHinweis || '') + '</small></p>' +
+          (fz.preisNetto ? '<p class="price-net">' + fz.preisNetto + '</p>' : '') +
           factsHtml(gruppen[0] || []) +
           '<div class="scroll-hint"><svg class="ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 9l6 6l6 -6"/></svg></div>' +
           '</div>';

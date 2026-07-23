@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" width="1600" height="520">
+  <title>Porsche Taycan – Seite links</title>
+  <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- ============ DICKE HAUPTKONTUR: Haube, A-Säule, Dach, Heck ============ -->
+    <path stroke-width="14" d="M 175 232
+      C 240 210, 330 190, 430 172
+      C 540 118, 640 90, 780 78
+      C 920 68, 1070 84, 1180 126
+      C 1280 162, 1350 184, 1400 196
+      C 1428 203, 1434 216, 1414 226" />
+    <!-- Auslaufender, leicht zittriger Abschluss am Heck -->
+    <path stroke-width="7" d="M 1414 226 C 1430 240, 1426 252, 1414 258 C 1428 272, 1424 292, 1408 300" />
+    <path stroke-width="5" d="M 1408 300 C 1418 312, 1416 328, 1402 336" />
+    <path stroke-width="4" d="M 1402 336 C 1412 348, 1408 360, 1394 364" />
+
+    <!-- ============ FRONTPARTIE ============ -->
+    <!-- Nase / Stoßfänger -->
+    <path stroke-width="5" d="M 175 232 C 140 244, 118 258, 112 276 C 106 292, 112 304, 124 306" />
+    <!-- Kleiner Haken unten links (wie in der Vorlage) -->
+    <path stroke-width="4" d="M 124 306 C 116 318, 118 332, 130 338 C 122 344, 120 352, 128 356" />
+    <!-- Unterer Bumper zum Radlauf -->
+    <path stroke-width="4" d="M 130 338 C 160 350, 200 358, 246 364" />
+    <!-- Lufteinlass-Schlitz im Bumper -->
+    <path stroke-width="3.5" d="M 132 288 C 152 284, 172 282, 192 282" />
+    <!-- Scheinwerfer mit Innenzeichnung -->
+    <path stroke-width="4" d="M 176 246 C 200 236, 232 228, 262 226 C 258 240, 244 250, 222 256 C 204 260, 186 256, 176 246 Z" />
+    <path stroke-width="3" d="M 190 246 C 206 240, 224 235, 242 232" />
+    <path stroke-width="2.5" d="M 198 251 C 208 247, 218 244, 228 241" />
+    <!-- Seitenmarkierung / Klappe hinter dem Scheinwerfer -->
+    <path stroke-width="3" d="M 272 240 L 302 237 L 301 246 L 271 249 Z" />
+
+    <!-- Schulterlinie: vom Scheinwerfer bis zur A-Säulen-Basis -->
+    <path stroke-width="4" d="M 228 240 C 300 232, 420 218, 500 208 C 540 203, 570 199, 594 196" />
+    <!-- Feine Haubensicke darüber -->
+    <path stroke-width="2.5" d="M 330 206 C 420 190, 500 176, 566 160" />
+
+    <!-- ============ RADLÄUFE UND SCHWELLER ============ -->
+    <path stroke-width="7" d="M 250 368 A 132 132 0 0 1 494 368" />
+    <path stroke-width="5" d="M 500 372 C 640 378, 900 378, 1052 375" />
+    <path stroke-width="7" d="M 1058 374 A 136 136 0 0 1 1308 374" />
+    <!-- Hintere Bumper-Unterkante -->
+    <path stroke-width="4" d="M 1314 372 C 1348 362, 1378 348, 1396 330" />
+
+    <!-- ============ FENSTERGRAFIK (geschlossene Linsenform) ============ -->
+    <!-- Fensteroberkante: A-Säule hoch, unter dem Dach entlang bis zur C-Säulen-Spitze -->
+    <path stroke-width="6" d="M 598 186
+      C 640 150, 700 112, 790 96
+      C 920 84, 1060 100, 1150 138
+      C 1172 148, 1190 160, 1202 172" />
+    <!-- Gürtellinie: trifft die Oberkante hinten in der Spitze -->
+    <path stroke-width="5" d="M 598 186
+      C 720 156, 910 148, 1060 164
+      C 1120 170, 1170 172, 1202 172" />
+    <!-- B-Säule (doppelte Linie) -->
+    <path stroke-width="4" d="M 866 108 L 846 166" />
+    <path stroke-width="4" d="M 880 107 L 860 166" />
+
+    <!-- ============ AUSSENSPIEGEL MIT INNENZEICHNUNG ============ -->
+    <path stroke-width="4" d="M 636 190 C 618 184, 600 187, 594 199 C 592 210, 604 217, 620 214 C 634 211, 641 202, 638 192" />
+    <path stroke-width="3" d="M 604 198 C 610 206, 622 209, 630 205" />
+
+    <!-- ============ TÜRFUGEN UND GRIFFE ============ -->
+    <!-- Fuge vordere Tür / Kotflügel -->
+    <path stroke-width="4" d="M 528 216 C 524 280, 521 330, 520 368" />
+    <!-- Fuge zwischen den Türen -->
+    <path stroke-width="4" d="M 843 162 C 841 240, 839 300, 838 348" />
+    <!-- Fuge hintere Tür, vor dem Radlauf auslaufend -->
+    <path stroke-width="4" d="M 1105 172 C 1112 240, 1100 300, 1058 350" />
+    <!-- Türgriffe (versenkbar, als Doppelstrich) -->
+    <path stroke-width="4" d="M 700 214 L 748 210" />
+    <path stroke-width="2.5" d="M 702 222 L 742 218" />
+    <path stroke-width="4" d="M 935 206 L 983 203" />
+    <path stroke-width="2.5" d="M 937 214 L 977 211" />
+
+    <!-- ============ HECKPARTIE ============ -->
+    <!-- Muskulöse Charakterlinie über dem hinteren Radlauf -->
+    <path stroke-width="4" d="M 1120 210 C 1200 198, 1282 210, 1348 238" />
+    <!-- Untere Sicke am Heck -->
+    <path stroke-width="3" d="M 1240 264 C 1290 272, 1330 284, 1360 300" />
+    <!-- Spoilerlippe -->
+    <path stroke-width="3.5" d="M 1350 208 C 1380 214, 1402 220, 1414 226" />
+    <!-- Feine Reflexlinie auf der Tür -->
+    <path stroke-width="2" opacity="0.5" d="M 940 238 L 992 234" />
+  </g>
+</svg>

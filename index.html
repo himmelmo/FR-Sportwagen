@@ -330,7 +330,7 @@
         <path d="M827.01,661.77h29.4v6.43h-19.6v3.22h19.6v5.81h-19.6v3.22h19.6v6.45h-29.4v-25.12Z"/>
         <path d="M934.45,661.74h9.81v25.12h-11.03l-13.5-15.34v15.34h-9.79v-25.12h13.48l11.03,13.31v-13.31Z"/>
       </svg>
-      <p class="hero-claim">Exklusive Sportwagen. Ehrlich gehandelt.</p>
+      <p class="hero-claim">Auserwählte und exklusive Sportwagen.</p>
       <a class="btn" href="#fahrzeuge">Fahrzeuge ansehen</a>
     </div>
     <div class="scroll-hint"><svg class="ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 9l6 6l6 -6"/></svg></div>
@@ -392,7 +392,8 @@
           a.href = 'fahrzeug.html?id=' + encodeURIComponent(fz.id);
           a.innerHTML =
             '<div class="car-photo"><img src="' + fz.bilder[0] + '" alt="' + fz.marke + ' ' + fz.titel + '"></div>' +
-            '<div class="car-info"><h3>' + fz.marke + ' ' + fz.titel + '</h3><p>' + fz.preis + '</p></div>';
+            '<div class="car-info"><h3>' + fz.marke + ' ' + fz.titel + '</h3><p>' + fz.preis +
+            (fz.preisHinweis ? ' <small>' + fz.preisHinweis + '</small>' : '') + '</p></div>';
           grid.appendChild(a);
         });
         while (grid.children.length < 3) {

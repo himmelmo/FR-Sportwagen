@@ -9,7 +9,7 @@ window.FR_FAHRZEUGE = [
     titel: 'A5 Cabrio 3.0 TDI',
     untertitel: 'S-Line Plus · Bang & Olufsen · Vollausstattung',
     preis: '22.870 €',
-    preisHinweis: '(Brutto)',
+    preisHinweis: '(differenzbesteuert nach § 25a UStG)',
     bilder: [
       'assets/demo/wagen-front.svg',
       'assets/demo/wagen-seite.svg',

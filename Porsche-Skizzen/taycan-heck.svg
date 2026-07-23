@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520">
+  <title>Porsche Taycan – Heck</title>
+  <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Dicke Hauptkontur: breite Schultern, flache Dachkuppel -->
+    <path stroke-width="12" d="M 130 470
+      C 114 440, 112 390, 122 344
+      C 130 300, 152 270, 196 254
+      C 222 246, 246 242, 270 240
+      C 302 178, 362 130, 450 124
+      C 538 130, 598 178, 630 240
+      C 654 242, 678 246, 704 254
+      C 748 270, 770 300, 778 344
+      C 788 390, 786 440, 770 470" />
+    <!-- Zittrig auslaufende Enden unten -->
+    <path stroke-width="5" d="M 130 470 C 122 480, 124 490, 134 494" />
+    <path stroke-width="5" d="M 770 470 C 778 480, 776 490, 766 494" />
+    <!-- Breite Heckscheibe mit Doppellinie -->
+    <path stroke-width="5" d="M 300 234
+      C 334 162, 392 136, 450 134
+      C 508 136, 566 162, 600 234
+      C 552 212, 500 204, 450 204
+      C 400 204, 348 212, 300 234 Z" />
+    <path stroke-width="2.5" d="M 316 224 C 346 168, 400 144, 450 142 C 500 144, 554 168, 584 224" />
+    <!-- Dritte Bremsleuchte -->
+    <path stroke-width="3" d="M 415 138 L 485 138" />
+    <!-- Abrisskante / Spoilerlippe -->
+    <path stroke-width="3" d="M 300 266 C 380 258, 520 258, 600 266" />
+    <!-- Durchgehendes Leuchtenband mit Echo und Endnasen -->
+    <path stroke-width="8" d="M 148 306 C 254 288, 646 288, 752 306" />
+    <path stroke-width="3" d="M 166 324 C 268 308, 632 308, 734 324" />
+    <path stroke-width="4" d="M 148 306 C 143 316, 145 327, 153 333" />
+    <path stroke-width="4" d="M 752 306 C 757 316, 755 327, 747 333" />
+    <!-- PORSCHE-Schriftzug angedeutet -->
+    <path stroke-width="3.5" d="M 360 352 L 376 352 M 390 352 L 406 352 M 420 352 L 436 352 M 450 352 L 466 352 M 480 352 L 496 352 M 510 352 L 526 352" />
+    <!-- Kennzeichenmulde -->
+    <path stroke-width="4" d="M 366 382 L 534 382 L 530 420 L 370 420 Z" />
+    <path stroke-width="2.5" d="M 382 390 L 518 390" />
+    <!-- Schulter-Sicken -->
+    <path stroke-width="3" d="M 148 344 C 140 380, 138 416, 142 446" />
+    <path stroke-width="3" d="M 752 344 C 760 380, 762 416, 758 446" />
+    <!-- Diffusor mit Finnen -->
+    <path stroke-width="3" d="M 246 444 C 318 454, 582 454, 654 444" />
+    <path stroke-width="4" d="M 256 446 L 250 484 M 320 452 L 318 488 M 384 456 L 383 490 M 450 458 L 450 492 M 516 456 L 517 490 M 580 452 L 582 488 M 644 446 L 650 484" />
+  </g>
+</svg>
