@@ -50,11 +50,24 @@ function leistungFormat(kw) {
 function preisFormat(ad) {
   const p = ad.price || {};
   const betrag =
-    p.consumerPriceGross || p.grossAmount || p.amount || (typeof p === "string" ? p : null);
+    p.consumerPriceGross || p.consumerPriceAmount || p.grossAmount || p.amount ||
+    (p.consumerPrice && (p.consumerPrice.amount || p.consumerPrice)) ||
+    (typeof p === "string" ? p : null);
   if (!betrag) return "Preis auf Anfrage";
   const zahl = parseFloat(String(betrag).replace(",", "."));
   if (isNaN(zahl)) return String(betrag);
   return zahl.toLocaleString("de-DE", { maximumFractionDigits: 0 }) + " €";
+}
+
+function titleCase(s) {
+  const wert = String(s || "").replace(/[_-]+/g, " ").trim();
+  if (!wert) return "";
+  if (wert !== wert.toUpperCase()) return wert;
+  return wert
+    .toLowerCase()
+    .split(" ")
+    .map((w) => (w.length <= 3 ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(" ");
 }
 
 function bilderVonAd(ad) {
@@ -75,19 +88,25 @@ function bilderVonAd(ad) {
         beste = { url, size };
       }
     }
-    if (beste) urls.push(beste.url.startsWith("http") ? beste.url : "https:" + beste.url);
-    else if (img.ref) urls.push(img.ref);
+    if (beste) {
+      urls.push(beste.url.startsWith("http") ? beste.url : "https:" + beste.url);
+    } else if (img.ref) {
+      let ref = String(img.ref);
+      if (!ref.startsWith("http")) ref = "https:" + ref;
+      if (ref.includes("classistatic") && !ref.includes("?")) ref += "?rule=mo-1024.jpg";
+      urls.push(ref);
+    }
   }
   return urls;
 }
 
 function mapAd(ad) {
   try {
-    const id = String(ad.mobileAdId || ad["@key"] || ad.id || "");
-    const marke = ad.make || "";
-    const modell = ad.model || "";
-    const beschreibung = ad.modelDescription || "";
-    const titel = (modell || beschreibung || "Fahrzeug").trim();
+    const id = String(ad.mobileAdId || ad["@key"] || ad.id || ad.internalNumber || "");
+    const marke = titleCase(ad.make || (ad.vehicle && ad.vehicle.make) || "");
+    const modell = ad.model || (ad.vehicle && ad.vehicle.model) || "";
+    const beschreibung = ad.modelDescription || (ad.vehicle && ad.vehicle.modelDescription) || "";
+    const titel = (beschreibung || modell || "Fahrzeug").trim();
     const bilder = bilderVonAd(ad);
 
     const fakten = [];
@@ -140,26 +159,39 @@ export default {
         return json({ error: "mobile.de-Zugang nicht konfiguriert" }, 503);
       }
       try {
-        const apiUrl =
-          "https://services.mobile.de/search-api/search?customerNumber=" +
-          MOBILE_KUNDENNUMMER + "&page.size=100";
-        const resp = await fetch(apiUrl, {
-          headers: {
-            Authorization: "Basic " + btoa(env.MOBILEDE_USER + ":" + env.MOBILEDE_PASSWORD),
-            Accept: "application/vnd.de.mobile.api+json",
-          },
-          cf: { cacheTtl: 600, cacheEverything: true },
-        });
-        if (!resp.ok) {
-          return json({ error: "mobile.de antwortet nicht (" + resp.status + ")" }, 502);
+        const kandidaten = [
+          "https://services.mobile.de/seller-api/sellers/" + MOBILE_KUNDENNUMMER + "/ads",
+          "https://services.mobile.de/search-api/search?customerNumber=" + MOBILE_KUNDENNUMMER + "&page.size=100",
+        ];
+        const headers = {
+          Authorization: "Basic " + btoa(env.MOBILEDE_USER + ":" + env.MOBILEDE_PASSWORD),
+          Accept: "application/vnd.de.mobile.api+json",
+        };
+        let daten = null;
+        let letzterStatus = 0;
+        for (const apiUrl of kandidaten) {
+          const resp = await fetch(apiUrl, { headers, cf: { cacheTtl: 600, cacheEverything: true } });
+          letzterStatus = resp.status;
+          if (resp.ok) {
+            daten = await resp.json();
+            break;
+          }
         }
-        const daten = await resp.json();
+        if (!daten) {
+          return json({ error: "mobile.de antwortet nicht (" + letzterStatus + ")" }, 502);
+        }
         const ads =
           (daten.searchResult && daten.searchResult.ads && daten.searchResult.ads.ad) ||
           (daten.searchResult && daten.searchResult.ads) ||
           daten.ads ||
-          [];
-        const adListe = Array.isArray(ads) ? ads : [ads];
+          (Array.isArray(daten) ? daten : []);
+        const adListe = (Array.isArray(ads) ? ads : [ads]).filter(Boolean);
+        if (url.searchParams.get("debug") === "1") {
+          return json({
+            anzahl: adListe.length,
+            felderErstesInserat: adListe[0] ? Object.keys(adListe[0]) : [],
+          });
+        }
         const fahrzeuge = adListe.map(mapAd).filter(Boolean);
         return new Response(JSON.stringify(fahrzeuge), {
           headers: {
