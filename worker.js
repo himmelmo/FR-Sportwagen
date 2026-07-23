@@ -1,3 +1,5 @@
+import { WorkerMailer } from "worker-mailer";
+
 function json(data, status) {
   return new Response(JSON.stringify(data), {
     status: status || 200,
@@ -41,40 +43,41 @@ export default {
             attachments.push({
               filename: key.replace(/[^a-zA-Z0-9 _-]/g, "") + ext,
               content: toBase64(await value.arrayBuffer()),
+              type: value.type || "application/octet-stream",
             });
           }
         }
 
-        const absender = form.get("E-Mail") || "";
-        const marke = form.get("Marke und Modell") || "";
+        const absender = (form.get("E-Mail") || "").trim();
+        const marke = (form.get("Marke und Modell") || "").trim();
 
-        const payload = {
-          from: "FR Sportwagen Website <formular@frsportwagen.de>",
-          to: ["kontakt@frsportwagen.de"],
+        const mailer = await WorkerMailer.connect({
+          host: "smtp.ionos.de",
+          port: 587,
+          secure: false,
+          startTls: true,
+          authType: "plain",
+          credentials: {
+            username: env.SMTP_USER,
+            password: env.SMTP_PASS,
+          },
+        });
+
+        await mailer.send({
+          from: { name: "FR Sportwagen Website", email: env.SMTP_USER },
+          to: { email: "kontakt@frsportwagen.de" },
+          reply: absender ? { email: absender } : undefined,
           subject: (typ + (marke ? ": " + marke : "")).trim(),
           text:
             "Neue " + typ + " über die Website:\n\n" +
             lines.join("\n") +
             (attachments.length ? "\n\nFotos im Anhang: " + attachments.length : ""),
-          attachments: attachments,
-        };
-        if (absender) payload.reply_to = absender;
-
-        const resp = await fetch("https://api.resend.com/emails", {
-          method: "POST",
-          headers: {
-            Authorization: "Bearer " + env.RESEND_API_KEY,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
+          attachments: attachments.length ? attachments : undefined,
         });
 
-        if (!resp.ok) {
-          return json({ error: "E-Mail-Versand fehlgeschlagen" }, 502);
-        }
         return json({ ok: true });
       } catch (e) {
-        return json({ error: "Ungültige Anfrage" }, 400);
+        return json({ error: "E-Mail-Versand fehlgeschlagen" }, 502);
       }
     }
 
