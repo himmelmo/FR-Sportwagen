@@ -245,92 +245,6 @@ export default {
           Accept: "application/vnd.de.mobile.api+json",
           "User-Agent": "FR-Sportwagen-Website/1.0 (frsportwagen.de)",
         };
-        if (url.searchParams.get("debug") === "6") {
-          const adId = url.searchParams.get("ad");
-          if (adId) {
-            const resp = await fetch("https://services.mobile.de/search-api/ad/" + adId, { headers });
-            const body = await resp.text();
-            let bildAnzahl = null;
-            try { bildAnzahl = (JSON.parse(body).images || []).length; } catch (e) {}
-            return json({ status: resp.status, bildAnzahl, bodyAnfang: body.slice(0, 300) });
-          }
-          const resp = await fetch(kandidaten[0], { headers });
-          if (!resp.ok) return json({ status: resp.status });
-          const daten = await resp.json();
-          const erstes = (daten.ads && daten.ads[0]) || null;
-          return json({ total: daten.total, erstesInserat: erstes });
-        }
-        if (url.searchParams.get("debug") === "5") {
-          const varianten = [
-            "https://services.mobile.de/search-api/search?classification=refdata%2Fclasses%2FCar",
-            "https://services.mobile.de/search-api/search",
-            "https://services.mobile.de/search-api/search?customerNumber=" + MOBILE_KUNDENNUMMER,
-            "https://services.mobile.de/search-api/sellers/" + MOBILE_KUNDENNUMMER + "/ads",
-            "https://services.mobile.de/search-api/ads",
-          ];
-          const ergebnisse = [];
-          for (const testUrl of varianten) {
-            try {
-              const resp = await fetch(testUrl, { headers });
-              const body = await resp.text();
-              ergebnisse.push({ url: testUrl.replace("https://services.mobile.de", ""), status: resp.status, bodyAnfang: body.slice(0, 200) });
-            } catch (e) {
-              ergebnisse.push({ url: testUrl, fehler: String(e) });
-            }
-          }
-          return json({ ergebnisse });
-        }
-        if (url.searchParams.get("debug") === "4") {
-          const testUrl = kandidaten[0];
-          const faelle = [
-            ["ohne Auth", null],
-            ["Dummy-Auth", "Basic " + btoa("test:test")],
-            ["Echte Auth", headers.Authorization],
-          ];
-          const matrix = [];
-          for (const [name, auth] of faelle) {
-            const h = { Accept: headers.Accept, "User-Agent": headers["User-Agent"] };
-            if (auth) h.Authorization = auth;
-            try {
-              const resp = await fetch(testUrl, { headers: h });
-              matrix.push({ fall: name, status: resp.status, wwwAuth: resp.headers.get("www-authenticate") || "" });
-            } catch (e) {
-              matrix.push({ fall: name, fehler: String(e) });
-            }
-          }
-          return json({ testUrl, matrix });
-        }
-        if (url.searchParams.get("debug") === "3") {
-          const u = env.MOBILEDE_USER || "";
-          const p = env.MOBILEDE_PASSWORD || "";
-          return json({
-            benutzer: u,
-            benutzerLaenge: u.length,
-            benutzerHatLeerzeichen: u !== u.trim(),
-            passwortLaenge: p.length,
-            passwortHatLeerzeichen: p !== p.trim(),
-          });
-        }
-        if (url.searchParams.get("debug") === "2") {
-          const diagnose = [];
-          for (const apiUrl of kandidaten) {
-            try {
-              const resp = await fetch(apiUrl, { headers });
-              const body = await resp.text();
-              diagnose.push({
-                url: apiUrl,
-                status: resp.status,
-                server: resp.headers.get("server") || "",
-                contentType: resp.headers.get("content-type") || "",
-                allow: resp.headers.get("allow") || "",
-                bodyAnfang: body.slice(0, 400),
-              });
-            } catch (e) {
-              diagnose.push({ url: apiUrl, fehler: String(e) });
-            }
-          }
-          return json({ diagnose });
-        }
         let daten = null;
         let letzterStatus = 0;
         for (const apiUrl of kandidaten) {
@@ -350,12 +264,6 @@ export default {
           daten.ads ||
           (Array.isArray(daten) ? daten : []);
         const adListe = (Array.isArray(ads) ? ads : [ads]).filter(Boolean);
-        if (url.searchParams.get("debug") === "1") {
-          return json({
-            anzahl: adListe.length,
-            felderErstesInserat: adListe[0] ? Object.keys(adListe[0]) : [],
-          });
-        }
 
         /* Die Listen-Abfrage enthaelt nur das erste Foto je Inserat —
            der Einzelabruf liefert alle Fotos. */
