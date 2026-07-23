@@ -64,19 +64,53 @@
     }
     nav a.cta:hover { background: var(--white); color: var(--black); }
 
-    /* Seitenkopf */
-    .page-head {
-      background: var(--black);
+    /* Seitenkopf: Bild-Bühne im Stil des Hero-Videos */
+    .ref-hero {
+      position: relative;
+      height: 70vh;
+      min-height: 420px;
+      display: flex;
+      align-items: flex-end;
+      background: linear-gradient(160deg, #0a0a0a 0%, #1c1c1c 55%, #0a0a0a 100%);
       color: var(--white);
-      padding: 9rem 6vw 4rem;
+      overflow: hidden;
     }
-    .page-head h1 {
+    .ref-hero .slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 1.4s ease;
+    }
+    .ref-hero .slide.active { opacity: 1; }
+    .ref-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.25) 100%);
+      z-index: 1;
+    }
+    .ref-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 6vw 3.5rem;
+      opacity: 0;
+      transform: translateY(28px);
+      animation: hero-in 0.9s ease 0.15s forwards;
+    }
+    @keyframes hero-in {
+      to { opacity: 1; transform: none; }
+    }
+    .ref-hero-content h1 {
       font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 600;
       line-height: 1.2;
     }
-    .page-head p {
-      color: #999999;
+    .ref-hero-content p {
+      color: #c9c9c9;
       margin-top: 0.75rem;
       max-width: 560px;
     }
@@ -224,10 +258,19 @@
     </nav>
   </header>
 
-  <div class="page-head">
-    <h1>Referenzen</h1>
-    <p>Ein Blick zurück: Fahrzeuge, die ihren Weg über mich zu neuen Besitzern gefunden haben.</p>
-  </div>
+  <section class="ref-hero">
+    <!-- Referenz-Bilder: Dateien unter assets/referenz-1.jpg bis referenz-4.jpg ablegen.
+         Vorhandene Bilder wechseln automatisch durch; fehlende werden übersprungen.
+         Solange keine Datei vorhanden ist, zeigt die Seite den dunklen Hintergrund. -->
+    <img class="slide" src="assets/referenz-1.jpg" alt="" onerror="this.remove()">
+    <img class="slide" src="assets/referenz-2.jpg" alt="" onerror="this.remove()">
+    <img class="slide" src="assets/referenz-3.jpg" alt="" onerror="this.remove()">
+    <img class="slide" src="assets/referenz-4.jpg" alt="" onerror="this.remove()">
+    <div class="ref-hero-content">
+      <h1>Referenzen</h1>
+      <p>Ein Blick zurück: Fahrzeuge, die ihren Weg über mich zu neuen Besitzern gefunden haben.</p>
+    </div>
+  </section>
 
   <section class="pride reveal">
     <p class="section-label">Mein stolzester Besitz</p>
@@ -303,6 +346,27 @@
 
   <script src="assets/i18n.js"></script>
   <script>
+    /* Bild-Bühne: vorhandene Referenzbilder alle 5 Sekunden weich überblenden */
+    (function () {
+      var current = 0;
+      function slides() { return document.querySelectorAll('.ref-hero .slide'); }
+      function show(i) {
+        slides().forEach(function (img, idx) { img.classList.toggle('active', idx === i); });
+      }
+      window.addEventListener('load', function () {
+        var imgs = slides();
+        if (!imgs.length) return;
+        show(0);
+        if (imgs.length < 2) return;
+        setInterval(function () {
+          var list = slides();
+          if (list.length < 2) return;
+          current = (current + 1) % list.length;
+          show(current);
+        }, 5000);
+      });
+    })();
+
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {

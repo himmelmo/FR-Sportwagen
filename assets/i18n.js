@@ -268,9 +268,11 @@
         it.el.setAttribute('placeholder', it.de);
       }
     });
-    var buttons = document.querySelectorAll('.lang-switch button');
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.toggle('active', buttons[i].getAttribute('data-lang') === lang);
+    var label = document.querySelector('.lang-switch .lang-current-label');
+    if (label) label.textContent = lang.toUpperCase();
+    var items = document.querySelectorAll('.lang-menu button');
+    for (var i = 0; i < items.length; i++) {
+      items[i].style.display = items[i].getAttribute('data-lang') === lang ? 'none' : 'block';
     }
   }
 
@@ -279,26 +281,53 @@
     if (!nav) return;
     var style = document.createElement('style');
     style.textContent =
-      '.lang-switch{display:flex;gap:0.1rem;margin-left:0.5rem;}' +
-      '.lang-switch button{background:none;border:none;color:#8a8a8a;font-family:inherit;font-size:0.78rem;letter-spacing:0.08em;cursor:pointer;padding:0.2rem 0.3rem;transition:color 0.2s;}' +
-      '.lang-switch button:hover{color:#ffffff;}' +
-      '.lang-switch button.active{color:#ffffff;font-weight:600;}';
+      '.lang-switch{position:relative;margin-left:0.5rem;}' +
+      '.lang-current{display:flex;align-items:center;gap:0.35rem;background:none;border:1px solid rgba(255,255,255,0.25);border-radius:4px;color:#b5b5b5;font-family:inherit;font-size:0.78rem;letter-spacing:0.08em;cursor:pointer;padding:0.3rem 0.6rem;transition:color 0.2s,border-color 0.2s;}' +
+      '.lang-current:hover{color:#ffffff;border-color:rgba(255,255,255,0.5);}' +
+      '.lang-current svg{transition:transform 0.2s;}' +
+      '.lang-switch.open .lang-current svg{transform:rotate(180deg);}' +
+      '.lang-menu{position:absolute;top:calc(100% + 0.55rem);right:0;min-width:100%;background:rgba(10,10,10,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:0.3rem 0;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity 0.2s,transform 0.2s,visibility 0.2s;z-index:200;}' +
+      '.lang-switch.open .lang-menu{opacity:1;visibility:visible;transform:none;}' +
+      '.lang-menu button{display:block;width:100%;text-align:center;background:none;border:none;color:#b5b5b5;font-family:inherit;font-size:0.78rem;letter-spacing:0.08em;padding:0.4rem 0.9rem;cursor:pointer;transition:color 0.2s;}' +
+      '.lang-menu button:hover{color:#ffffff;}';
     document.head.appendChild(style);
+
     var wrap = document.createElement('div');
     wrap.className = 'lang-switch';
+
+    var current = document.createElement('button');
+    current.type = 'button';
+    current.className = 'lang-current';
+    current.setAttribute('aria-label', 'Sprache wählen');
+    current.innerHTML = '<span class="lang-current-label">' + lang.toUpperCase() + '</span>' +
+      '<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><path d="M6 9l6 6l6 -6"/></svg>';
+    current.addEventListener('click', function (e) {
+      e.stopPropagation();
+      wrap.classList.toggle('open');
+    });
+    wrap.appendChild(current);
+
+    var menu = document.createElement('div');
+    menu.className = 'lang-menu';
     LANGS.forEach(function (l) {
       var b = document.createElement('button');
       b.type = 'button';
       b.setAttribute('data-lang', l);
-      b.setAttribute('aria-label', 'Sprache: ' + l.toUpperCase());
       b.textContent = l.toUpperCase();
       b.addEventListener('click', function () {
         lang = l;
         try { localStorage.setItem('fr-lang', l); } catch (e) {}
+        wrap.classList.remove('open');
         apply();
       });
-      wrap.appendChild(b);
+      menu.appendChild(b);
     });
+    wrap.appendChild(menu);
+
+    document.addEventListener('click', function (e) {
+      if (!wrap.contains(e.target)) wrap.classList.remove('open');
+    });
+
     nav.appendChild(wrap);
   }
 
