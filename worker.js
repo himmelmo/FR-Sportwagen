@@ -168,6 +168,17 @@ export default {
           Accept: "application/vnd.de.mobile.api+json",
           "User-Agent": "FR-Sportwagen-Website/1.0 (frsportwagen.de)",
         };
+        if (url.searchParams.get("debug") === "3") {
+          const u = env.MOBILEDE_USER || "";
+          const p = env.MOBILEDE_PASSWORD || "";
+          return json({
+            benutzer: u,
+            benutzerLaenge: u.length,
+            benutzerHatLeerzeichen: u !== u.trim(),
+            passwortLaenge: p.length,
+            passwortHatLeerzeichen: p !== p.trim(),
+          });
+        }
         if (url.searchParams.get("debug") === "2") {
           const diagnose = [];
           for (const apiUrl of kandidaten) {
