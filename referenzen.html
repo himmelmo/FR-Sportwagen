@@ -270,6 +270,29 @@
       font-weight: 600;
       color: var(--gray-text);
     }
+    .review .stars { color: #1a1a1a; letter-spacing: 0.15em; font-size: 0.95rem; }
+    .review .gekauft {
+      display: inline-block;
+      margin-left: 0.5rem;
+      font-weight: 400;
+      font-size: 0.75rem;
+      border: 1px solid var(--gray-line);
+      border-radius: 999px;
+      padding: 0.05rem 0.6rem;
+      white-space: nowrap;
+    }
+    .reviews-summary {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+    .reviews-summary .stars { letter-spacing: 0.15em; }
+    .reviews-summary strong { font-size: 1.15rem; }
+    .reviews-summary a { color: var(--gray-text); font-size: 0.9rem; }
+    .reviews-summary a:hover { color: var(--black); }
 
     @media (max-width: 640px) {
       nav a:not(.cta) { display: none; }
@@ -343,22 +366,51 @@
 
   <section class="reviews reveal">
     <p class="section-label">Kundenstimmen</p>
+    <div class="reviews-summary">
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <strong>5,0 / 5</strong>
+      <a href="https://www.mobile.de/bewertungen/FRSportwagenFabianMaximilianRupp" target="_blank" rel="noopener noreferrer">8 Bewertungen auf mobile.de</a>
+    </div>
     <div class="reviews-grid">
-      <!-- Platzhalter: echte Kundenrezensionen (z. B. von mobile.de) hier eintragen. -->
       <figure class="review">
-        <svg class="ico quote-ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M10 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5"/><path d="M19 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5"/></svg>
-        <blockquote>Hier erscheint in Kürze die Stimme eines zufriedenen Kunden.</blockquote>
-        <figcaption>Kunde</figcaption>
+        <p class="stars" aria-label="5 von 5 Sternen">★★★★★</p>
+        <blockquote>Abbiamo ordinato la Macan direttamente dall'Italia tramite il signor Rupp. È venuto a prenderci in aeroporto, si è occupato delle targhe e l'auto ha superato le nostre aspettative. Grazie mille e un saluto da Roma.</blockquote>
+        <figcaption>Gaetano · 06/2026 <span class="gekauft">Fahrzeug gekauft</span></figcaption>
       </figure>
       <figure class="review">
-        <svg class="ico quote-ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M10 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5"/><path d="M19 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5"/></svg>
-        <blockquote>Hier erscheint in Kürze die Stimme eines zufriedenen Kunden.</blockquote>
-        <figcaption>Kunde</figcaption>
+        <p class="stars" aria-label="5 von 5 Sternen">★★★★★</p>
+        <blockquote>Wir sind sehr happy mit unserem Porsche 993 und haben uns bei Herrn Rupp sehr gut aufgehoben gefühlt. Gruß aus Hamburg.</blockquote>
+        <figcaption>M. J. · 05/2026 <span class="gekauft">Fahrzeug gekauft</span></figcaption>
       </figure>
       <figure class="review">
-        <svg class="ico quote-ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M10 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5"/><path d="M19 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5"/></svg>
-        <blockquote>Hier erscheint in Kürze die Stimme eines zufriedenen Kunden.</blockquote>
-        <figcaption>Kunde</figcaption>
+        <p class="stars" aria-label="5 von 5 Sternen">★★★★★</p>
+        <blockquote>Herr Rupp war immer sehr bemüht, meine Wünsche zu realisieren. Er spielte immer mit offenen Karten. Was heutzutage leider sehr selten vorkommt. Ich würde jederzeit wieder Fahrzeuge von ihm kaufen. Sehr zu empfehlen.</blockquote>
+        <figcaption>Christopher Z. · 04/2026 <span class="gekauft">Fahrzeug gekauft</span></figcaption>
+      </figure>
+      <figure class="review">
+        <p class="stars" aria-label="5 von 5 Sternen">★★★★★</p>
+        <blockquote>Everything went very smooth with Fabian. The car was exactly as he had described in the emails. Excellent buy.</blockquote>
+        <figcaption>Dima D. · 04/2026 <span class="gekauft">Fahrzeug gekauft</span></figcaption>
+      </figure>
+      <figure class="review">
+        <p class="stars" aria-label="5 von 5 Sternen">★★★★★</p>
+        <blockquote>Herr Rupp ist zu 100% auf unsere Bedürfnisse eingegangen. Beginnend beim Erstkontakt bis zur Anlieferung des Fahrzeuges im geschlossenen Anhänger bis vor die Haustür. Vielen Dank und bis bald.</blockquote>
+        <figcaption>Florian O. · 03/2026 <span class="gekauft">Fahrzeug gekauft</span></figcaption>
+      </figure>
+      <figure class="review">
+        <p class="stars" aria-label="5 von 5 Sternen">★★★★★</p>
+        <blockquote>Von der Anfrage bis zur Porsche-Auslieferung hat alles super gepasst. Vielen Dank Herr Rupp und das Team.</blockquote>
+        <figcaption>Christian S. · 02/2026 <span class="gekauft">Fahrzeug gekauft</span></figcaption>
+      </figure>
+      <figure class="review">
+        <p class="stars" aria-label="5 von 5 Sternen">★★★★★</p>
+        <blockquote>Der Anbieter war sehr freundlich, kompetent und transparent im Gespräch. Fahrzeugzustand, Historie sowie Ausstattung wurden ausführlich erklärt.</blockquote>
+        <figcaption>Andreas H. · 01/2026</figcaption>
+      </figure>
+      <figure class="review">
+        <p class="stars" aria-label="5 von 5 Sternen">★★★★★</p>
+        <blockquote>Absolut empfehlenswert! Sehr freundlicher und professioneller Kontakt. Alle Fragen wurden schnell beantwortet, Herr Rupp ist ein Vollprofi. Gerne wieder!</blockquote>
+        <figcaption>mobile.de Nutzer · 12/2025</figcaption>
       </figure>
     </div>
   </section>

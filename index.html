@@ -151,17 +151,19 @@
     .about { border-bottom: 1px solid var(--gray-line); }
     .about-inner { display: flex; gap: 2.5rem; align-items: center; max-width: 900px; }
     .about-portrait {
-      width: 110px; height: 110px;
-      border-radius: 50%;
+      width: 250px;
+      aspect-ratio: 4 / 5;
+      border-radius: 14px;
       background: #f2f2f2;
       border: 1px solid var(--gray-line);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 6px 16px rgba(0,0,0,0.06);
       flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
       color: #c0c0c0;
       font-size: 2.2rem;
       overflow: hidden;
     }
-    .about-portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .about-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
     .about-text h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
     .about-text p { color: var(--gray-text); max-width: 620px; margin-bottom: 0.9rem; }
     .about-text p:last-child { margin-bottom: 0; }
@@ -294,6 +296,8 @@
     @media (max-width: 640px) {
       nav a:not(.cta) { display: none; }
       .about-inner { flex-direction: column; text-align: center; }
+      .about-portrait { width: 140px; height: 140px; aspect-ratio: auto; border-radius: 50%; margin: 0 auto; }
+      .about-portrait img { object-position: 50% 22%; }
       section { padding: 4rem 6vw; }
       .car-photo { height: 180px; }
       .refs-grid { grid-template-columns: 1fr; }
@@ -346,8 +350,7 @@
     <p class="section-label"><span>1</span>Über mich</p>
     <div class="about-inner">
       <div class="about-portrait">
-        <!-- Später: <img src="assets/fabian.jpg" alt="Fabian Rupp"> -->
-        <svg class="ico" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/></svg>
+        <img src="assets/fabian.jpg" alt="Fabian Rupp, Gründer von FR Sportwagen">
       </div>
       <div class="about-text">
         <h2>Sportwagen-DNA trifft auf persönlichen Service.</h2>

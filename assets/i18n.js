@@ -307,6 +307,8 @@
       it: 'Qui apparirà presto la recensione di un cliente soddisfatto.'
     },
     'Kunde': { en: 'Customer', fr: 'Client', it: 'Cliente' },
+    'Fahrzeug gekauft': { en: 'Vehicle purchased', fr: 'Véhicule acheté', it: 'Veicolo acquistato' },
+    '8 Bewertungen auf mobile.de': { en: '8 reviews on mobile.de', fr: '8 avis sur mobile.de', it: '8 recensioni su mobile.de' },
 
     /* Gallardo-Seite */
     'Die Seitenlinie: flach, klar und bis heute zeitlos.': {
