@@ -215,7 +215,7 @@
 
       <div class="submit-row">
         <button type="submit" class="btn">Suchauftrag senden</button>
-        <p class="submit-note">Beim Absenden öffnet sich Ihr E-Mail-Programm mit der fertigen Anfrage — Sie senden sie selbst ab.</p>
+        <p class="submit-note">Ihr Suchauftrag wird direkt und sicher an mich übermittelt.</p>
       </div>
     </form>
   </div>
@@ -228,15 +228,28 @@
   </footer>
 
   <script>
-    document.getElementById('such-formular').addEventListener('submit', function (e) {
+    var sForm = document.getElementById('such-formular');
+    sForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      var lines = ['Guten Tag Herr Rupp,', '', 'ich habe folgenden Suchauftrag:', ''];
-      this.querySelectorAll('input, textarea').forEach(function (el) {
-        if (el.value.trim()) { lines.push(el.name + ': ' + el.value.trim()); }
-      });
-      lines.push('', 'Mit freundlichen Grüßen');
-      var subject = 'Suchauftrag: ' + document.getElementById('marke').value.trim();
-      window.location.href = 'mailto:kontakt@frsportwagen.de?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+      var btn = sForm.querySelector('.btn');
+      var note = sForm.querySelector('.submit-note');
+      btn.disabled = true;
+      btn.textContent = 'Wird gesendet …';
+      var fd = new FormData(sForm);
+      fd.append('_typ', 'Suchauftrag');
+      fetch('/api/anfrage', { method: 'POST', body: fd })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          if (!res.ok) { throw new Error(res.d && res.d.error ? res.d.error : 'Unbekannter Fehler'); }
+          sForm.innerHTML = '<h2 style="font-size:1.3rem; margin-bottom:0.5rem;">Vielen Dank für Ihren Suchauftrag!</h2><p style="color:var(--gray-text);">Ihre Anfrage wurde erfolgreich übermittelt. Ich melde mich zeitnah persönlich bei Ihnen.</p>';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        })
+        .catch(function (err) {
+          btn.disabled = false;
+          btn.textContent = 'Suchauftrag senden';
+          note.innerHTML = 'Der Versand hat leider nicht geklappt (' + err.message + '). Bitte senden Sie Ihre Anfrage direkt an <a href="mailto:kontakt@frsportwagen.de">kontakt@frsportwagen.de</a>.';
+          note.style.color = '#a33';
+        });
     });
   </script>
 </body>
