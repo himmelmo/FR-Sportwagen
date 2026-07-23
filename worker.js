@@ -33,6 +33,60 @@ const KRAFTSTOFF = {
   LPG: "Autogas (LPG)",
   CNG: "Erdgas (CNG)",
 };
+const FARBEN = {
+  BLACK: "Schwarz", GREY: "Grau", WHITE: "Weiß", SILVER: "Silber", BLUE: "Blau",
+  RED: "Rot", GREEN: "Grün", YELLOW: "Gelb", ORANGE: "Orange", BROWN: "Braun",
+  BEIGE: "Beige", GOLD: "Gold", PURPLE: "Violett",
+};
+const INTERIEUR = {
+  LEATHER: "Vollleder", PARTIAL_LEATHER: "Teilleder", FABRIC: "Stoff",
+  ALCANTARA: "Alcantara", VELOUR: "Velours", OTHER_INTERIOR_TYPE: "Sonstige",
+};
+const TUEREN = { TWO_OR_THREE: "2/3", FOUR_OR_FIVE: "4/5", SIX_OR_SEVEN: "6/7" };
+const ANTRIEB = { ALL_WHEEL: "Allrad", FRONT: "Frontantrieb", REAR: "Heckantrieb" };
+const KLIMA = {
+  AUTOMATIC_CLIMATISATION: "Klimaautomatik",
+  MANUAL_CLIMATISATION: "Klimaanlage",
+  NO_CLIMATISATION: "Keine",
+};
+const PARKHILFE = {
+  REAR_VIEW_CAM: "Rückfahrkamera", FRONT_SENSORS: "Sensoren vorne",
+  REAR_SENSORS: "Sensoren hinten", CAM_360_DEGREES: "360°-Kamera",
+  AUTOMATIC_PARKING: "Einparkautomatik",
+};
+const TEMPOMAT = {
+  ADAPTIVE_CRUISE_CONTROL: "Abstandstempomat",
+  CRUISE_CONTROL: "Tempomat",
+};
+const SCHEINWERFER = {
+  BI_XENON_HEADLIGHTS: "Bi-Xenon", XENON_HEADLIGHTS: "Xenon",
+  LED_HEADLIGHTS: "LED", LASER_HEADLIGHTS: "Laserlicht",
+};
+const AIRBAGS = {
+  FRONT_AND_SIDE_AIRBAGS: "Front- und Seiten-Airbags",
+  FRONT_AIRBAGS: "Front-Airbags",
+  FRONT_AND_SIDE_AND_MORE_AIRBAGS: "Front-, Seiten- und weitere Airbags",
+  DRIVER_AIRBAG: "Fahrer-Airbag",
+};
+const KUPPLUNG = {
+  TRAILER_COUPLING_DETACHABLE: "Abnehmbar",
+  TRAILER_COUPLING_FIX: "Starr",
+  TRAILER_COUPLING_SWIVELING: "Schwenkbar",
+};
+const PLAKETTE = {
+  EMISSIONSSTICKER_GREEN: "4 (Grün)",
+  EMISSIONSSTICKER_YELLOW: "3 (Gelb)",
+  EMISSIONSSTICKER_RED: "2 (Rot)",
+};
+const ZUSTAND = { NEW: "Neuwagen", USED: "Gebraucht" };
+
+function entitiesDecode(s) {
+  return String(s || "")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/[<>]/g, "");
+}
 
 function erstzulassung(wert) {
   const s = String(wert || "");
@@ -72,73 +126,94 @@ function titleCase(s) {
 
 function bilderVonAd(ad) {
   const urls = [];
-  const imgs = (ad.images && (ad.images.image || ad.images)) || [];
-  const liste = Array.isArray(imgs) ? imgs : [imgs];
+  const liste = Array.isArray(ad.images) ? ad.images : [];
   for (const img of liste) {
     if (!img) continue;
-    if (typeof img === "string") { urls.push(img); continue; }
-    const reps = img.representation || img.representations || [];
-    const repListe = Array.isArray(reps) ? reps : [reps];
-    let beste = null;
-    for (const rep of repListe) {
-      const url = rep["@url"] || rep.url;
-      const size = rep["@size"] || rep.size || "";
-      if (!url) continue;
-      if (!beste || size === "XXL" || (size === "XL" && beste.size !== "XXL")) {
-        beste = { url, size };
-      }
-    }
-    if (beste) {
-      urls.push(beste.url.startsWith("http") ? beste.url : "https:" + beste.url);
-    } else if (img.ref) {
-      let ref = String(img.ref);
-      if (!ref.startsWith("http")) ref = "https:" + ref;
-      if (ref.includes("classistatic") && !ref.includes("?")) ref += "?rule=mo-1024.jpg";
-      urls.push(ref);
-    }
+    const url = img.xxxl || img.xxl || img.xl || img.l || img.m;
+    if (url) urls.push(url);
   }
   return urls;
 }
 
+function jaNein(wert) {
+  if (wert === true) return "Ja";
+  if (wert === false) return "Nein";
+  return "";
+}
+
 function mapAd(ad) {
   try {
-    const id = String(ad.mobileAdId || ad["@key"] || ad.id || ad.internalNumber || "");
-    const marke = titleCase(ad.make || (ad.vehicle && ad.vehicle.make) || "");
-    const modell = ad.model || (ad.vehicle && ad.vehicle.model) || "";
-    const beschreibung = ad.modelDescription || (ad.vehicle && ad.vehicle.modelDescription) || "";
-    const titel = (beschreibung || modell || "Fahrzeug").trim();
+    const id = String(ad.mobileAdId || ad.internalNumber || "");
+    const marke = titleCase(ad.make || "");
+
+    /* modelDescription wie "A5 Cabrio 3.0 TDI | S-Line Plus | ..." aufteilen */
+    const beschreibung = entitiesDecode(ad.modelDescription || ad.model || "Fahrzeug");
+    const teile = beschreibung.split("|").map((t) => t.trim()).filter(Boolean);
+    const titel = teile[0] || "Fahrzeug";
+    const untertitel = teile.slice(1).join(" · ");
+
     const bilder = bilderVonAd(ad);
 
+    const farbe = FARBEN[ad.exteriorColor] || titleCase(ad.exteriorColor || "");
+    const farbeMitMetallic = farbe ? farbe + (ad.metallic ? " (Metallic)" : "") : "";
+    const innen = [INTERIEUR[ad.interiorType] || "", FARBEN[ad.interiorColor] || ""]
+      .filter(Boolean).join(" ");
+
     const fakten = [];
-    const push = (label, wert) => { if (wert) fakten.push([label, wert]); };
+    const push = (label, wert) => { if (wert) fakten.push([label, String(wert)]); };
     push("Erstzulassung", erstzulassung(ad.firstRegistration));
     push("Kilometerstand", kmFormat(ad.mileage));
     push("Leistung", leistungFormat(ad.power));
     push("Getriebe", GETRIEBE[ad.gearbox] || ad.gearbox);
     push("Kraftstoffart", KRAFTSTOFF[ad.fuel] || ad.fuel);
+    push("Antriebsart", ANTRIEB[ad.driveType] || "");
     push("Schadstoffklasse", (ad.emissionClass || "").replace("EURO", "Euro "));
-    push("Farbe (Hersteller)", ad.manufacturerColorName);
-    push("Farbe", ad.exteriorColor);
-    push("Innenausstattung", ad.interiorType);
+    push("Farbe", ad.manufacturerColorName ? entitiesDecode(ad.manufacturerColorName) : farbeMitMetallic);
+    push("Innenausstattung", innen);
     push("Anzahl der Fahrzeughalter", ad.numberOfPreviousOwners);
-    push("Anzahl Sitzplätze", ad.seats);
-    push("Türen", ad.doorCount);
+    push("HU", ad.newHuAu ? "Neu" : "");
+    push("Kategorie", ad.category);
 
-    const alleDaten = fakten.slice();
-    const pushAll = (label, wert) => { if (wert) alleDaten.push([label, wert]); };
+    const alleDaten = [];
+    const pushAll = (label, wert) => { if (wert) alleDaten.push([label, String(wert)]); };
+    fakten.forEach((f) => pushAll(f[0], f[1]));
+    pushAll("Zustand", ZUSTAND[ad.condition] || "");
+    pushAll("Interne Nummer", ad.internalNumber);
     pushAll("Hubraum", ad.cubicCapacity ? Number(ad.cubicCapacity).toLocaleString("de-DE") + " cm³" : "");
-    pushAll("Klimatisierung", ad.climatisation);
-    pushAll("Einparkhilfe", Array.isArray(ad.parkAssists) ? ad.parkAssists.join(", ") : ad.parkAssists);
-    pushAll("Kategorie", ad.category);
+    pushAll("Türen", TUEREN[ad.doors] || "");
+    pushAll("Anzahl Sitzplätze", ad.seats);
+    pushAll("Umweltplakette", PLAKETTE[ad.emissionSticker] || "");
+    pushAll("Farbe (Hersteller)", ad.manufacturerColorName ? farbeMitMetallic : "");
+    pushAll("CO₂ kombiniert", ad.emissions && ad.emissions.combined && ad.emissions.combined.co2 ? ad.emissions.combined.co2 + " g/km" : "");
+    pushAll("CO₂-Klasse", ad.emissions && ad.emissions.combined && ad.emissions.combined.co2Class);
+    pushAll("Verbrauch kombiniert", ad.consumptions && ad.consumptions.fuel && ad.consumptions.fuel.combined ? String(ad.consumptions.fuel.combined).replace(".", ",") + " l/100 km" : "");
+    pushAll("Klimatisierung", KLIMA[ad.climatisation] || "");
+    pushAll("Einparkhilfe", Array.isArray(ad.parkingAssistants) ? ad.parkingAssistants.map((p) => PARKHILFE[p] || p).join(", ") : "");
+    pushAll("Geschwindigkeitsregulierung", TEMPOMAT[ad.speedControl] || "");
+    pushAll("Airbags", AIRBAGS[ad.airbag] || "");
+    pushAll("Hauptscheinwerfer", SCHEINWERFER[ad.headlightType] || "");
+    pushAll("Tagfahrlicht", ad.daytimeRunningLamps === "LED_RUNNING_LIGHTS" ? "LED-Tagfahrlicht" : "");
+    pushAll("Kurvenlicht", ad.bendingLightsType === "ADAPTIVE_BENDING_LIGHTS" ? "Adaptives Kurvenlicht" : "");
+    pushAll("Anhängerkupplung", KUPPLUNG[ad.trailerCouplingType] || "");
+    pushAll("Pannenhilfe", ad.breakdownService === "REPAIR_KIT" ? "Pannenkit" : "");
+    pushAll("Scheckheftgepflegt", jaNein(ad.fullServiceHistory));
+    pushAll("Nichtraucherfahrzeug", jaNein(ad.nonSmokerVehicle));
+    pushAll("Unfallfahrzeug", jaNein(ad.accidentDamaged));
+    pushAll("Beschädigtes Fahrzeug", jaNein(ad.damageUnrepaired));
+    pushAll("Fahrtauglich", jaNein(ad.roadworthy));
+    pushAll("Navigationssystem", jaNein(ad.navigationSystem));
+    pushAll("Soundsystem", jaNein(ad.soundSystem));
+    pushAll("Sitzheizung", jaNein(ad.electricHeatedSeats));
 
     return {
       id: id || (marke + "-" + titel).toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       marke,
       titel,
-      untertitel: beschreibung !== titel ? beschreibung : "",
+      untertitel,
       preis: preisFormat(ad),
       preisHinweis: "(Brutto)",
       bilder,
+      mobileUrl: ad.detailPageUrl || "",
       topFakten: fakten.slice(0, 12),
       alleDaten,
     };
@@ -272,7 +347,28 @@ export default {
             felderErstesInserat: adListe[0] ? Object.keys(adListe[0]) : [],
           });
         }
-        const fahrzeuge = adListe.map(mapAd).filter(Boolean);
+
+        /* Die Listen-Abfrage enthaelt nur das erste Foto je Inserat —
+           der Einzelabruf liefert alle Fotos. */
+        const details = await Promise.all(
+          adListe.map(async (ad) => {
+            try {
+              const r = await fetch(
+                "https://services.mobile.de/search-api/ad/" + ad.mobileAdId,
+                { headers }
+              );
+              if (!r.ok) return ad;
+              const voll = await r.json();
+              return Object.assign({}, ad, voll, {
+                images: (voll.images && voll.images.length ? voll.images : ad.images) || [],
+              });
+            } catch (e) {
+              return ad;
+            }
+          })
+        );
+
+        const fahrzeuge = details.map(mapAd).filter(Boolean);
         return new Response(JSON.stringify(fahrzeuge), {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
