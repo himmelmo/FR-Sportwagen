@@ -169,6 +169,26 @@ export default {
           Accept: "application/vnd.de.mobile.api+json",
           "User-Agent": "FR-Sportwagen-Website/1.0 (frsportwagen.de)",
         };
+        if (url.searchParams.get("debug") === "5") {
+          const varianten = [
+            "https://services.mobile.de/search-api/search?classification=refdata%2Fclasses%2FCar",
+            "https://services.mobile.de/search-api/search",
+            "https://services.mobile.de/search-api/search?customerNumber=" + MOBILE_KUNDENNUMMER,
+            "https://services.mobile.de/search-api/sellers/" + MOBILE_KUNDENNUMMER + "/ads",
+            "https://services.mobile.de/search-api/ads",
+          ];
+          const ergebnisse = [];
+          for (const testUrl of varianten) {
+            try {
+              const resp = await fetch(testUrl, { headers });
+              const body = await resp.text();
+              ergebnisse.push({ url: testUrl.replace("https://services.mobile.de", ""), status: resp.status, bodyAnfang: body.slice(0, 200) });
+            } catch (e) {
+              ergebnisse.push({ url: testUrl, fehler: String(e) });
+            }
+          }
+          return json({ ergebnisse });
+        }
         if (url.searchParams.get("debug") === "4") {
           const testUrl = kandidaten[0];
           const faelle = [
