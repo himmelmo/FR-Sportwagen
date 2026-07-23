@@ -345,7 +345,45 @@
       it: 'Il cuore: la griglia a vista del cambio manuale.'
     },
     'Alle Fotos': { en: 'All photos', fr: 'Toutes les photos', it: 'Tutte le foto' },
-    'Zurück zu den Referenzen': { en: 'Back to references', fr: 'Retour aux références', it: 'Torna alle referenze' }
+    'Zurück zu den Referenzen': { en: 'Back to references', fr: 'Retour aux références', it: 'Torna alle referenze' },
+
+    /* Carrera-Seite */
+    'Referenz · Verkauft': { en: 'Reference · Sold', fr: 'Référence · Vendue', it: 'Referenza · Venduta' },
+    'Allradantrieb, offenes Verdeck und die klassische Elfer-Silhouette in strahlendem Weiß — verkauft an seinen neuen Besitzer.': {
+      en: 'All-wheel drive, an open roof and the classic 911 silhouette in gleaming white — sold to its new owner.',
+      fr: "Transmission intégrale, toit ouvert et la silhouette classique de la 911 en blanc éclatant — vendue à son nouveau propriétaire.",
+      it: 'Trazione integrale, tetto aperto e la classica silhouette della 911 in bianco brillante — venduta al suo nuovo proprietario.'
+    },
+    'Offen zeigt der 991 seine ganze Eleganz — die Seitenlinie bleibt unverkennbar 911.': {
+      en: 'With the top down, the 991 shows all its elegance — the side profile remains unmistakably 911.',
+      fr: 'Décapotée, la 991 révèle toute son élégance — la ligne latérale reste typiquement 911.',
+      it: 'A cielo aperto la 991 mostra tutta la sua eleganza — la linea laterale resta inconfondibilmente 911.'
+    },
+    'Die Heckpartie mit offenem Verdeck und breiter 4S-Spur.': {
+      en: 'The rear end with the roof down and the wide 4S track.',
+      fr: "L'arrière, capote ouverte, avec les voies larges de la 4S.",
+      it: 'La coda con la capote aperta e la carreggiata larga della 4S.'
+    },
+    'Die Front im Detail — klare Linien, unverkennbar Elfer.': {
+      en: 'The front in detail — clean lines, unmistakably a 911.',
+      fr: "L'avant en détail — des lignes nettes, une 911 sans équivoque.",
+      it: 'Il frontale nel dettaglio — linee pulite, inconfondibilmente una 911.'
+    },
+    'Das Stoffverdeck in Bewegung — in wenigen Sekunden offen.': {
+      en: 'The fabric roof in motion — open in just a few seconds.',
+      fr: 'La capote en mouvement — ouverte en quelques secondes.',
+      it: 'La capote in movimento — aperta in pochi secondi.'
+    },
+    'Innenraum in schwarzem Leder — aufgeräumt und fahrerorientiert.': {
+      en: 'Interior in black leather — clean and driver-focused.',
+      fr: 'Intérieur en cuir noir — épuré et orienté conducteur.',
+      it: 'Interni in pelle nera — essenziali e orientati al guidatore.'
+    },
+    'Sportsitze mit roten Gurten — der dezente Farbakzent.': {
+      en: 'Sports seats with red belts — the subtle colour accent.',
+      fr: 'Sièges sport avec ceintures rouges — la touche de couleur discrète.',
+      it: 'Sedili sportivi con cinture rosse — il tocco di colore discreto.'
+    }
   };
 
   var lang = 'de';

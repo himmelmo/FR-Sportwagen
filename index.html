@@ -220,6 +220,11 @@
 
     /* Referenzen */
     .references { border-top: 1px solid var(--gray-line); }
+    .refs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
     .section-label .more {
       margin-left: 1.2rem;
       font-size: 0.75rem;
@@ -291,6 +296,7 @@
       .about-inner { flex-direction: column; text-align: center; }
       section { padding: 4rem 6vw; }
       .car-photo { height: 180px; }
+      .refs-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -376,13 +382,22 @@
 
   <section class="references reveal" id="referenzen">
     <p class="section-label"><span>3</span>Referenzen <a class="more" href="referenzen.html">Mehr anzeigen</a></p>
-    <a class="car-tile" href="referenzen.html" style="max-width: 620px;">
-      <div class="car-photo"><img src="assets/verkauft/gallardo/gallardo-haupt.jpg" alt="Lamborghini Gallardo 5.0 Gated Manual in Arancio Borealis"></div>
-      <div class="car-info">
-        <h3>Lamborghini Gallardo 5.0 Gated Manual</h3>
-        <p>Verkauft</p>
-      </div>
-    </a>
+    <div class="refs-grid">
+      <a class="car-tile" href="gallardo.html">
+        <div class="car-photo"><img src="assets/verkauft/gallardo/gallardo-haupt.jpg" alt="Lamborghini Gallardo 5.0 Gated Manual in Arancio Borealis"></div>
+        <div class="car-info">
+          <h3>Lamborghini Gallardo 5.0 Gated Manual</h3>
+          <p>Verkauft</p>
+        </div>
+      </a>
+      <a class="car-tile" href="carrera.html">
+        <div class="car-photo"><img src="assets/verkauft/carrera/carrera-haupt.jpg" alt="Porsche 991 Carrera 4S Cabriolet in Weiß"></div>
+        <div class="car-info">
+          <h3>Porsche 991 Carrera 4S Cabriolet</h3>
+          <p>Verkauft</p>
+        </div>
+      </a>
+    </div>
   </section>
 
   <section id="fahrzeuge" class="reveal">
