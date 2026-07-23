@@ -154,12 +154,14 @@
       color: #1a1a1a;
       padding: 5rem 6vw;
     }
+    .overview-inner { max-width: 1060px; margin: 0 auto; }
     .section-label {
       font-size: 0.8rem;
       letter-spacing: 0.3em;
       color: var(--gray-text);
       text-transform: uppercase;
       margin-bottom: 1.6rem;
+      text-align: center;
     }
     .gallery {
       display: grid;
@@ -196,46 +198,96 @@
     .datasheet {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0 3rem;
-      max-width: 980px;
+      gap: 0 3.5rem;
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--gray-line);
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 6px 16px rgba(0,0,0,0.06);
+      padding: 2.2rem 2.8rem;
     }
     .datarow {
       display: flex;
       justify-content: space-between;
       gap: 1.5rem;
-      padding: 0.55rem 0;
-      border-bottom: 1px solid #e5e5e5;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #ececec;
       font-size: 0.92rem;
     }
+    .datarow:last-child { border-bottom: none; }
     .datarow .label { color: var(--gray-text); }
     .datarow .value { text-align: right; font-weight: 500; }
-    .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 3rem; }
-    .btn {
-      display: inline-block;
+    .demo-note {
+      margin-top: 2.5rem;
+      font-size: 0.82rem;
+      color: var(--gray-text);
+      text-align: center;
+    }
+
+    /* Kontakt-Abschnitt */
+    .cta-banner {
       background: var(--black);
       color: var(--white);
+      text-align: center;
+      padding: 5rem 6vw;
+    }
+    .cta-banner h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+    .cta-banner p {
+      color: #999999;
+      margin: 0.8rem auto 2.2rem;
+      max-width: 520px;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-invert {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--white);
+      color: var(--black);
       text-decoration: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
       font-size: 0.95rem;
       font-weight: 600;
       padding: 0.85rem 2.2rem;
       border-radius: 4px;
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
-    .btn.ghost {
+    .btn-invert:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
       background: transparent;
-      color: #1a1a1a;
-      border: 1px solid var(--gray-line);
-      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 0.85rem 2.2rem;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
     }
-    .demo-note {
-      margin-top: 2.5rem;
-      font-size: 0.82rem;
-      color: var(--gray-text);
+    .btn-outline:hover { background: var(--white); color: var(--black); }
+    .back-link {
+      display: inline-block;
+      margin-top: 2.4rem;
+      color: #8a8a8a;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
     }
+    .back-link:hover { color: var(--white); border-color: var(--white); }
 
     /* Lightbox */
     .lightbox {
@@ -304,8 +356,9 @@
       .station:first-child { padding-top: 3rem; }
       .facts { grid-template-columns: 1fr 1fr; }
       .gallery .main { grid-row: span 3; min-height: 220px; }
-      .datasheet { grid-template-columns: 1fr; }
+      .datasheet { grid-template-columns: 1fr; padding: 1.4rem 1.6rem; }
       .overview { padding: 4rem 6vw; }
+      .cta-banner { padding: 4rem 6vw; }
     }
   </style>
 </head>
@@ -331,19 +384,26 @@
   </div>
 
   <div class="overview">
-    <p class="section-label">Galerie</p>
-    <div class="gallery" id="gallery"></div>
+    <div class="overview-inner">
+      <p class="section-label">Galerie</p>
+      <div class="gallery" id="gallery"></div>
 
-    <p class="section-label">Alle Daten und Fakten</p>
-    <div class="datasheet" id="datasheet"></div>
+      <p class="section-label">Alle Daten und Fakten</p>
+      <div class="datasheet" id="datasheet"></div>
 
-    <div class="cta-row">
-      <a class="btn" id="cta-anfrage" href="mailto:kontakt@frsportwagen.de">Anfrage senden</a>
-      <a class="btn ghost" href="index.html#fahrzeuge">Zurück zu allen Fahrzeugen</a>
+      <p class="demo-note">Hinweis: Testansicht mit Beispielbildern — echte Fotos und Daten folgen automatisch über die mobile.de-Schnittstelle.</p>
     </div>
-
-    <p class="demo-note">Hinweis: Testansicht mit Beispielbildern — echte Fotos und Daten folgen automatisch über die mobile.de-Schnittstelle.</p>
   </div>
+
+  <section class="cta-banner">
+    <h2>Interesse an diesem Fahrzeug?</h2>
+    <p>Melden Sie sich unverbindlich – ich berate Sie gerne persönlich.</p>
+    <div class="cta-buttons">
+      <a class="btn-invert" id="cta-anfrage" href="mailto:kontakt@frsportwagen.de"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"/><path d="M3 7l9 6l9 -6"/></svg> Jetzt direkt kontaktieren</a>
+      <a class="btn-outline" href="tel:+4915115491199"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></svg> Anrufen</a>
+    </div>
+    <a class="back-link" href="index.html#fahrzeuge">Zurück zu allen Fahrzeugen</a>
+  </section>
 
   <div class="lightbox" id="lightbox">
     <button class="lb-close" aria-label="Schließen"><svg class="ico" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg></button>

@@ -253,6 +253,18 @@
     'Anhängerkupplung': { en: 'Tow bar', fr: "Attelage", it: 'Gancio traino' },
     'Anhängelast gebremst': { en: 'Braked towing capacity', fr: 'Charge remorquable freinée', it: 'Rimorchiabile frenato' },
     'Baureihe': { en: 'Series', fr: 'Série', it: 'Serie' },
+    'Interesse an diesem Fahrzeug?': {
+      en: 'Interested in this car?',
+      fr: 'Ce véhicule vous intéresse ?',
+      it: 'Interessati a questa vettura?'
+    },
+    'Melden Sie sich unverbindlich – ich berate Sie gerne persönlich.': {
+      en: 'Get in touch without obligation – I will be happy to advise you personally.',
+      fr: 'Contactez-moi sans engagement – je vous conseille personnellement avec plaisir.',
+      it: 'Contattatemi senza impegno – sarò lieto di consigliarvi personalmente.'
+    },
+    'Jetzt direkt kontaktieren': { en: 'Contact me now', fr: 'Contactez-moi', it: 'Contattami subito' },
+    'Anrufen': { en: 'Call', fr: 'Appeler', it: 'Chiama' },
     'Hinweis: Testansicht mit Beispielbildern — echte Fotos und Daten folgen automatisch über die mobile.de-Schnittstelle.': {
       en: 'Note: test view with example images — real photos and data will follow automatically via the mobile.de interface.',
       fr: "Remarque : aperçu de test avec des images d'exemple — les photos et données réelles suivront automatiquement via l'interface mobile.de.",
