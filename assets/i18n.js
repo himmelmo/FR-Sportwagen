@@ -98,10 +98,10 @@
       fr: 'La voiture de vos rêves, ma mission.',
       it: "L'auto dei vostri sogni, la mia ricerca."
     },
-    'Sagen Sie mir so genau wie möglich, wonach Sie suchen — ich finde Ihr Traumauto über mein internationales Netzwerk und melde mich persönlich bei Ihnen.': {
-      en: 'Tell me as precisely as possible what you are looking for — I will find your dream car through my international network and get back to you personally.',
-      fr: 'Dites-moi aussi précisément que possible ce que vous recherchez — je trouverai la voiture de vos rêves grâce à mon réseau international et vous recontacterai personnellement.',
-      it: "Ditemi nel modo più preciso possibile cosa cercate — troverò l'auto dei vostri sogni attraverso la mia rete internazionale e vi ricontatterò personalmente."
+    'Sagen Sie mir so genau wie möglich, wonach Sie suchen. Ich finde Ihr Traumauto über mein internationales Netzwerk und melde mich persönlich bei Ihnen.': {
+      en: 'Tell me as precisely as possible what you are looking for. I will find your dream car through my international network and get back to you personally.',
+      fr: 'Dites-moi aussi précisément que possible ce que vous recherchez. Je trouverai la voiture de vos rêves grâce à mon réseau international et vous recontacterai personnellement.',
+      it: "Ditemi nel modo più preciso possibile cosa cercate. Troverò l'auto dei vostri sogni attraverso la mia rete internazionale e vi ricontatterò personalmente."
     },
     'Das gesuchte Fahrzeug': { en: 'The vehicle you are looking for', fr: 'Le véhicule recherché', it: 'Il veicolo cercato' },
     'Marke und Modell': { en: 'Make and model', fr: 'Marque et modèle', it: 'Marca e modello' },
@@ -119,10 +119,10 @@
       fr: "Votre demande m'est transmise directement et en toute sécurité.",
       it: 'La vostra richiesta mi viene trasmessa direttamente e in modo sicuro.'
     },
-    'Farbe, Historie, Zeitrahmen — alles, was mir bei der Suche hilft.': {
-      en: 'Colour, history, timeframe — anything that helps my search.',
-      fr: "Couleur, historique, délai — tout ce qui peut aider ma recherche.",
-      it: 'Colore, storia, tempistiche — tutto ciò che aiuta la mia ricerca.'
+    'Farbe, Historie, Zeitrahmen: alles, was mir bei der Suche hilft.': {
+      en: 'Colour, history, timeframe: anything that helps my search.',
+      fr: "Couleur, historique, délai : tout ce qui peut aider ma recherche.",
+      it: 'Colore, storia, tempistiche: tutto ciò che aiuta la mia ricerca.'
     },
     'z. B. Schalter, Chrono-Paket': { en: 'e.g. manual, Chrono Package', fr: 'p. ex. boîte manuelle, Pack Chrono', it: 'es. cambio manuale, Pacchetto Chrono' },
 
@@ -132,10 +132,10 @@
       fr: 'Votre voiture, mon offre.',
       it: 'La vostra auto, la mia offerta.'
     },
-    'Sie möchten Ihren Sportwagen verkaufen? Je genauer Ihre Angaben, desto schneller erhalten Sie eine seriöse, transparente Bewertung — unkompliziert und diskret.': {
-      en: 'Looking to sell your sports car? The more precise your details, the faster you will receive a fair, transparent valuation — straightforward and discreet.',
-      fr: 'Vous souhaitez vendre votre voiture de sport ? Plus vos informations sont précises, plus vite vous recevrez une évaluation sérieuse et transparente — simple et discrète.',
-      it: 'Volete vendere la vostra auto sportiva? Più precise sono le informazioni, più rapidamente riceverete una valutazione seria e trasparente — semplice e discreta.'
+    'Sie möchten Ihren Sportwagen verkaufen? Je genauer Ihre Angaben, desto schneller erhalten Sie eine seriöse, transparente Bewertung. Unkompliziert und diskret.': {
+      en: 'Looking to sell your sports car? The more precise your details, the faster you will receive a fair, transparent valuation. Straightforward and discreet.',
+      fr: 'Vous souhaitez vendre votre voiture de sport ? Plus vos informations sont précises, plus vite vous recevrez une évaluation sérieuse et transparente. Simple et discrète.',
+      it: 'Volete vendere la vostra auto sportiva? Più precise sono le informazioni, più rapidamente riceverete una valutazione seria e trasparente. Semplice e discreta.'
     },
     'Ihr Fahrzeug': { en: 'Your vehicle', fr: 'Votre véhicule', it: 'Il vostro veicolo' },
     'Die Eckdaten Ihres Fahrzeugs.': { en: 'The key facts about your car.', fr: 'Les données clés de votre véhicule.', it: 'I dati principali del vostro veicolo.' },
@@ -163,17 +163,17 @@
     'Innerhalb von 3 Monaten': { en: 'Within 3 months', fr: 'Sous 3 mois', it: 'Entro 3 mesi' },
     'Flexibel': { en: 'Flexible', fr: 'Flexible', it: 'Flessibile' },
     'Zustand, Historie und Besonderheiten': { en: 'Condition, history and special features', fr: 'État, historique et particularités', it: 'Condizioni, storia e particolarità' },
-    'Sonderausstattung, Wartungshistorie, Garantie, Umbauten — alles, was für die Bewertung wichtig ist.': {
-      en: 'Optional equipment, service history, warranty, modifications — anything relevant for the valuation.',
-      fr: "Options, historique d'entretien, garantie, modifications — tout ce qui compte pour l'évaluation.",
-      it: 'Optional, storia di manutenzione, garanzia, modifiche — tutto ciò che conta per la valutazione.'
+    'Sonderausstattung, Wartungshistorie, Garantie, Umbauten: alles, was für die Bewertung wichtig ist.': {
+      en: 'Optional equipment, service history, warranty, modifications: anything relevant for the valuation.',
+      fr: "Options, historique d'entretien, garantie, modifications : tout ce qui compte pour l'évaluation.",
+      it: 'Optional, storia di manutenzione, garanzia, modifiche: tutto ciò che conta per la valutazione.'
     },
     'z. B. Leder Schwarz, Alcantara': { en: 'e.g. black leather, Alcantara', fr: 'p. ex. cuir noir, Alcantara', it: 'es. pelle nera, Alcantara' },
     'Fotos Ihres Fahrzeugs': { en: 'Photos of your car', fr: 'Photos de votre véhicule', it: 'Foto del vostro veicolo' },
-    'Bitte fotografieren Sie Ihr Fahrzeug aus genau diesen 6 Perspektiven — die Beispielbilder zeigen den jeweiligen Winkel. So kann ich Ihr Fahrzeug bestmöglich einschätzen.': {
-      en: 'Please photograph your car from exactly these 6 angles — the example images show each perspective. This allows me to assess your car as accurately as possible.',
-      fr: "Veuillez photographier votre véhicule sous ces 6 angles précis — les images d'exemple montrent chaque perspective. Cela me permet d'évaluer votre véhicule au mieux.",
-      it: 'Fotografate il vostro veicolo esattamente da queste 6 prospettive — le immagini di esempio mostrano ogni angolazione. Così potrò valutare al meglio il vostro veicolo.'
+    'Bitte fotografieren Sie Ihr Fahrzeug aus genau diesen 6 Perspektiven. Die Beispielbilder zeigen den jeweiligen Winkel. So kann ich Ihr Fahrzeug bestmöglich einschätzen.': {
+      en: 'Please photograph your car from exactly these 6 angles. The example images show each perspective. This allows me to assess your car as accurately as possible.',
+      fr: "Veuillez photographier votre véhicule sous ces 6 angles précis. Les images d'exemple montrent chaque perspective. Cela me permet d'évaluer votre véhicule au mieux.",
+      it: 'Fotografate il vostro veicolo esattamente da queste 6 prospettive. Le immagini di esempio mostrano ogni angolazione. Così potrò valutare al meglio il vostro veicolo.'
     },
     '1 · Front schräg': { en: '1 · Front angle', fr: '1 · Avant en biais', it: '1 · Frontale in diagonale' },
     '(vorne links)': { en: '(front left)', fr: '(avant gauche)', it: '(anteriore sinistra)' },
@@ -258,17 +258,17 @@
       fr: 'Ce véhicule vous intéresse ?',
       it: 'Interessati a questa vettura?'
     },
-    'Melden Sie sich unverbindlich – ich berate Sie gerne persönlich.': {
-      en: 'Get in touch without obligation – I will be happy to advise you personally.',
-      fr: 'Contactez-moi sans engagement – je vous conseille personnellement avec plaisir.',
-      it: 'Contattatemi senza impegno – sarò lieto di consigliarvi personalmente.'
+    'Melden Sie sich unverbindlich. Ich berate Sie gerne persönlich.': {
+      en: 'Get in touch without obligation. I will be happy to advise you personally.',
+      fr: 'Contactez-moi sans engagement. Je vous conseille personnellement avec plaisir.',
+      it: 'Contattatemi senza impegno. Sarò lieto di consigliarvi personalmente.'
     },
     'Jetzt direkt kontaktieren': { en: 'Contact me now', fr: 'Contactez-moi', it: 'Contattami subito' },
     'Anrufen': { en: 'Call', fr: 'Appeler', it: 'Chiama' },
-    'Hinweis: Testansicht mit Beispielbildern — echte Fotos und Daten folgen automatisch über die mobile.de-Schnittstelle.': {
-      en: 'Note: test view with example images — real photos and data will follow automatically via the mobile.de interface.',
-      fr: "Remarque : aperçu de test avec des images d'exemple — les photos et données réelles suivront automatiquement via l'interface mobile.de.",
-      it: "Nota: anteprima di prova con immagini di esempio — foto e dati reali arriveranno automaticamente tramite l'interfaccia mobile.de."
+    'Hinweis: Testansicht mit Beispielbildern. Echte Fotos und Daten folgen automatisch über die mobile.de-Schnittstelle.': {
+      en: 'Note: test view with example images. Real photos and data will follow automatically via the mobile.de interface.',
+      fr: "Remarque : aperçu de test avec des images d'exemple. Les photos et données réelles suivront automatiquement via l'interface mobile.de.",
+      it: "Nota: anteprima di prova con immagini di esempio. Foto e dati reali arriveranno automaticamente tramite l'interfaccia mobile.de."
     },
 
     /* Ankauf-Formular: neue Felder */
@@ -306,33 +306,33 @@
       fr: "L'avis d'un client satisfait apparaîtra ici prochainement.",
       it: 'Qui apparirà presto la recensione di un cliente soddisfatto.'
     },
-    '— Kunde': { en: '— Customer', fr: '— Client', it: '— Cliente' },
+    'Kunde': { en: 'Customer', fr: 'Client', it: 'Cliente' },
 
     /* Gallardo-Seite */
-    'Die Seitenlinie — flach, klar und bis heute zeitlos.': {
-      en: 'The side profile — low, clean and timeless to this day.',
-      fr: 'La ligne latérale — basse, épurée et toujours intemporelle.',
-      it: 'La linea laterale — bassa, pulita e ancora oggi senza tempo.'
+    'Die Seitenlinie: flach, klar und bis heute zeitlos.': {
+      en: 'The side profile: low, clean and timeless to this day.',
+      fr: 'La ligne latérale : basse, épurée et toujours intemporelle.',
+      it: 'La linea laterale: bassa, pulita e ancora oggi senza tempo.'
     },
     'Die Heckpartie mit den charakteristischen Lüftungsschlitzen.': {
       en: 'The rear end with its characteristic ventilation slats.',
       fr: "L'arrière avec ses fentes d'aération caractéristiques.",
       it: 'La coda con le caratteristiche feritoie di ventilazione.'
     },
-    'Die Front in Arancio Borealis — eine Farbe, die man nicht vergisst.': {
-      en: 'The front in Arancio Borealis — a colour you never forget.',
-      fr: "L'avant en Arancio Borealis — une couleur inoubliable.",
-      it: 'Il frontale in Arancio Borealis — un colore che non si dimentica.'
+    'Die Front in Arancio Borealis. Eine Farbe, die man nicht vergisst.': {
+      en: 'The front in Arancio Borealis. A colour you never forget.',
+      fr: "L'avant en Arancio Borealis. Une couleur inoubliable.",
+      it: 'Il frontale in Arancio Borealis. Un colore che non si dimentica.'
     },
     'Aus der Vogelperspektive zeigt der Gallardo seine perfekten Proportionen.': {
       en: "From above, the Gallardo reveals its perfect proportions.",
       fr: "Vu d'en haut, la Gallardo révèle ses proportions parfaites.",
       it: "Dall'alto la Gallardo rivela le sue proporzioni perfette."
     },
-    'Der frei saugende 5,0-Liter-V10 — die „screaming" Seele dieses Autos.': {
-      en: 'The naturally aspirated 5.0-litre V10 — the screaming soul of this car.',
-      fr: "Le V10 5,0 litres atmosphérique — l'âme hurlante de cette voiture.",
-      it: "Il V10 5.0 aspirato — l'anima urlante di questa vettura."
+    'Der frei saugende 5,0-Liter-V10: die „screaming" Seele dieses Autos.': {
+      en: 'The naturally aspirated 5.0-litre V10: the screaming soul of this car.',
+      fr: "Le V10 5,0 litres atmosphérique : l'âme hurlante de cette voiture.",
+      it: "Il V10 5.0 aspirato: l'anima urlante di questa vettura."
     },
     'Innenraum in schwarzem Leder mit orangefarbenen Ziernähten.': {
       en: 'Interior in black leather with orange stitching.',
@@ -349,40 +349,40 @@
 
     /* Carrera-Seite */
     'Referenz · Verkauft': { en: 'Reference · Sold', fr: 'Référence · Vendue', it: 'Referenza · Venduta' },
-    'Allradantrieb, offenes Verdeck und die klassische Elfer-Silhouette in strahlendem Weiß — verkauft an seinen neuen Besitzer.': {
-      en: 'All-wheel drive, an open roof and the classic 911 silhouette in gleaming white — sold to its new owner.',
-      fr: "Transmission intégrale, toit ouvert et la silhouette classique de la 911 en blanc éclatant — vendue à son nouveau propriétaire.",
-      it: 'Trazione integrale, tetto aperto e la classica silhouette della 911 in bianco brillante — venduta al suo nuovo proprietario.'
+    'Allradantrieb, offenes Verdeck und die klassische Elfer-Silhouette in strahlendem Weiß. Verkauft an seinen neuen Besitzer.': {
+      en: 'All-wheel drive, an open roof and the classic 911 silhouette in gleaming white. Sold to its new owner.',
+      fr: "Transmission intégrale, toit ouvert et la silhouette classique de la 911 en blanc éclatant. Vendue à son nouveau propriétaire.",
+      it: 'Trazione integrale, tetto aperto e la classica silhouette della 911 in bianco brillante. Venduta al suo nuovo proprietario.'
     },
-    'Offen zeigt der 991 seine ganze Eleganz — die Seitenlinie bleibt unverkennbar 911.': {
-      en: 'With the top down, the 991 shows all its elegance — the side profile remains unmistakably 911.',
-      fr: 'Décapotée, la 991 révèle toute son élégance — la ligne latérale reste typiquement 911.',
-      it: 'A cielo aperto la 991 mostra tutta la sua eleganza — la linea laterale resta inconfondibilmente 911.'
+    'Offen zeigt der 991 seine ganze Eleganz. Die Seitenlinie bleibt unverkennbar 911.': {
+      en: 'With the top down, the 991 shows all its elegance. The side profile remains unmistakably 911.',
+      fr: 'Décapotée, la 991 révèle toute son élégance. La ligne latérale reste typiquement 911.',
+      it: 'A cielo aperto la 991 mostra tutta la sua eleganza. La linea laterale resta inconfondibilmente 911.'
     },
     'Die Heckpartie mit offenem Verdeck und breiter 4S-Spur.': {
       en: 'The rear end with the roof down and the wide 4S track.',
       fr: "L'arrière, capote ouverte, avec les voies larges de la 4S.",
       it: 'La coda con la capote aperta e la carreggiata larga della 4S.'
     },
-    'Die Front im Detail — klare Linien, unverkennbar Elfer.': {
-      en: 'The front in detail — clean lines, unmistakably a 911.',
-      fr: "L'avant en détail — des lignes nettes, une 911 sans équivoque.",
-      it: 'Il frontale nel dettaglio — linee pulite, inconfondibilmente una 911.'
+    'Die Front im Detail: klare Linien, unverkennbar Elfer.': {
+      en: 'The front in detail: clean lines, unmistakably a 911.',
+      fr: "L'avant en détail : des lignes nettes, une 911 sans équivoque.",
+      it: 'Il frontale nel dettaglio: linee pulite, inconfondibilmente una 911.'
     },
-    'Das Stoffverdeck in Bewegung — in wenigen Sekunden offen.': {
-      en: 'The fabric roof in motion — open in just a few seconds.',
-      fr: 'La capote en mouvement — ouverte en quelques secondes.',
-      it: 'La capote in movimento — aperta in pochi secondi.'
+    'Das Stoffverdeck in Bewegung: in wenigen Sekunden offen.': {
+      en: 'The fabric roof in motion: open in just a few seconds.',
+      fr: 'La capote en mouvement : ouverte en quelques secondes.',
+      it: 'La capote in movimento: aperta in pochi secondi.'
     },
-    'Innenraum in schwarzem Leder — aufgeräumt und fahrerorientiert.': {
-      en: 'Interior in black leather — clean and driver-focused.',
-      fr: 'Intérieur en cuir noir — épuré et orienté conducteur.',
-      it: 'Interni in pelle nera — essenziali e orientati al guidatore.'
+    'Innenraum in schwarzem Leder, aufgeräumt und fahrerorientiert.': {
+      en: 'Interior in black leather, clean and driver-focused.',
+      fr: 'Intérieur en cuir noir, épuré et orienté conducteur.',
+      it: 'Interni in pelle nera, essenziali e orientati al guidatore.'
     },
-    'Sportsitze mit roten Gurten — der dezente Farbakzent.': {
-      en: 'Sports seats with red belts — the subtle colour accent.',
-      fr: 'Sièges sport avec ceintures rouges — la touche de couleur discrète.',
-      it: 'Sedili sportivi con cinture rosse — il tocco di colore discreto.'
+    'Sportsitze mit roten Gurten als dezenter Farbakzent.': {
+      en: 'Sports seats with red belts as a subtle colour accent.',
+      fr: 'Sièges sport avec ceintures rouges comme touche de couleur discrète.',
+      it: 'Sedili sportivi con cinture rosse come tocco di colore discreto.'
     }
   };
 
