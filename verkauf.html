@@ -15,11 +15,19 @@
       --white: #ffffff;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    .ico {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: middle;
+    }
     html { scroll-behavior: smooth; }
     body {
       font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
       color: #1a1a1a;
-      background: var(--white);
+      background: #f6f6f6;
       line-height: 1.6;
     }
     header {
@@ -58,27 +66,37 @@
       background: var(--black);
       color: var(--white);
       padding: 9rem 6vw 4rem;
+      text-align: center;
     }
     .page-head h1 {
       font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 600;
       line-height: 1.2;
     }
-    .page-head p { color: #999999; margin-top: 0.75rem; max-width: 620px; }
+    .page-head p { color: #999999; margin: 0.75rem auto 0; max-width: 620px; }
 
-    .form-wrap { padding: 4rem 6vw 6rem; }
-    form { max-width: 720px; }
-    fieldset { border: none; margin-bottom: 2.5rem; }
-    legend {
+    .form-wrap { padding: 4rem 1.5rem 6rem; }
+    form { max-width: 860px; margin: 0 auto; }
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--gray-line);
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 6px 16px rgba(0,0,0,0.06);
+      padding: 2.5rem clamp(1.2rem, 4vw, 3rem);
+      margin-bottom: 1.8rem;
+    }
+    .form-card legend, .form-card .card-title {
       font-size: 0.8rem;
       letter-spacing: 0.3em;
       color: var(--gray-text);
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.4rem;
     }
+    .card-sub { color: var(--gray-text); font-size: 0.9rem; margin-bottom: 1.8rem; }
+    fieldset { border: none; }
     .field-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 1.2rem;
       margin-bottom: 1.2rem;
     }
@@ -94,6 +112,7 @@
       border-radius: 6px;
       padding: 0.7rem 0.9rem;
       transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
     }
     input:focus, textarea:focus, select:focus {
       outline: none;
@@ -101,7 +120,64 @@
       box-shadow: 0 0 0 3px rgba(0,0,0,0.08);
     }
     textarea { resize: vertical; min-height: 120px; }
-    .submit-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+
+    /* Foto-Bereich */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.2rem;
+    }
+    .photo-slot {
+      border: 1px solid var(--gray-line);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+    }
+    .photo-example {
+      position: relative;
+      aspect-ratio: 16 / 11;
+      background: #efefef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9a9a9a;
+      overflow: hidden;
+    }
+    .photo-example img.vorlage, .photo-example img.preview {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo-example img.preview { display: none; z-index: 2; }
+    .photo-caption {
+      padding: 0.8rem 1rem 0.3rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .photo-caption span { color: var(--gray-text); font-weight: 400; }
+    .photo-upload { padding: 0.4rem 1rem 1rem; }
+    .photo-upload label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--black);
+      border: 1px solid var(--black);
+      border-radius: 4px;
+      padding: 0.4rem 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .photo-upload label:hover { background: var(--black); color: var(--white); }
+    .photo-upload input { display: none; }
+    .photo-upload .file-ok { display: none; margin-left: 0.5rem; font-size: 0.8rem; color: #2e7d32; font-weight: 600; }
+
+    .submit-card { text-align: center; }
     .btn {
       display: inline-block;
       background: var(--black);
@@ -111,12 +187,12 @@
       font-family: inherit;
       font-size: 0.95rem;
       font-weight: 600;
-      padding: 0.85rem 2.2rem;
+      padding: 0.9rem 2.6rem;
       border-radius: 4px;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
-    .submit-note { font-size: 0.82rem; color: var(--gray-text); max-width: 380px; }
+    .submit-note { font-size: 0.82rem; color: var(--gray-text); max-width: 460px; margin: 1rem auto 0; }
 
     .site-footer {
       background: var(--black);
@@ -136,7 +212,8 @@
 
     @media (max-width: 640px) {
       nav a:not(.cta) { display: none; }
-      .form-wrap { padding: 3rem 6vw 4rem; }
+      .form-wrap { padding: 3rem 1rem 4rem; }
+      .form-card { padding: 1.8rem 1.2rem; }
     }
   </style>
 </head>
@@ -158,61 +235,214 @@
 
   <div class="page-head">
     <h1>Ihr Fahrzeug, mein Angebot.</h1>
-    <p>Sie möchten Ihren Sportwagen verkaufen? Beschreiben Sie mir Ihr Fahrzeug — Sie erhalten eine seriöse, transparente Bewertung. Unkompliziert und diskret.</p>
+    <p>Sie möchten Ihren Sportwagen verkaufen? Je genauer Ihre Angaben, desto schneller erhalten Sie eine seriöse, transparente Bewertung — unkompliziert und diskret.</p>
   </div>
 
   <div class="form-wrap">
     <form id="verkauf-formular">
-      <fieldset>
-        <legend>Ihr Fahrzeug</legend>
-        <div class="field-row">
-          <div class="field">
-            <label for="marke">Marke und Modell <small>(Pflichtfeld)</small></label>
-            <input type="text" id="marke" name="Marke und Modell" placeholder="z. B. Lamborghini Huracán EVO" required>
-          </div>
-          <div class="field">
-            <label for="ez">Erstzulassung</label>
-            <input type="text" id="ez" name="Erstzulassung" placeholder="z. B. 03/2021">
-          </div>
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="km">Kilometerstand</label>
-            <input type="text" id="km" name="Kilometerstand" placeholder="z. B. 18.500 km" inputmode="numeric">
-          </div>
-          <div class="field">
-            <label for="preis">Preisvorstellung</label>
-            <input type="text" id="preis" name="Preisvorstellung" placeholder="z. B. 240.000 €" inputmode="numeric">
-          </div>
-        </div>
-        <div class="field">
-          <label for="zustand">Zustand und Historie</label>
-          <textarea id="zustand" name="Zustand und Historie" placeholder="Ausstattung, Unfallfreiheit, Scheckheft, Besonderheiten — alles, was für die Bewertung wichtig ist."></textarea>
-        </div>
-      </fieldset>
 
-      <fieldset>
-        <legend>Ihre Kontaktdaten</legend>
-        <div class="field-row">
-          <div class="field">
-            <label for="name">Name <small>(Pflichtfeld)</small></label>
-            <input type="text" id="name" name="Name" required>
+      <div class="form-card">
+        <fieldset>
+          <legend>Ihr Fahrzeug</legend>
+          <p class="card-sub">Die Eckdaten Ihres Fahrzeugs.</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="marke">Marke und Modell <small>(Pflichtfeld)</small></label>
+              <input type="text" id="marke" name="Marke und Modell" placeholder="z. B. Lamborghini Huracán EVO" required>
+            </div>
+            <div class="field">
+              <label for="ez">Erstzulassung <small>(Pflichtfeld)</small></label>
+              <input type="text" id="ez" name="Erstzulassung" placeholder="z. B. 03/2021" required>
+            </div>
+            <div class="field">
+              <label for="km">Kilometerstand <small>(Pflichtfeld)</small></label>
+              <input type="text" id="km" name="Kilometerstand" placeholder="z. B. 18.500 km" inputmode="numeric" required>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="leistung">Leistung</label>
+              <input type="text" id="leistung" name="Leistung" placeholder="z. B. 640 PS" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="getriebe">Getriebe</label>
+              <select id="getriebe" name="Getriebe">
+                <option value="">Bitte wählen</option>
+                <option>Automatik / Doppelkupplung</option>
+                <option>Schaltgetriebe</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="farbe">Außenfarbe</label>
+              <input type="text" id="farbe" name="Aussenfarbe" placeholder="z. B. Grigio Telesto">
+            </div>
+            <div class="field">
+              <label for="interieur">Innenausstattung</label>
+              <input type="text" id="interieur" name="Innenausstattung" placeholder="z. B. Leder Schwarz, Alcantara">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="vorbesitzer">Anzahl Vorbesitzer</label>
+              <input type="text" id="vorbesitzer" name="Vorbesitzer" placeholder="z. B. 1" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="unfall">Unfallfrei</label>
+              <select id="unfall" name="Unfallfrei">
+                <option value="">Bitte wählen</option>
+                <option>Ja, unfallfrei</option>
+                <option>Nein</option>
+                <option>Reparierter Vorschaden</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="scheckheft">Scheckheftgepflegt</label>
+              <select id="scheckheft" name="Scheckheftgepflegt">
+                <option value="">Bitte wählen</option>
+                <option>Ja</option>
+                <option>Teilweise</option>
+                <option>Nein</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="standort">Standort <small>(PLZ / Ort)</small></label>
+              <input type="text" id="standort" name="Standort" placeholder="z. B. 70173 Stuttgart">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="preis">Preisvorstellung</label>
+              <input type="text" id="preis" name="Preisvorstellung" placeholder="z. B. 240.000 €" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="zeitrahmen">Gewünschter Zeitrahmen</label>
+              <select id="zeitrahmen" name="Zeitrahmen">
+                <option value="">Bitte wählen</option>
+                <option>So schnell wie möglich</option>
+                <option>Innerhalb von 3 Monaten</option>
+                <option>Flexibel</option>
+              </select>
+            </div>
           </div>
           <div class="field">
-            <label for="email">E-Mail <small>(Pflichtfeld)</small></label>
-            <input type="email" id="email" name="E-Mail" required>
+            <label for="zustand">Zustand, Historie und Besonderheiten</label>
+            <textarea id="zustand" name="Zustand und Historie" placeholder="Sonderausstattung, Wartungshistorie, Garantie, Umbauten — alles, was für die Bewertung wichtig ist."></textarea>
           </div>
-          <div class="field">
-            <label for="telefon">Telefon</label>
-            <input type="tel" id="telefon" name="Telefon">
-          </div>
-        </div>
-      </fieldset>
-
-      <div class="submit-row">
-        <button type="submit" class="btn">Verkaufsanfrage senden</button>
-        <p class="submit-note">Beim Absenden öffnet sich Ihr E-Mail-Programm mit der fertigen Anfrage — Sie senden sie selbst ab.</p>
+        </fieldset>
       </div>
+
+      <div class="form-card">
+        <p class="card-title">Fotos Ihres Fahrzeugs</p>
+        <p class="card-sub">Bitte fotografieren Sie Ihr Fahrzeug aus genau diesen 6 Perspektiven — die Beispielbilder zeigen den jeweiligen Winkel. So kann ich Ihr Fahrzeug bestmöglich einschätzen.</p>
+        <div class="photo-grid">
+
+          <div class="photo-slot">
+            <div class="photo-example">
+              <svg class="ico" viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5"/></svg>
+              <img class="vorlage" src="assets/vorlage-1.jpg" alt="Beispiel: Front schräg" onerror="this.remove()">
+              <img class="preview" alt="">
+            </div>
+            <p class="photo-caption">1 · Front schräg <span>(vorne links)</span></p>
+            <div class="photo-upload">
+              <label><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/></svg> Foto auswählen<input type="file" accept="image/*" data-slot="Front schräg"></label>
+              <span class="file-ok">Foto ausgewählt</span>
+            </div>
+          </div>
+
+          <div class="photo-slot">
+            <div class="photo-example">
+              <svg class="ico" viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5"/></svg>
+              <img class="vorlage" src="assets/vorlage-2.jpg" alt="Beispiel: Heck schräg" onerror="this.remove()">
+              <img class="preview" alt="">
+            </div>
+            <p class="photo-caption">2 · Heck schräg <span>(hinten rechts)</span></p>
+            <div class="photo-upload">
+              <label><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/></svg> Foto auswählen<input type="file" accept="image/*" data-slot="Heck schräg"></label>
+              <span class="file-ok">Foto ausgewählt</span>
+            </div>
+          </div>
+
+          <div class="photo-slot">
+            <div class="photo-example">
+              <svg class="ico" viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5"/></svg>
+              <img class="vorlage" src="assets/vorlage-3.jpg" alt="Beispiel: Seitenansicht" onerror="this.remove()">
+              <img class="preview" alt="">
+            </div>
+            <p class="photo-caption">3 · Seitenansicht <span>(komplett)</span></p>
+            <div class="photo-upload">
+              <label><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/></svg> Foto auswählen<input type="file" accept="image/*" data-slot="Seitenansicht"></label>
+              <span class="file-ok">Foto ausgewählt</span>
+            </div>
+          </div>
+
+          <div class="photo-slot">
+            <div class="photo-example">
+              <svg class="ico" viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M12 14v7"/><path d="M10 12l-6.75 -2"/><path d="M14 12l6.75 -2"/></svg>
+              <img class="vorlage" src="assets/vorlage-4.jpg" alt="Beispiel: Cockpit" onerror="this.remove()">
+              <img class="preview" alt="">
+            </div>
+            <p class="photo-caption">4 · Cockpit <span>(Lenkrad und Konsole)</span></p>
+            <div class="photo-upload">
+              <label><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/></svg> Foto auswählen<input type="file" accept="image/*" data-slot="Cockpit"></label>
+              <span class="file-ok">Foto ausgewählt</span>
+            </div>
+          </div>
+
+          <div class="photo-slot">
+            <div class="photo-example">
+              <svg class="ico" viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><path d="M5 11a2 2 0 0 1 2 2v2h10v-2a2 2 0 1 1 4 0v4a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2z"/><path d="M5 11v-5a3 3 0 0 1 3 -3h8a3 3 0 0 1 3 3v5"/></svg>
+              <img class="vorlage" src="assets/vorlage-5.jpg" alt="Beispiel: Sitze" onerror="this.remove()">
+              <img class="preview" alt="">
+            </div>
+            <p class="photo-caption">5 · Sitze <span>(Innenraum gesamt)</span></p>
+            <div class="photo-upload">
+              <label><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/></svg> Foto auswählen<input type="file" accept="image/*" data-slot="Sitze"></label>
+              <span class="file-ok">Foto ausgewählt</span>
+            </div>
+          </div>
+
+          <div class="photo-slot">
+            <div class="photo-example">
+              <svg class="ico" viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><path d="M12 13m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M12 13l3.5 -3.5"/><path d="M6.4 9.4l.7 .7"/><path d="M12 7v1"/><path d="M17.6 9.4l-.7 .7"/></svg>
+              <img class="vorlage" src="assets/vorlage-6.jpg" alt="Beispiel: Tacho mit Kilometerstand" onerror="this.remove()">
+              <img class="preview" alt="">
+            </div>
+            <p class="photo-caption">6 · Tacho <span>(Kilometerstand ablesbar)</span></p>
+            <div class="photo-upload">
+              <label><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/></svg> Foto auswählen<input type="file" accept="image/*" data-slot="Tacho"></label>
+              <span class="file-ok">Foto ausgewählt</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-card">
+        <fieldset>
+          <legend>Ihre Kontaktdaten</legend>
+          <p class="card-sub">Damit ich mich persönlich bei Ihnen melden kann.</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Name <small>(Pflichtfeld)</small></label>
+              <input type="text" id="name" name="Name" required>
+            </div>
+            <div class="field">
+              <label for="email">E-Mail <small>(Pflichtfeld)</small></label>
+              <input type="email" id="email" name="E-Mail" required>
+            </div>
+            <div class="field">
+              <label for="telefon">Telefon</label>
+              <input type="tel" id="telefon" name="Telefon">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="form-card submit-card">
+        <button type="submit" class="btn">Verkaufsanfrage senden</button>
+        <p class="submit-note">Beim Absenden öffnet sich Ihr E-Mail-Programm mit der fertigen Anfrage. Bitte hängen Sie die 6 ausgewählten Fotos dort noch als Anhang an, bevor Sie die E-Mail absenden.</p>
+      </div>
+
     </form>
   </div>
 
@@ -224,12 +454,43 @@
   </footer>
 
   <script>
+    document.querySelectorAll('.photo-upload input[type=file]').forEach(function (input) {
+      input.addEventListener('change', function () {
+        var slot = input.closest('.photo-slot');
+        var ok = slot.querySelector('.file-ok');
+        var preview = slot.querySelector('.preview');
+        if (input.files && input.files[0]) {
+          ok.style.display = 'inline';
+          var reader = new FileReader();
+          reader.onload = function (ev) {
+            preview.src = ev.target.result;
+            preview.style.display = 'block';
+          };
+          reader.readAsDataURL(input.files[0]);
+        } else {
+          ok.style.display = 'none';
+          preview.style.display = 'none';
+        }
+      });
+    });
+
     document.getElementById('verkauf-formular').addEventListener('submit', function (e) {
       e.preventDefault();
       var lines = ['Guten Tag Herr Rupp,', '', 'ich möchte folgendes Fahrzeug verkaufen:', ''];
-      this.querySelectorAll('input, textarea').forEach(function (el) {
+      this.querySelectorAll('input:not([type=file]), textarea, select').forEach(function (el) {
         if (el.value.trim()) { lines.push(el.name + ': ' + el.value.trim()); }
       });
+      var fotos = [];
+      this.querySelectorAll('.photo-upload input[type=file]').forEach(function (el) {
+        if (el.files && el.files[0]) { fotos.push(el.dataset.slot); }
+      });
+      lines.push('');
+      if (fotos.length) {
+        lines.push('Fotos vorbereitet (' + fotos.length + ' von 6): ' + fotos.join(', '));
+        lines.push('>> Die Fotos hänge ich dieser E-Mail als Anhang an. <<');
+      } else {
+        lines.push('>> Die 6 Fotos hänge ich dieser E-Mail als Anhang an. <<');
+      }
       lines.push('', 'Mit freundlichen Grüßen');
       var subject = 'Verkaufsanfrage: ' + document.getElementById('marke').value.trim();
       window.location.href = 'mailto:kontakt@frsportwagen.de?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
