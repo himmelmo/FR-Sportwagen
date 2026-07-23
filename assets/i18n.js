@@ -215,7 +215,49 @@
       it: 'La vostra richiesta di vendita è stata inviata con successo. Vi ricontatterò personalmente al più presto.'
     },
     'Der Versand hat leider nicht geklappt': { en: 'Unfortunately, sending failed', fr: "L'envoi a malheureusement échoué", it: "Purtroppo l'invio non è riuscito" },
-    'Bitte senden Sie Ihre Anfrage direkt an': { en: 'Please send your request directly to', fr: 'Veuillez envoyer votre demande directement à', it: 'Inviate la vostra richiesta direttamente a' }
+    'Bitte senden Sie Ihre Anfrage direkt an': { en: 'Please send your request directly to', fr: 'Veuillez envoyer votre demande directement à', it: 'Inviate la vostra richiesta direttamente a' },
+
+    /* Fahrzeug-Detailseite */
+    'Galerie': { en: 'Gallery', fr: 'Galerie', it: 'Galleria' },
+    'Alle Daten und Fakten': { en: 'All data and facts', fr: 'Toutes les données', it: 'Tutti i dati' },
+    'Anfrage senden': { en: 'Send inquiry', fr: 'Envoyer une demande', it: 'Invia richiesta' },
+    'Zurück zu allen Fahrzeugen': { en: 'Back to all vehicles', fr: 'Retour aux véhicules', it: 'Torna ai veicoli' },
+    'Kraftstoffart': { en: 'Fuel type', fr: 'Carburant', it: 'Carburante' },
+    'Schadstoffklasse': { en: 'Emission class', fr: 'Norme antipollution', it: 'Classe di emissione' },
+    'Antriebsart': { en: 'Drivetrain', fr: 'Transmission', it: 'Trazione' },
+    'Farbe': { en: 'Colour', fr: 'Couleur', it: 'Colore' },
+    'Anzahl der Fahrzeughalter': { en: 'Previous owners', fr: 'Nombre de propriétaires', it: 'Proprietari precedenti' },
+    'HU': { en: 'Inspection (HU)', fr: 'Contrôle technique', it: 'Revisione' },
+    'Ausstattungslinie': { en: 'Trim line', fr: 'Finition', it: 'Allestimento' },
+    'Automatik': { en: 'Automatic', fr: 'Automatique', it: 'Automatico' },
+    'Diesel': { en: 'Diesel', fr: 'Diesel', it: 'Diesel' },
+    'Neu': { en: 'New', fr: 'Neuf', it: 'Nuova' },
+    'FIN': { en: 'VIN', fr: 'N° de châssis (VIN)', it: 'Telaio (VIN)' },
+    'Interne Nummer': { en: 'Internal number', fr: 'Numéro interne', it: 'Numero interno' },
+    'Umweltplakette': { en: 'Emission sticker', fr: 'Vignette écologique', it: 'Bollino ambientale' },
+    'Hubraum': { en: 'Displacement', fr: 'Cylindrée', it: 'Cilindrata' },
+    'Zylinder': { en: 'Cylinders', fr: 'Cylindres', it: 'Cilindri' },
+    'Anzahl Sitzplätze': { en: 'Seats', fr: 'Nombre de places', it: 'Posti' },
+    'Türen': { en: 'Doors', fr: 'Portes', it: 'Porte' },
+    'Farbe (Hersteller)': { en: 'Colour (manufacturer)', fr: 'Couleur (constructeur)', it: 'Colore (produttore)' },
+    'Farbe der Innenausstattung': { en: 'Interior colour', fr: 'Couleur intérieure', it: 'Colore interni' },
+    'Beschädigtes Fahrzeug': { en: 'Damaged vehicle', fr: 'Véhicule endommagé', it: 'Veicolo danneggiato' },
+    'Fahrtauglich': { en: 'Roadworthy', fr: 'Roulant', it: 'Marciante' },
+    'Klimatisierung': { en: 'Climate control', fr: 'Climatisation', it: 'Climatizzazione' },
+    'Einparkhilfe': { en: 'Parking assist', fr: "Aide au stationnement", it: 'Sensori di parcheggio' },
+    'Geschwindigkeitsregulierung': { en: 'Cruise control', fr: 'Régulateur de vitesse', it: 'Regolatore di velocità' },
+    'Airbags': { en: 'Airbags', fr: 'Airbags', it: 'Airbag' },
+    'Hauptscheinwerfer': { en: 'Headlights', fr: 'Phares', it: 'Fari' },
+    'Tagfahrlicht': { en: 'Daytime running lights', fr: 'Feux de jour', it: 'Luci diurne' },
+    'Kurvenlicht': { en: 'Cornering lights', fr: "Éclairage d'intersection", it: 'Luci di svolta' },
+    'Anhängerkupplung': { en: 'Tow bar', fr: "Attelage", it: 'Gancio traino' },
+    'Anhängelast gebremst': { en: 'Braked towing capacity', fr: 'Charge remorquable freinée', it: 'Rimorchiabile frenato' },
+    'Baureihe': { en: 'Series', fr: 'Série', it: 'Serie' },
+    'Hinweis: Testansicht mit Beispielbildern — echte Fotos und Daten folgen automatisch über die mobile.de-Schnittstelle.': {
+      en: 'Note: test view with example images — real photos and data will follow automatically via the mobile.de interface.',
+      fr: "Remarque : aperçu de test avec des images d'exemple — les photos et données réelles suivront automatiquement via l'interface mobile.de.",
+      it: "Nota: anteprima di prova con immagini di esempio — foto e dati reali arriveranno automaticamente tramite l'interfaccia mobile.de."
+    }
   };
 
   var lang = 'de';
@@ -330,6 +372,14 @@
 
     nav.appendChild(wrap);
   }
+
+  /* Nach dynamischem Rendern (z. B. Fahrzeugdaten aus der API) neu einsammeln und übersetzen */
+  window.FR_I18N_REFRESH = function () {
+    textNodes = [];
+    placeholders = [];
+    collect();
+    apply();
+  };
 
   function init() {
     collect();

@@ -17,9 +17,160 @@ function toBase64(buffer) {
   return btoa(binary);
 }
 
+const MOBILE_KUNDENNUMMER = "45483682";
+
+const GETRIEBE = {
+  AUTOMATIC_GEAR: "Automatik",
+  SEMIAUTOMATIC_GEAR: "Halbautomatik",
+  MANUAL_GEAR: "Schaltgetriebe",
+};
+const KRAFTSTOFF = {
+  PETROL: "Benzin",
+  DIESEL: "Diesel",
+  ELECTRICITY: "Elektro",
+  HYBRID: "Hybrid (Benzin/Elektro)",
+  HYBRID_DIESEL: "Hybrid (Diesel/Elektro)",
+  LPG: "Autogas (LPG)",
+  CNG: "Erdgas (CNG)",
+};
+
+function erstzulassung(wert) {
+  const s = String(wert || "");
+  return s.length >= 6 ? s.slice(4, 6) + "/" + s.slice(0, 4) : s;
+}
+
+function kmFormat(wert) {
+  return typeof wert === "number" ? wert.toLocaleString("de-DE") + " km" : "";
+}
+
+function leistungFormat(kw) {
+  return typeof kw === "number" ? kw + " kW (" + Math.round(kw * 1.35962) + " PS)" : "";
+}
+
+function preisFormat(ad) {
+  const p = ad.price || {};
+  const betrag =
+    p.consumerPriceGross || p.grossAmount || p.amount || (typeof p === "string" ? p : null);
+  if (!betrag) return "Preis auf Anfrage";
+  const zahl = parseFloat(String(betrag).replace(",", "."));
+  if (isNaN(zahl)) return String(betrag);
+  return zahl.toLocaleString("de-DE", { maximumFractionDigits: 0 }) + " €";
+}
+
+function bilderVonAd(ad) {
+  const urls = [];
+  const imgs = (ad.images && (ad.images.image || ad.images)) || [];
+  const liste = Array.isArray(imgs) ? imgs : [imgs];
+  for (const img of liste) {
+    if (!img) continue;
+    if (typeof img === "string") { urls.push(img); continue; }
+    const reps = img.representation || img.representations || [];
+    const repListe = Array.isArray(reps) ? reps : [reps];
+    let beste = null;
+    for (const rep of repListe) {
+      const url = rep["@url"] || rep.url;
+      const size = rep["@size"] || rep.size || "";
+      if (!url) continue;
+      if (!beste || size === "XXL" || (size === "XL" && beste.size !== "XXL")) {
+        beste = { url, size };
+      }
+    }
+    if (beste) urls.push(beste.url.startsWith("http") ? beste.url : "https:" + beste.url);
+    else if (img.ref) urls.push(img.ref);
+  }
+  return urls;
+}
+
+function mapAd(ad) {
+  try {
+    const id = String(ad.mobileAdId || ad["@key"] || ad.id || "");
+    const marke = ad.make || "";
+    const modell = ad.model || "";
+    const beschreibung = ad.modelDescription || "";
+    const titel = (modell || beschreibung || "Fahrzeug").trim();
+    const bilder = bilderVonAd(ad);
+
+    const fakten = [];
+    const push = (label, wert) => { if (wert) fakten.push([label, wert]); };
+    push("Erstzulassung", erstzulassung(ad.firstRegistration));
+    push("Kilometerstand", kmFormat(ad.mileage));
+    push("Leistung", leistungFormat(ad.power));
+    push("Getriebe", GETRIEBE[ad.gearbox] || ad.gearbox);
+    push("Kraftstoffart", KRAFTSTOFF[ad.fuel] || ad.fuel);
+    push("Schadstoffklasse", (ad.emissionClass || "").replace("EURO", "Euro "));
+    push("Farbe (Hersteller)", ad.manufacturerColorName);
+    push("Farbe", ad.exteriorColor);
+    push("Innenausstattung", ad.interiorType);
+    push("Anzahl der Fahrzeughalter", ad.numberOfPreviousOwners);
+    push("Anzahl Sitzplätze", ad.seats);
+    push("Türen", ad.doorCount);
+
+    const alleDaten = fakten.slice();
+    const pushAll = (label, wert) => { if (wert) alleDaten.push([label, wert]); };
+    pushAll("Hubraum", ad.cubicCapacity ? Number(ad.cubicCapacity).toLocaleString("de-DE") + " cm³" : "");
+    pushAll("Klimatisierung", ad.climatisation);
+    pushAll("Einparkhilfe", Array.isArray(ad.parkAssists) ? ad.parkAssists.join(", ") : ad.parkAssists);
+    pushAll("Kategorie", ad.category);
+
+    return {
+      id: id || (marke + "-" + titel).toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      marke,
+      titel,
+      untertitel: beschreibung !== titel ? beschreibung : "",
+      preis: preisFormat(ad),
+      preisHinweis: "(Brutto)",
+      bilder,
+      topFakten: fakten.slice(0, 12),
+      alleDaten,
+    };
+  } catch (e) {
+    return null;
+  }
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    if (url.pathname === "/api/fahrzeuge") {
+      if (request.method !== "GET") {
+        return json({ error: "Methode nicht erlaubt" }, 405);
+      }
+      if (!env.MOBILEDE_USER || !env.MOBILEDE_PASSWORD) {
+        return json({ error: "mobile.de-Zugang nicht konfiguriert" }, 503);
+      }
+      try {
+        const apiUrl =
+          "https://services.mobile.de/search-api/search?customerNumber=" +
+          MOBILE_KUNDENNUMMER + "&page.size=100";
+        const resp = await fetch(apiUrl, {
+          headers: {
+            Authorization: "Basic " + btoa(env.MOBILEDE_USER + ":" + env.MOBILEDE_PASSWORD),
+            Accept: "application/vnd.de.mobile.api+json",
+          },
+          cf: { cacheTtl: 600, cacheEverything: true },
+        });
+        if (!resp.ok) {
+          return json({ error: "mobile.de antwortet nicht (" + resp.status + ")" }, 502);
+        }
+        const daten = await resp.json();
+        const ads =
+          (daten.searchResult && daten.searchResult.ads && daten.searchResult.ads.ad) ||
+          (daten.searchResult && daten.searchResult.ads) ||
+          daten.ads ||
+          [];
+        const adListe = Array.isArray(ads) ? ads : [ads];
+        const fahrzeuge = adListe.map(mapAd).filter(Boolean);
+        return new Response(JSON.stringify(fahrzeuge), {
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "Cache-Control": "public, max-age=300",
+          },
+        });
+      } catch (e) {
+        return json({ error: "Abruf fehlgeschlagen" }, 502);
+      }
+    }
 
     if (url.pathname === "/api/anfrage") {
       if (request.method !== "POST") {

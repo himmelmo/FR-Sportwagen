@@ -210,7 +210,10 @@
       display: flex; align-items: center; justify-content: center;
       color: #c0c0c0;
       font-size: 2rem;
+      overflow: hidden;
     }
+    .car-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    a.car-tile { display: block; text-decoration: none; color: inherit; }
     .car-info { padding: 1.1rem 1.3rem; }
     .car-info h3 { font-size: 1rem; font-weight: 600; }
     .car-info p { color: var(--gray-text); font-size: 0.88rem; margin-top: 0.2rem; }
@@ -372,30 +375,49 @@
 
   <section id="fahrzeuge" class="reveal">
     <p class="section-label"><span>3</span>Fahrzeuge <a class="more" href="#fahrzeuge">Mehr anzeigen</a></p>
-    <div class="cars-grid">
-      <div class="car-tile">
-        <div class="car-photo"><svg class="ico" viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"/></svg></div>
-        <div class="car-info">
-          <h3>Demnächst verfügbar</h3>
-          <p>Details auf Anfrage</p>
-        </div>
-      </div>
-      <div class="car-tile">
-        <div class="car-photo"><svg class="ico" viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"/></svg></div>
-        <div class="car-info">
-          <h3>Demnächst verfügbar</h3>
-          <p>Details auf Anfrage</p>
-        </div>
-      </div>
-      <div class="car-tile">
-        <div class="car-photo"><svg class="ico" viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"/></svg></div>
-        <div class="car-info">
-          <h3>Demnächst verfügbar</h3>
-          <p>Details auf Anfrage</p>
-        </div>
-      </div>
-    </div>
+    <div class="cars-grid" id="cars-grid"></div>
   </section>
+  <script src="assets/fahrzeuge.js"></script>
+  <script>
+    (function () {
+      var platzhalterSvg = '<svg class="ico" viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"/></svg>';
+
+      function zeigeFahrzeuge(liste) {
+        var grid = document.getElementById('cars-grid');
+        grid.innerHTML = '';
+        (liste || []).forEach(function (fz) {
+          var a = document.createElement('a');
+          a.className = 'car-tile';
+          a.href = 'fahrzeug.html?id=' + encodeURIComponent(fz.id);
+          a.innerHTML =
+            '<div class="car-photo"><img src="' + fz.bilder[0] + '" alt="' + fz.marke + ' ' + fz.titel + '"></div>' +
+            '<div class="car-info"><h3>' + fz.marke + ' ' + fz.titel + '</h3><p>' + fz.preis + '</p></div>';
+          grid.appendChild(a);
+        });
+        while (grid.children.length < 3) {
+          var d = document.createElement('div');
+          d.className = 'car-tile';
+          d.innerHTML =
+            '<div class="car-photo">' + platzhalterSvg + '</div>' +
+            '<div class="car-info"><h3>Demnächst verfügbar</h3><p>Details auf Anfrage</p></div>';
+          grid.appendChild(d);
+        }
+      }
+
+      /* Erst Demo-Daten, dann (falls verfügbar) echte Inserate aus der mobile.de-Schnittstelle */
+      zeigeFahrzeuge(window.FR_FAHRZEUGE);
+
+      fetch('/api/fahrzeuge')
+        .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+        .then(function (liste) {
+          if (liste && liste.length) {
+            zeigeFahrzeuge(liste);
+            if (window.FR_I18N_REFRESH) window.FR_I18N_REFRESH();
+          }
+        })
+        .catch(function () {});
+    })();
+  </script>
 
   <section class="references reveal" id="referenzen">
     <p class="section-label"><span>4</span>Referenzen <a class="more" href="referenzen.html">Mehr anzeigen</a></p>

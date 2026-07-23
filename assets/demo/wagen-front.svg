@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101010"/>
+      <stop offset="0.55" stop-color="#1d1d1d"/>
+      <stop offset="1" stop-color="#0d0d0d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <g fill="none" stroke="#5f5f5f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M330 640 Q340 560 420 530 Q520 430 700 415 Q900 400 1080 430 Q1220 450 1270 540 Q1290 590 1285 640"/>
+    <path d="M330 640 L1285 640"/>
+    <path d="M420 530 Q700 495 1150 520"/>
+    <path d="M470 585 Q520 565 590 570 Q640 575 650 600"/>
+    <path d="M1140 585 Q1090 565 1020 570 Q970 575 960 600"/>
+    <path d="M700 640 Q710 615 745 612 L865 612 Q900 615 910 640"/>
+  </g>
+  <g fill="none" stroke="#3a3a3a" stroke-width="5">
+    <circle cx="470" cy="700" r="60"/>
+    <circle cx="1145" cy="700" r="60"/>
+    <path d="M180 760 L1420 760"/>
+  </g>
+  <text x="800" y="880" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30" letter-spacing="8" fill="#4a4a4a">FR SPORTWAGEN · BEISPIELBILD</text>
+</svg>
