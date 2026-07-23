@@ -246,6 +246,14 @@ export default {
           "User-Agent": "FR-Sportwagen-Website/1.0 (frsportwagen.de)",
         };
         if (url.searchParams.get("debug") === "6") {
+          const adId = url.searchParams.get("ad");
+          if (adId) {
+            const resp = await fetch("https://services.mobile.de/search-api/ad/" + adId, { headers });
+            const body = await resp.text();
+            let bildAnzahl = null;
+            try { bildAnzahl = (JSON.parse(body).images || []).length; } catch (e) {}
+            return json({ status: resp.status, bildAnzahl, bodyAnfang: body.slice(0, 300) });
+          }
           const resp = await fetch(kandidaten[0], { headers });
           if (!resp.ok) return json({ status: resp.status });
           const daten = await resp.json();
