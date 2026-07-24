@@ -385,6 +385,43 @@
       en: 'Sports seats with red belts as a subtle colour accent.',
       fr: 'Sièges sport avec ceintures rouges comme touche de couleur discrète.',
       it: 'Sedili sportivi con cinture rosse come tocco di colore discreto.'
+    },
+
+    /* Targa-Seite */
+    'Schwarz auf schwarz, Fuchs-Felgen und der offene Targa-Bügel. Ein Klassiker, wie er im Buche steht. Verkauft an seinen neuen Besitzer.': {
+      en: 'Black on black, Fuchs wheels and the open Targa bar. A textbook classic. Sold to its new owner.',
+      fr: 'Noir sur noir, jantes Fuchs et arceau Targa ouvert. Un classique par excellence. Vendue à son nouveau propriétaire.',
+      it: 'Nero su nero, cerchi Fuchs e la barra Targa aperta. Un classico da manuale. Venduta al suo nuovo proprietario.'
+    },
+    'Im Studio zeigt der G-Targa seine zeitlose Silhouette.': {
+      en:'In the studio, the G-series Targa shows its timeless silhouette.',
+      fr: 'En studio, la Targa série G révèle sa silhouette intemporelle.',
+      it: 'In studio la Targa serie G mostra la sua silhouette senza tempo.'
+    },
+    'Mit abgenommenem Dach wird der Elfer zum offenen Klassiker.': {
+      en: 'With the roof removed, the 911 becomes an open-top classic.',
+      fr: 'Toit retiré, la 911 devient un classique à ciel ouvert.',
+      it: 'Con il tetto rimosso la 911 diventa una classica a cielo aperto.'
+    },
+    'Der Targa-Schriftzug am Überrollbügel, ein Stück Porsche-Geschichte.': {
+      en: 'The Targa lettering on the roll bar, a piece of Porsche history.',
+      fr: "Le lettrage Targa sur l'arceau, un morceau d'histoire Porsche.",
+      it: 'La scritta Targa sul roll bar, un pezzo di storia Porsche.'
+    },
+    'Die klassischen Fuchs-Felgen, schwarz mit poliertem Rand.': {
+      en: 'The classic Fuchs wheels, black with a polished rim.',
+      fr: 'Les jantes Fuchs classiques, noires à bord poli.',
+      it: 'I classici cerchi Fuchs, neri con bordo lucidato.'
+    },
+    'Die Heckpartie mit Carrera-Schriftzug und H-Kennzeichen.': {
+      en: 'The rear end with Carrera lettering and historic registration.',
+      fr: "L'arrière avec le lettrage Carrera et l'immatriculation de collection.",
+      it: 'La coda con la scritta Carrera e la targa storica.'
+    },
+    'Sitze in dunklem Bordeauxrot, eine edle Kombination zum schwarzen Lack.': {
+      en: 'Seats in dark burgundy, an elegant match for the black paint.',
+      fr: 'Sièges bordeaux foncé, une combinaison élégante avec la carrosserie noire.',
+      it: 'Sedili bordeaux scuro, un abbinamento elegante con la vernice nera.'
     }
   };
 
