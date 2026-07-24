@@ -33,20 +33,20 @@
       fr: "Derrière chaque voiture d'exception se cache une histoire – voici la mienne :",
       it: "Dietro ogni auto esclusiva c'è una storia – ecco la mia:"
     },
-    'Mein Name ist Fabian Rupp, Gründer und Herz dieses Unternehmens. Mit 30 Jahren blicke ich bereits auf eine Dekade operativer Erfahrung im Porsche Zentrum zurück.': {
-      en: 'My name is Fabian Rupp, founder and heart of this company. At 30, I can already look back on a decade of hands-on experience at a Porsche Centre.',
-      fr: "Je m'appelle Fabian Rupp, fondateur et âme de cette entreprise. À 30 ans, je compte déjà dix années d'expérience opérationnelle en Centre Porsche.",
-      it: 'Mi chiamo Fabian Rupp, fondatore e anima di questa azienda. A 30 anni ho già alle spalle dieci anni di esperienza operativa presso un Centro Porsche.'
+    'Mein Name ist Fabian Rupp, Gründer und Herz dieses Unternehmens. Mit 30 Jahren blicke ich bereits auf eine Dekade operativer Erfahrung im exklusiven Sportwagen-Segment zurück.': {
+      en: 'My name is Fabian Rupp, founder and heart of this company. At 30, I can already look back on a decade of hands-on experience in the exclusive sports car segment.',
+      fr: "Je m'appelle Fabian Rupp, fondateur et âme de cette entreprise. À 30 ans, je compte déjà dix années d'expérience opérationnelle dans le segment des voitures de sport d'exception.",
+      it: 'Mi chiamo Fabian Rupp, fondatore e anima di questa azienda. A 30 anni ho già alle spalle dieci anni di esperienza operativa nel segmento delle auto sportive esclusive.'
     },
-    'Ich freue mich, Ihnen als zertifizierter Porsche Verkaufsberater, Porsche Gebrauchtwagenmanager & Porsche Finanzberater beim Erwerb Ihres Traumautos zur Seite zu stehen.': {
-      en: 'As a certified Porsche sales consultant, Porsche pre-owned car manager and Porsche financial advisor, I look forward to assisting you with the purchase of your dream car.',
-      fr: "En tant que conseiller commercial Porsche certifié, responsable véhicules d'occasion Porsche et conseiller financier Porsche, je serai heureux de vous accompagner dans l'acquisition de la voiture de vos rêves.",
-      it: "Come consulente vendite Porsche certificato, responsabile usato Porsche e consulente finanziario Porsche, sarò lieto di assistervi nell'acquisto dell'auto dei vostri sogni."
+    'Als ehemaliger Verkaufsberater, Finanzberater und Gebrauchtwagenmanager im Porsche Zentrum kenne ich die hohen Qualitätsstandards und die Faszination dieser Fahrzeuge bis ins kleinste Detail. Ich freue mich darauf, Sie mit diesem Fachwissen beim Erwerb Ihres Traumautos persönlich zu begleiten.': {
+      en: 'As a former sales consultant, financial advisor and pre-owned car manager at a Porsche Centre, I know the high quality standards and the fascination of these cars down to the smallest detail. I look forward to personally guiding you through the purchase of your dream car with this expertise.',
+      fr: "Ancien conseiller commercial, conseiller financier et responsable véhicules d'occasion en Centre Porsche, je connais les standards de qualité élevés et la fascination de ces voitures dans les moindres détails. Je me réjouis de vous accompagner personnellement, avec ce savoir-faire, dans l'acquisition de la voiture de vos rêves.",
+      it: "Da ex consulente vendite, consulente finanziario e responsabile usato presso un Centro Porsche, conosco gli elevati standard di qualità e il fascino di queste vetture fin nei minimi dettagli. Sarò lieto di accompagnarvi personalmente, con questa competenza, nell'acquisto dell'auto dei vostri sogni."
     },
-    'Ich biete Ihnen das Know-how eines Premium-Autohauses, kombiniert mit der Agilität und Diskretion eines persönlichen Partners.': {
-      en: 'I offer you the expertise of a premium dealership combined with the agility and discretion of a personal partner.',
-      fr: "Je vous offre le savoir-faire d'une concession premium, allié à l'agilité et à la discrétion d'un partenaire personnel.",
-      it: "Vi offro il know-how di una concessionaria premium, unito all'agilità e alla discrezione di un partner personale."
+    'Ich biete Ihnen das Know-how eines Premium-Autohauses, kombiniert mit der Agilität, Diskretion und Flexibilität eines persönlichen Partners.': {
+      en: 'I offer you the expertise of a premium dealership combined with the agility, discretion and flexibility of a personal partner.',
+      fr: "Je vous offre le savoir-faire d'une concession premium, allié à l'agilité, à la discrétion et à la flexibilité d'un partenaire personnel.",
+      it: 'Vi offro il know-how di una concessionaria premium, unito ad agilità, discrezione e flessibilità di un partner personale.'
     },
 
     /* Startseite – Leistungen */
