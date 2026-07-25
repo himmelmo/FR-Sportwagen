@@ -223,9 +223,22 @@
     </div>
     <div class="footer-bar">
       <span>&copy; 2026 FR Sportwagen &middot; Fabian Rupp</span>
-      <span><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></span>
+      <span><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a> &middot; Design: <a class="design-link" href="https://mhhtechsolutions.de" target="_blank" rel="noopener noreferrer">MHH Tech Solutions</a></span>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem('fr-lang');
+        if (lang && lang !== 'de') {
+          document.querySelectorAll('.design-link').forEach(function (a) {
+            a.href = 'https://mhhtechsolutions.com';
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
 
 </body>
 </html>
