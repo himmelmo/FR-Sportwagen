@@ -198,7 +198,7 @@
     }
     .datasheet {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0 3.5rem;
       max-width: 920px;
       margin: 0 auto;
@@ -217,8 +217,8 @@
       font-size: 0.92rem;
     }
     .datarow:last-child { border-bottom: none; }
-    .datarow .label { color: var(--gray-text); }
-    .datarow .value { text-align: right; font-weight: 500; }
+    .datarow .label { color: var(--gray-text); flex-shrink: 0; }
+    .datarow .value { text-align: right; font-weight: 500; min-width: 0; overflow-wrap: anywhere; }
     .demo-note {
       margin-top: 2.5rem;
       font-size: 0.82rem;
@@ -357,7 +357,9 @@
       .station:first-child { padding-top: 3rem; }
       .facts { grid-template-columns: 1fr 1fr; }
       .gallery .main { grid-row: span 3; min-height: 220px; }
-      .datasheet { grid-template-columns: 1fr; padding: 1.4rem 1.6rem; }
+      .datasheet { grid-template-columns: minmax(0, 1fr); padding: 1.4rem 1.6rem; }
+      .datarow { flex-direction: column; align-items: flex-start; gap: 0.1rem; }
+      .datarow .value { text-align: left; }
       .overview { padding: 4rem 6vw; }
       .cta-banner { padding: 4rem 6vw; }
     }
