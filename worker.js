@@ -88,8 +88,8 @@ p{color:#c9c9c9;margin-top:1rem}
 <h1>Die Website ist gerade im Umbau.</h1>
 <p>In Kürze finden Sie hier wieder auserwählte und exklusive Sportwagen. Bis dahin erreichen Sie mich jederzeit persönlich.</p>
 <p class="kontakt">
-<a href="tel:+4915115491199">+49&nbsp;151&nbsp;15491199</a><br>
-<a href="tel:+4964329240761">+49&nbsp;6432&nbsp;9240761</a><br>
+Mobil <a href="tel:+4915115491199">+49&nbsp;151&nbsp;15491199</a><br>
+Festnetz <a href="tel:+4964329240761">+49&nbsp;6432&nbsp;9240761</a><br>
 <a href="mailto:kontakt@frsportwagen.de">kontakt@frsportwagen.de</a>
 </p>
 </div>

@@ -108,6 +108,8 @@
 
     /* Kontakt & Footer */
     'Telefon': { en: 'Phone', fr: 'Téléphone', it: 'Telefono' },
+    'Mobil': { en: 'Mobile', fr: 'Portable', it: 'Cellulare' },
+    'Festnetz': { en: 'Landline', fr: 'Fixe', it: 'Fisso' },
     'E-Mail': { en: 'Email', fr: 'E-mail', it: 'E-mail' },
     'Standort': { en: 'Location', fr: 'Adresse', it: 'Sede' },
     'Wir sprechen': { en: 'We speak', fr: 'Nous parlons', it: 'Parliamo' },
