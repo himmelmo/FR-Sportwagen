@@ -1,7 +1,15 @@
 node_modules
 .git
+.gitignore
 worker.js
 package.json
 package-lock.json
 wrangler.jsonc
 .assetsignore
+
+# Nichts davon gehoert auf die oeffentliche Website
+FR-Sportwagen-Zugang.pdf
+REFERENZ-ANLEITUNG.md
+Logos und co
+Porsche-Skizzen
+Fotos verkaufte
