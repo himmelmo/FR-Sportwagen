@@ -131,9 +131,7 @@
     }
     .footer-bar a { color: #7a7a7a; text-decoration: none; }
     .footer-bar a:hover { color: var(--white); }
-    .design-credit { margin-top: 0.8rem; font-size: 0.78rem; color: #6a6a6a; }
-    .design-credit a { color: #8a8a8a; text-decoration: none; }
-    .design-credit a:hover { color: var(--white); }
+    .footer-phones { white-space: nowrap; }
 
     @media (max-width: 640px) {
       nav a:not(.cta) { display: none; }
@@ -149,7 +147,7 @@
     <nav>
       <a href="index.html#ueber-mich">Über mich</a>
       <a href="index.html#leistungen">Leistungen</a>
-      <a href="index.html#fahrzeuge">Fahrzeuge</a>
+      <a href="fahrzeuge.html">Fahrzeuge</a>
       <a href="referenzen.html">Referenzen</a>
       <a href="verkauf.html">Ankauf</a>
       <a class="cta" href="index.html#kontakt">Kontakt</a>
@@ -173,6 +171,7 @@
     <h2>Kontakt</h2>
     <p>
       Telefon: <a href="tel:+4915115491199">+49&nbsp;151&nbsp;15491199</a><br>
+      Festnetz: <a href="tel:+4964329240761">+49&nbsp;6432&nbsp;9240761</a><br>
       E-Mail: <a href="mailto:kontakt@frsportwagen.de">kontakt@frsportwagen.de</a>
     </p>
 
@@ -226,23 +225,11 @@
     </div>
     <div class="footer-bar">
       <span>&copy; 2026 FR Sportwagen &middot; Fabian Rupp</span>
+      <span class="footer-phones"><a href="tel:+4915115491199">+49&nbsp;151&nbsp;15491199</a> &middot; <a href="tel:+4964329240761">+49&nbsp;6432&nbsp;9240761</a></span>
       <span><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></span>
     </div>
-    <p class="design-credit">Design &amp; Umsetzung: <a class="design-link" href="https://mhhtechsolutions.de" target="_blank" rel="noopener noreferrer">MHH Tech Solutions</a></p>
   </footer>
 
-  <script>
-    (function () {
-      try {
-        var lang = localStorage.getItem('fr-lang');
-        if (lang && lang !== 'de') {
-          document.querySelectorAll('.design-link').forEach(function (a) {
-            a.href = 'https://mhhtechsolutions.com';
-          });
-        }
-      } catch (e) {}
-    })();
-  </script>
 
 </body>
 </html>

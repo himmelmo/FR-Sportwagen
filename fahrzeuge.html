@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FR Sportwagen – aktuell verfügbare Fahrzeuge: exklusive Sportwagen zum Verkauf.">
+  <title>Fahrzeuge – FR Sportwagen</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="canonical" href="https://frsportwagen.de/fahrzeuge.html">
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --gray-line: #c4c4c4;
+      --gray-text: #767676;
+      --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .ico {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: middle;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: #1a1a1a;
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 6vw;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .brand { display: block; text-decoration: none; }
+    nav { display: flex; align-items: center; gap: 2rem; }
+    nav a {
+      color: #b5b5b5;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--white); }
+    nav a.cta {
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav a.cta:hover { background: var(--white); color: var(--black); }
+
+    /* Seitenkopf */
+    .page-hero {
+      position: relative;
+      height: 62vh;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      background: linear-gradient(160deg, #0a0a0a 0%, #1c1c1c 55%, #0a0a0a 100%);
+      color: var(--white);
+      overflow: hidden;
+    }
+    .page-hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.3) 100%);
+      z-index: 1;
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 6vw 3.5rem;
+      opacity: 0;
+      transform: translateY(28px);
+      animation: hero-in 0.9s ease 0.15s forwards;
+    }
+    @keyframes hero-in {
+      to { opacity: 1; transform: none; }
+    }
+    .page-hero-content h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .page-hero-content p {
+      color: #c9c9c9;
+      margin-top: 0.75rem;
+      max-width: 560px;
+    }
+
+    /* Abschnitte */
+    section { padding: 5rem 6vw; }
+    .section-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--gray-text);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Fahrzeuge */
+    .cars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .car-tile {
+      border: 1px solid var(--gray-line);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 6px 16px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .car-tile:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 16px 36px rgba(0,0,0,0.1); }
+    .car-photo {
+      height: 255px;
+      background: #f2f2f2;
+      display: flex; align-items: center; justify-content: center;
+      color: #c0c0c0;
+      font-size: 2rem;
+      overflow: hidden;
+    }
+    .car-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    a.car-tile { display: block; text-decoration: none; color: inherit; }
+    .car-info { padding: 1.1rem 1.3rem; }
+    .car-info h3 { font-size: 1rem; font-weight: 600; }
+    .car-info p { color: var(--gray-text); font-size: 0.88rem; margin-top: 0.2rem; }
+
+    /* Hinweis auf die Suche */
+    .search-hint {
+      border-top: 1px solid var(--gray-line);
+      text-align: center;
+    }
+    .search-hint h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.8rem; }
+    .search-hint p { color: var(--gray-text); max-width: 620px; margin: 0 auto 2rem; }
+    .btn {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.85rem 2.2rem;
+      border-radius: 4px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+
+    /* Footer */
+    .site-footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 3rem 6vw 2rem;
+    }
+    .footer-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-contact a {
+      color: #d8d8d8;
+      text-decoration: none;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: color 0.2s;
+    }
+    .footer-contact a:hover { color: var(--white); }
+    .footer-bar {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: #7a7a7a;
+    }
+    .footer-bar a { color: #7a7a7a; text-decoration: none; }
+    .footer-bar a:hover { color: var(--white); }
+    .footer-phones { white-space: nowrap; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    @media (max-width: 640px) {
+      nav a:not(.cta) { display: none; }
+      section { padding: 4rem 6vw; }
+      .cars-grid { grid-template-columns: 1fr; }
+      .car-photo { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="brand" href="index.html" aria-label="FR Sportwagen – Startseite">
+      <svg viewBox="130 390 825 300" width="78" role="img" aria-hidden="true" style="display:block; fill:#ffffff;"><path d="M899.35,401.75h-266.23l-.12.21h-334.1l-159.52,276.3h107.72l42.85-74.21h192.86l46.65-80.79h-192.86l19.47-33.72h226.38l-108.84,188.52h107.72l38.93-67.43h96.21l13.08,67.43h114.71l-15.49-77.5c22.96-8.43,44.91-21.17,65.42-37.83,20.83-16.86,37.3-35.77,49.29-56.53,33.82-57.15,13.16-105.05-44.14-104.43ZM835.56,506.19c-3.68,6.37-9.15,11.92-16.6,16.65-7.13,4.52-13.99,6.78-20.57,6.78h-131.37l27.18-47.08h131.37c13.16,0,17.59,10.48,9.99,23.64Z"/></svg>
+    </a>
+    <nav>
+      <a href="index.html#ueber-mich">Über mich</a>
+      <a href="index.html#leistungen">Leistungen</a>
+      <a href="fahrzeuge.html" class="active">Fahrzeuge</a>
+      <a href="referenzen.html">Referenzen</a>
+      <a href="verkauf.html">Ankauf</a>
+      <a class="cta" href="index.html#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <video autoplay muted loop playsinline poster="">
+      <source src="assets/hero-sportwagen-garage.mp4" type="video/mp4">
+    </video>
+    <div class="page-hero-content">
+      <h1>Fahrzeuge</h1>
+      <p>Aktuell verfügbare Fahrzeuge aus meinem Bestand. Alle Details, Fotos und das vollständige Datenblatt finden Sie auf der jeweiligen Fahrzeugseite.</p>
+    </div>
+  </section>
+
+  <section id="fahrzeuge" class="reveal">
+    <p class="section-label">Aktuell verfügbar</p>
+    <div class="cars-grid" id="cars-grid"></div>
+  </section>
+
+  <section class="search-hint reveal">
+    <h2>Nicht das Richtige dabei?</h2>
+    <p>Wenn Ihr Traumwagen nicht auf dem Hof steht, finde ich ihn über mein internationales Netzwerk.</p>
+    <a class="btn" href="suche.html">Fahrzeug suchen lassen</a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-contact">
+      <a href="tel:+4915115491199"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></svg> Telefon</a>
+      <a href="mailto:kontakt@frsportwagen.de"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"/><path d="M3 7l9 6l9 -6"/></svg> E-Mail</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Schl%C3%A4ferweg+23a%2C+65582+Diez" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"/></svg> Schläferweg 23a, 65582 Diez</a>
+    </div>
+    <div class="footer-bar">
+      <span>&copy; 2026 FR Sportwagen &middot; Fabian Rupp</span>
+      <span class="footer-phones"><a href="tel:+4915115491199">+49&nbsp;151&nbsp;15491199</a> &middot; <a href="tel:+4964329240761">+49&nbsp;6432&nbsp;9240761</a></span>
+      <span><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </footer>
+
+  <script src="assets/fahrzeuge.js"></script>
+  <script>
+    (function () {
+      var platzhalterSvg = '<svg class="ico" viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"/></svg>';
+
+      function zeigeFahrzeuge(liste) {
+        var grid = document.getElementById('cars-grid');
+        grid.innerHTML = '';
+        (liste || []).forEach(function (fz) {
+          var a = document.createElement('a');
+          a.className = 'car-tile';
+          a.href = 'fahrzeug.html?id=' + encodeURIComponent(fz.id);
+          a.innerHTML =
+            '<div class="car-photo"><img src="' + fz.bilder[0] + '" alt="' + fz.marke + ' ' + fz.titel + '"></div>' +
+            '<div class="car-info"><h3>' + fz.marke + ' ' + fz.titel + '</h3><p>' + fz.preis +
+            (fz.preisHinweis ? ' <small>' + fz.preisHinweis + '</small>' : '') + '</p></div>';
+          grid.appendChild(a);
+        });
+        while (grid.children.length < 3) {
+          var d = document.createElement('div');
+          d.className = 'car-tile';
+          d.innerHTML =
+            '<div class="car-photo">' + platzhalterSvg + '</div>' +
+            '<div class="car-info"><h3>Demnächst verfügbar</h3><p>Details auf Anfrage</p></div>';
+          grid.appendChild(d);
+        }
+      }
+
+      /* Erst Demo-Daten, dann (falls verfügbar) echte Inserate aus der mobile.de-Schnittstelle */
+      zeigeFahrzeuge(window.FR_FAHRZEUGE);
+
+      fetch('/api/fahrzeuge')
+        .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+        .then(function (liste) {
+          if (liste && liste.length) {
+            zeigeFahrzeuge(liste);
+            if (window.FR_I18N_REFRESH) window.FR_I18N_REFRESH();
+          }
+        })
+        .catch(function () {});
+    })();
+  </script>
+
+  <script src="assets/i18n.js?v=2"></script>
+  <script>
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+  </script>
+</body>
+</html>

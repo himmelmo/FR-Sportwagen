@@ -20,6 +20,7 @@
       fr: 'Des voitures de sport sélectionnées et exclusives.',
       it: 'Auto sportive selezionate ed esclusive.'
     },
+    'Referenzen ansehen': { en: 'View references', fr: 'Voir les références', it: 'Vedi le referenze' },
     'Fahrzeuge ansehen': { en: 'View vehicles', fr: 'Voir les véhicules', it: 'Vedi i veicoli' },
 
     /* Startseite – Über mich */
@@ -74,6 +75,36 @@
     'Details auf Anfrage': { en: 'Details on request', fr: 'Détails sur demande', it: 'Dettagli su richiesta' },
     'Verkauft': { en: 'Sold', fr: 'Vendue', it: 'Venduta' },
     'Fahrzeug': { en: 'Vehicle', fr: 'Véhicule', it: 'Veicolo' },
+
+    /* Fahrzeuge-Seite */
+    'Aktuell verfügbare Fahrzeuge aus meinem Bestand. Alle Details, Fotos und das vollständige Datenblatt finden Sie auf der jeweiligen Fahrzeugseite.': {
+      en: 'Vehicles currently available from my stock. All details, photos and the full data sheet can be found on the respective vehicle page.',
+      fr: 'Véhicules actuellement disponibles dans mon stock. Tous les détails, photos et la fiche technique complète figurent sur la page du véhicule concerné.',
+      it: 'Veicoli attualmente disponibili nel mio parco. Tutti i dettagli, le foto e la scheda tecnica completa si trovano nella pagina del rispettivo veicolo.'
+    },
+    'Aktuell verfügbar': { en: 'Currently available', fr: 'Actuellement disponibles', it: 'Attualmente disponibili' },
+    'Nicht das Richtige dabei?': {
+      en: 'Not what you were looking for?',
+      fr: "Vous n'avez pas trouvé votre bonheur ?",
+      it: 'Non avete trovato quello che cercavate?'
+    },
+    'Fahrzeug suchen lassen': { en: 'Have a vehicle sourced', fr: 'Faire rechercher un véhicule', it: 'Fate cercare un veicolo' },
+
+    /* Fehlerseite 404 */
+    'Fehler 404': { en: 'Error 404', fr: 'Erreur 404', it: 'Errore 404' },
+    'Die aufgerufene Seite hat kein Ergebnis erzielt.': {
+      en: 'The page you requested returned no result.',
+      fr: "La page demandée n'a donné aucun résultat.",
+      it: 'La pagina richiesta non ha prodotto alcun risultato.'
+    },
+    'Die Adresse existiert nicht oder wurde verschoben. Ich leite Sie zur Startseite weiter.': {
+      en: 'The address does not exist or has been moved. You are being redirected to the home page.',
+      fr: "L'adresse n'existe pas ou a été déplacée. Vous allez être redirigé vers la page d'accueil.",
+      it: "L'indirizzo non esiste o è stato spostato. Vi sto reindirizzando alla home page."
+    },
+    'Weiterleitung in': { en: 'Redirecting in', fr: 'Redirection dans', it: 'Reindirizzamento tra' },
+    'Sekunden': { en: 'seconds', fr: 'secondes', it: 'secondi' },
+    'Zur Startseite': { en: 'To the home page', fr: "Vers la page d'accueil", it: 'Alla home page' },
 
     /* Kontakt & Footer */
     'Telefon': { en: 'Phone', fr: 'Téléphone', it: 'Telefono' },
@@ -481,11 +512,6 @@
     var items = document.querySelectorAll('.lang-menu button');
     for (var i = 0; i < items.length; i++) {
       items[i].style.display = items[i].getAttribute('data-lang') === lang ? 'none' : 'block';
-    }
-    /* Designer-Link: deutsche Sprache -> .de, alle anderen -> .com */
-    var designLinks = document.querySelectorAll('.design-link');
-    for (var d = 0; d < designLinks.length; d++) {
-      designLinks[d].href = lang === 'de' ? 'https://mhhtechsolutions.de' : 'https://mhhtechsolutions.com';
     }
   }
 
