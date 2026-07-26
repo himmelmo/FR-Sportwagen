@@ -308,6 +308,7 @@
     },
     'Kunde': { en: 'Customer', fr: 'Client', it: 'Cliente' },
     'Fahrzeug gekauft': { en: 'Vehicle purchased', fr: 'Véhicule acheté', it: 'Veicolo acquistato' },
+    'Design & Umsetzung:': { en: 'Design and development:', fr: 'Conception et réalisation :', it: 'Design e realizzazione:' },
     '8 Bewertungen auf mobile.de': { en: '8 reviews on mobile.de', fr: '8 avis sur mobile.de', it: '8 recensioni su mobile.de' },
 
     /* Gallardo-Seite */
@@ -480,6 +481,11 @@
     var items = document.querySelectorAll('.lang-menu button');
     for (var i = 0; i < items.length; i++) {
       items[i].style.display = items[i].getAttribute('data-lang') === lang ? 'none' : 'block';
+    }
+    /* Designer-Link: deutsche Sprache -> .de, alle anderen -> .com */
+    var designLinks = document.querySelectorAll('.design-link');
+    for (var d = 0; d < designLinks.length; d++) {
+      designLinks[d].href = lang === 'de' ? 'https://mhhtechsolutions.de' : 'https://mhhtechsolutions.com';
     }
   }
 
