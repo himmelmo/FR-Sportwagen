@@ -17,6 +17,94 @@ function toBase64(buffer) {
   return btoa(binary);
 }
 
+/* ---------------------------------------------------------------------------
+   Wartungsmodus
+
+   Ist WARTUNG in wrangler.jsonc auf "an" gesetzt, sehen Besucher nur eine
+   Hinweisseite. Freigeschaltet wird das eigene Geraet einmalig ueber
+   https://frsportwagen.de/freischalten?key=DEIN_SCHLUESSEL
+   Danach liegt ein Cookie fuer ein Jahr auf dem Geraet, unabhaengig von der IP.
+
+   Im Code steht nur der doppelte SHA-256-Hash des Schluessels. Aus ihm laesst
+   sich weder der Schluessel noch der Cookie-Wert zurueckrechnen, das Repo darf
+   also oeffentlich bleiben.
+--------------------------------------------------------------------------- */
+const ZUGANG_COOKIE = "fr_zugang";
+
+async function sha256Hex(text) {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+function gleich(a, b) {
+  if (typeof a !== "string" || typeof b !== "string" || a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+
+function cookieLesen(request, name) {
+  const kopf = request.headers.get("Cookie") || "";
+  for (const teil of kopf.split(";")) {
+    const [k, ...rest] = teil.trim().split("=");
+    if (k === name) return rest.join("=");
+  }
+  return "";
+}
+
+async function darfRein(request, env) {
+  if (!env.WARTUNG_HASH) return true;
+  const wert = cookieLesen(request, ZUGANG_COOKIE);
+  if (!wert) return false;
+  return gleich(await sha256Hex(wert), env.WARTUNG_HASH);
+}
+
+function wartungsseite() {
+  const html = `<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>FR Sportwagen</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;color:#fff;background:linear-gradient(160deg,#0a0a0a 0%,#1c1c1c 55%,#0a0a0a 100%);line-height:1.6;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1.5rem;text-align:center}
+.box{width:min(520px,100%)}
+.logo{display:block;margin:0 auto 2.5rem;width:180px;fill:#fff}
+h1{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:600;line-height:1.25}
+p{color:#c9c9c9;margin-top:1rem}
+.kontakt{margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.12);font-size:0.95rem}
+.kontakt a{color:#d8d8d8;text-decoration:none}
+.kontakt a:hover{color:#fff}
+</style>
+</head>
+<body>
+<div class="box">
+<svg class="logo" viewBox="130 390 825 300" role="img" aria-label="FR Sportwagen"><path d="M899.35,401.75h-266.23l-.12.21h-334.1l-159.52,276.3h107.72l42.85-74.21h192.86l46.65-80.79h-192.86l19.47-33.72h226.38l-108.84,188.52h107.72l38.93-67.43h96.21l13.08,67.43h114.71l-15.49-77.5c22.96-8.43,44.91-21.17,65.42-37.83,20.83-16.86,37.3-35.77,49.29-56.53,33.82-57.15,13.16-105.05-44.14-104.43ZM835.56,506.19c-3.68,6.37-9.15,11.92-16.6,16.65-7.13,4.52-13.99,6.78-20.57,6.78h-131.37l27.18-47.08h131.37c13.16,0,17.59,10.48,9.99,23.64Z"/></svg>
+<h1>Die Website ist gerade im Umbau.</h1>
+<p>In Kürze finden Sie hier wieder auserwählte und exklusive Sportwagen. Bis dahin erreichen Sie mich jederzeit persönlich.</p>
+<p class="kontakt">
+<a href="tel:+4915115491199">+49&nbsp;151&nbsp;15491199</a><br>
+<a href="tel:+4964329240761">+49&nbsp;6432&nbsp;9240761</a><br>
+<a href="mailto:kontakt@frsportwagen.de">kontakt@frsportwagen.de</a>
+</p>
+</div>
+</body>
+</html>`;
+  return new Response(html, {
+    status: 503,
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "no-store",
+      "Retry-After": "86400",
+    },
+  });
+}
+
 const MOBILE_KUNDENNUMMER = "45483682";
 
 const GETRIEBE = {
@@ -249,6 +337,47 @@ function mapAd(ad) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    /* Geraet freischalten: einmal aufrufen, danach gilt das Cookie ein Jahr */
+    if (url.pathname === "/freischalten") {
+      const key = url.searchParams.get("key") || "";
+      const wert = await sha256Hex(key);
+      if (!env.WARTUNG_HASH || !gleich(await sha256Hex(wert), env.WARTUNG_HASH)) {
+        return new Response("Schlüssel ungültig.", {
+          status: 403,
+          headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" },
+        });
+      }
+      return new Response(null, {
+        status: 302,
+        headers: {
+          Location: "/",
+          "Cache-Control": "no-store",
+          "Set-Cookie":
+            ZUGANG_COOKIE + "=" + wert +
+            "; Path=/; Max-Age=31536000; Secure; HttpOnly; SameSite=Lax",
+        },
+      });
+    }
+
+    /* Geraet abmelden */
+    if (url.pathname === "/abmelden") {
+      return new Response(null, {
+        status: 302,
+        headers: {
+          Location: "/",
+          "Cache-Control": "no-store",
+          "Set-Cookie": ZUGANG_COOKIE + "=; Path=/; Max-Age=0; Secure; HttpOnly; SameSite=Lax",
+        },
+      });
+    }
+
+    /* Das Logo im Browser-Tab darf die Wartungsseite mitbenutzen */
+    const wartungFrei = url.pathname === "/assets/favicon.svg";
+
+    if (env.WARTUNG === "an" && !wartungFrei && !(await darfRein(request, env))) {
+      return wartungsseite();
+    }
 
     if (url.pathname === "/api/fahrzeuge") {
       if (request.method !== "GET") {

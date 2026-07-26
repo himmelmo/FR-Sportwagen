@@ -21,7 +21,17 @@
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    // Muss "true" sein, solange WARTUNG auf "an" steht: sonst liefert Cloudflare
+    // die HTML-Dateien direkt aus, ohne den Worker (und damit die Sperre) zu fragen.
+    "run_worker_first": true
+  },
+  "vars": {
+    // Wartungsmodus: "an" sperrt die Website fuer Besucher, "aus" gibt sie frei.
+    // Beim Freigeben zusaetzlich "run_worker_first" oben auf false setzen.
+    "WARTUNG": "an",
+    // Doppelter SHA-256-Hash des Freischalt-Schluessels. Verraet den Schluessel nicht.
+    "WARTUNG_HASH": "95133263e27e162d512d3d33ebf8a8a03e01e21431f09a04e872def83e52ceb8"
   },
   "compatibility_flags": [
     "nodejs_compat"
