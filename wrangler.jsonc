@@ -31,7 +31,7 @@
   "vars": {
     // Wartungsmodus: "an" sperrt die Website fuer Besucher, "aus" gibt sie frei.
     // Umschalten nicht von Hand, sondern mit:  wartung an  /  wartung aus
-    "WARTUNG": "an",
+    "WARTUNG": "aus",
     // Doppelter SHA-256-Hash des Freischalt-Schluessels. Verraet den Schluessel nicht.
     "WARTUNG_HASH": "95133263e27e162d512d3d33ebf8a8a03e01e21431f09a04e872def83e52ceb8"
   },
