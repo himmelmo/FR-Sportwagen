@@ -9,11 +9,12 @@
 # Internes Material: Originalfotos, Logos, Skizzen, Anleitungen, Verträge
 Intern/
 
-# Zugang zum Wartungsmodus: PDF enthält den Freischalt-Schlüssel,
-# die Skripte sind Werkzeuge für den eigenen Rechner
-FR-Sportwagen-Zugang.pdf
-wartung.cmd
-wartung.ps1
+# Zugang zum Wartungsmodus: das PDF enthält den Freischalt-Schlüssel,
+# die cmd-Dateien sind Werkzeuge für den eigenen Rechner
+# (das zugehörige wartung.ps1 liegt in Intern/ und ist damit schon ausgeschlossen)
+Wartungsmodus-Links.pdf
+wartung-an.cmd
+wartung-aus.cmd
 
 # Zugangsdaten und lokale Wrangler-Dateien
 .dev.vars*
