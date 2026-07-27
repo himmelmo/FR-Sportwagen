@@ -1,22 +1,31 @@
-# Sensible Geschäftsdokumente nicht auf GitHub hochladen
-Logos und co/Kaufvertrag/
-Logos und co/Rechnung/
+# ---------------------------------------------------------------------------
+# Was NICHT auf GitHub darf.
+#
+# Grundregel: Auf GitHub liegt nur, was die Website zum Laufen braucht, also
+# der Ordner website/ plus worker.js, wrangler.jsonc und package.json.
+# Alles andere bleibt lokal.
+# ---------------------------------------------------------------------------
 
-# Enthält den Freischalt-Schlüssel für den Wartungsmodus
+# Internes Material: Originalfotos, Logos, Skizzen, Anleitungen, Verträge
+Intern/
+
+# Zugang zum Wartungsmodus: PDF enthält den Freischalt-Schlüssel,
+# die Skripte sind Werkzeuge für den eigenen Rechner
 FR-Sportwagen-Zugang.pdf
+wartung.cmd
+wartung.ps1
 
-# OneDrive / Windows
-desktop.ini
-Thumbs.db
-
-node_modules/
-
-# wrangler files
-.wrangler
+# Zugangsdaten und lokale Wrangler-Dateien
 .dev.vars*
 !.dev.vars.example
 .env*
 !.env.example
-Porsche-Skizzen/
-Fotos verkaufte/
+.wrangler
+
+# Werkzeuge und Editor
 .claude/
+node_modules/
+
+# OneDrive / Windows
+desktop.ini
+Thumbs.db
