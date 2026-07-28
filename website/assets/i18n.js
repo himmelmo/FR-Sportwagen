@@ -663,6 +663,11 @@
     for (var i = 0; i < items.length; i++) {
       items[i].style.display = items[i].getAttribute('data-lang') === lang ? 'none' : 'block';
     }
+    /* Designer-Link: deutsche Sprache -> .de, alle anderen -> .com */
+    var designLinks = document.querySelectorAll('.design-link');
+    for (var d = 0; d < designLinks.length; d++) {
+      designLinks[d].href = lang === 'de' ? 'https://mhhtechsolutions.de' : 'https://mhhtechsolutions.com';
+    }
   }
 
   function buildSwitcher() {
