@@ -247,6 +247,13 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
+    /* Immer eine gerade Anzahl: steht die letzte Kachel auf einem ungeraden
+       Platz, bliebe ihre Reihe halb leer. Sie wird deshalb ausgeblendet und
+       erscheint von selbst wieder, sobald die naechste Referenz dazukommt.
+       Alle Fahrzeuge bleiben ueber "Mehr anzeigen" erreichbar. */
+    .refs-grid .car-tile:last-child:nth-child(odd):not(:first-child) {
+      display: none;
+    }
     .section-label .more {
       margin-left: 1.2rem;
       font-size: 0.75rem;
