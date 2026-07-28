@@ -530,6 +530,43 @@
       en: 'The door sill plate in brushed aluminium with Cayenne S lettering.',
       fr: 'Le seuil de porte en aluminium brossé avec le lettrage Cayenne S.',
       it: 'Il battitacco in alluminio spazzolato con la scritta Cayenne S.'
+    },
+
+    /* Taycan-GTS-Seite */
+    'Carraraweiß Metallic, rote Bremssättel und der lautlose Antritt des GTS. Ein Porsche, der elektrisch fährt und trotzdem Porsche bleibt. Verkauft an seinen neuen Besitzer.': {
+      en: 'Carrara White Metallic, red brake calipers and the silent pull of the GTS. A Porsche that runs on electricity and still feels every bit a Porsche. Sold to its new owner.',
+      fr: "Blanc Carrara métallisé, étriers de frein rouges et la poussée silencieuse de la GTS. Une Porsche électrique qui reste pleinement une Porsche. Vendue à son nouveau propriétaire.",
+      it: 'Bianco Carrara metallizzato, pinze freno rosse e la spinta silenziosa della GTS. Una Porsche che va a elettricità e resta in tutto e per tutto una Porsche. Venduta al suo nuovo proprietario.'
+    },
+    'Unter der Lichtdecke im Studio zeigt sich die flache, breite Front.': {
+      en: 'Under the studio light ceiling, the low, wide front comes into its own.',
+      fr: 'Sous le plafond lumineux du studio, la face avant basse et large se révèle.',
+      it: 'Sotto il soffitto luminoso dello studio emerge il frontale basso e largo.'
+    },
+    'Die Seitenlinie in Carraraweiß Metallic, dazu rote Bremssättel.': {
+      en: 'The side profile in Carrara White Metallic, with red brake calipers.',
+      fr: 'La ligne latérale en blanc Carrara métallisé, avec des étriers de frein rouges.',
+      it: 'La linea laterale in bianco Carrara metallizzato, con pinze freno rosse.'
+    },
+    'Das Heck mit durchgehendem Leuchtband und Taycan-GTS-Schriftzug.': {
+      en: 'The rear with its full-width light bar and Taycan GTS lettering.',
+      fr: "L'arrière avec son bandeau lumineux continu et le lettrage Taycan GTS.",
+      it: 'La coda con la barra luminosa continua e la scritta Taycan GTS.'
+    },
+    'Das Cockpit mit gebogenem Kombiinstrument, ganz auf den Fahrer ausgerichtet.': {
+      en: 'The cockpit with its curved instrument cluster, entirely focused on the driver.',
+      fr: "Le cockpit avec son bloc d'instruments incurvé, entièrement tourné vers le conducteur.",
+      it: 'La plancia con la strumentazione curva, interamente rivolta al guidatore.'
+    },
+    'Sitze in schwarzem Leder, sportlich konturiert.': {
+      en: 'Seats in black leather, sculpted for sporty support.',
+      fr: 'Sièges en cuir noir, au galbe sportif.',
+      it: 'Sedili in pelle nera, dal profilo sportivo.'
+    },
+    'Die Sport-Chrono-Uhr mittig auf dem Armaturenbrett.': {
+      en: 'The Sport Chrono stopwatch at the centre of the dashboard.',
+      fr: 'Le chronomètre Sport Chrono au centre de la planche de bord.',
+      it: 'Il cronometro Sport Chrono al centro della plancia.'
     }
   };
 
