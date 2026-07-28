@@ -567,6 +567,43 @@
       en: 'The Sport Chrono stopwatch at the centre of the dashboard.',
       fr: 'Le chronomètre Sport Chrono au centre de la planche de bord.',
       it: 'Il cronometro Sport Chrono al centro della plancia.'
+    },
+
+    /* Taycan-GTS-Seite in Tiefschwarz */
+    'Tiefschwarz Metallic außen, helles Leder innen und die stille Wucht des GTS. Verkauft an seinen neuen Besitzer.': {
+      en: 'Jet Black Metallic outside, light leather inside and the quiet force of the GTS. Sold to its new owner.',
+      fr: 'Noir intense métallisé à l\'extérieur, cuir clair à l\'intérieur et la force tranquille de la GTS. Vendue à son nouveau propriétaire.',
+      it: 'Nero profondo metallizzato fuori, pelle chiara dentro e la forza silenziosa della GTS. Venduta al suo nuovo proprietario.'
+    },
+    'Die Seitenlinie in Tiefschwarz Metallic, tief und lang gestreckt.': {
+      en: 'The side profile in Jet Black Metallic, low and long.',
+      fr: 'La ligne latérale en noir intense métallisé, basse et allongée.',
+      it: 'La linea laterale in nero profondo metallizzato, bassa e allungata.'
+    },
+    'Von hinten oben zieht sich das Glasdach über die ganze Länge.': {
+      en: 'Seen from above and behind, the glass roof runs the full length of the car.',
+      fr: "Vu d'en haut à l'arrière, le toit vitré court sur toute la longueur.",
+      it: "Visto dall'alto e da dietro, il tetto in vetro corre per tutta la lunghezza."
+    },
+    'Schwarze Räder, rote Bremssättel. Der GTS trägt es dezent.': {
+      en: 'Black wheels, red brake calipers. The GTS wears it discreetly.',
+      fr: 'Jantes noires, étriers de frein rouges. La GTS le porte avec discrétion.',
+      it: 'Cerchi neri, pinze freno rosse. La GTS lo porta con discrezione.'
+    },
+    'Das Cockpit in hellem Leder, dazu blaue Ambientebeleuchtung.': {
+      en: 'The cockpit in light leather, with blue ambient lighting.',
+      fr: "Le cockpit en cuir clair, avec un éclairage d'ambiance bleu.",
+      it: 'La plancia in pelle chiara, con illuminazione ambient blu.'
+    },
+    'Sitze in hellem Leder, ein klarer Gegensatz zum schwarzen Lack.': {
+      en: 'Seats in light leather, a clear contrast to the black paintwork.',
+      fr: 'Sièges en cuir clair, en net contraste avec la carrosserie noire.',
+      it: 'Sedili in pelle chiara, in netto contrasto con la vernice nera.'
+    },
+    'Das Panoramadach mit variabler Lichtsteuerung, schaltbar von klar bis matt.': {
+      en: 'The panoramic roof with variable light control, switchable from clear to matt.',
+      fr: 'Le toit panoramique à commande lumineuse variable, du transparent au mat.',
+      it: 'Il tetto panoramico con controllo variabile della luce, da trasparente a opaco.'
     }
   };
 

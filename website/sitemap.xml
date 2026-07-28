@@ -37,37 +37,43 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://frsportwagen.de/gallardo.html</loc>
+    <loc>https://frsportwagen.de/Referenzen/gallardo.html</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://frsportwagen.de/carrera.html</loc>
+    <loc>https://frsportwagen.de/Referenzen/carrera.html</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://frsportwagen.de/targa.html</loc>
+    <loc>https://frsportwagen.de/Referenzen/targa.html</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://frsportwagen.de/cayenne-hybrid.html</loc>
+    <loc>https://frsportwagen.de/Referenzen/cayenne-hybrid.html</loc>
     <lastmod>2026-07-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://frsportwagen.de/cayenne-diesel.html</loc>
+    <loc>https://frsportwagen.de/Referenzen/cayenne-diesel.html</loc>
     <lastmod>2026-07-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://frsportwagen.de/taycan-weiss.html</loc>
+    <loc>https://frsportwagen.de/Referenzen/taycan-weiss.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://frsportwagen.de/Referenzen/taycan-schwarz.html</loc>
     <lastmod>2026-07-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
