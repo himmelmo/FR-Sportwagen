@@ -493,6 +493,43 @@
       en: 'The Burmester system in the door trim, concert-grade sound.',
       fr: 'Le système Burmester dans le panneau de porte, un son de concert.',
       it: 'Il sistema Burmester nel pannello porta, un suono da concerto.'
+    },
+
+    /* Cayenne-S-Diesel-Seite */
+    'Palladium Metallic außen, helles Leder innen und ein Diesel, der die lange Strecke liebt. Verkauft an seinen neuen Besitzer.': {
+      en: 'Palladium Metallic outside, light leather inside and a diesel that loves the long haul. Sold to its new owner.',
+      fr: 'Palladium métallisé à l\'extérieur, cuir clair à l\'intérieur et un diesel qui aime les longues distances. Vendu à son nouveau propriétaire.',
+      it: 'Palladio metallizzato fuori, pelle chiara dentro e un diesel che ama i lunghi viaggi. Venduto al suo nuovo proprietario.'
+    },
+    'Die Seitenlinie in Palladium Metallic, eine Farbe, die im Licht changiert.': {
+      en: 'The side profile in Palladium Metallic, a colour that shifts with the light.',
+      fr: 'La ligne latérale en palladium métallisé, une couleur qui change avec la lumière.',
+      it: 'La linea laterale in palladio metallizzato, un colore che cambia con la luce.'
+    },
+    'Von oben zeigen sich die kräftigen Schultern und das große Panoramadach.': {
+      en: 'From above: powerful shoulders and the large panoramic roof.',
+      fr: "Vu d'en haut : des épaules puissantes et le grand toit panoramique.",
+      it: "Dall'alto: spalle possenti e il grande tetto panoramico."
+    },
+    'Alle Türen offen: das helle Leder steht im Kontrast zum warmen Lack.': {
+      en: 'All doors open: the light leather contrasts with the warm paintwork.',
+      fr: 'Toutes portes ouvertes : le cuir clair contraste avec la teinte chaude de la carrosserie.',
+      it: 'Tutte le porte aperte: la pelle chiara contrasta con la vernice calda.'
+    },
+    'Das Cockpit in zweifarbigem Leder, klar auf den Fahrer ausgerichtet.': {
+      en: 'The cockpit in two-tone leather, clearly focused on the driver.',
+      fr: 'Le cockpit en cuir bicolore, nettement orienté vers le conducteur.',
+      it: 'La plancia in pelle bicolore, chiaramente orientata al guidatore.'
+    },
+    'Sitze in cremefarbenem Leder, hell und einladend.': {
+      en: 'Seats in cream leather, bright and inviting.',
+      fr: 'Sièges en cuir crème, clairs et accueillants.',
+      it: 'Sedili in pelle crema, chiari e accoglienti.'
+    },
+    'Die Einstiegsleiste in gebürstetem Aluminium mit Cayenne-S-Schriftzug.': {
+      en: 'The door sill plate in brushed aluminium with Cayenne S lettering.',
+      fr: 'Le seuil de porte en aluminium brossé avec le lettrage Cayenne S.',
+      it: 'Il battitacco in alluminio spazzolato con la scritta Cayenne S.'
     }
   };
 
