@@ -456,6 +456,43 @@
       en: 'Seats in dark burgundy, an elegant match for the black paint.',
       fr: 'Sièges bordeaux foncé, une combinaison élégante avec la carrosserie noire.',
       it: 'Sedili bordeaux scuro, un abbinamento elegante con la vernice nera.'
+    },
+
+    /* Cayenne-E-Hybrid-Seite */
+    'Quarzitgrau Metallic, schwarze Räder und der leise Antritt des E-Hybrid. Ein Porsche, der jeden Tag kann. Verkauft an seinen neuen Besitzer.': {
+      en: 'Quartzite Grey Metallic, black wheels and the quiet pull of the E-Hybrid. A Porsche for every day. Sold to its new owner.',
+      fr: "Gris quartzite métallisé, jantes noires et la poussée silencieuse de l'E-Hybrid. Une Porsche pour tous les jours. Vendue à son nouveau propriétaire.",
+      it: "Grigio quarzite metallizzato, cerchi neri e la spinta silenziosa dell'E-Hybrid. Una Porsche per ogni giorno. Venduta al suo nuovo proprietario."
+    },
+    'Die Front im Studio: breit gezeichnet, mit tiefen Lufteinlässen.': {
+      en: 'The front in the studio: broad in stance, with deep air intakes.',
+      fr: "L'avant en studio : dessin large, avec de profondes prises d'air.",
+      it: "Il frontale in studio: disegno largo, con prese d'aria profonde."
+    },
+    'Die Seitenlinie in Quarzitgrau Metallic, dazu Räder in Schwarz mit poliertem Stern.': {
+      en: 'The side profile in Quartzite Grey Metallic, with black wheels and a polished star.',
+      fr: 'La ligne latérale en gris quartzite métallisé, avec des jantes noires à étoile polie.',
+      it: 'La linea laterale in grigio quarzite metallizzato, con cerchi neri a stella lucidata.'
+    },
+    'Von hinten oben zeigen sich Panoramadach und durchgehendes Leuchtband.': {
+      en: 'From above and behind: panoramic roof and a full-width light bar.',
+      fr: "Vu d'en haut à l'arrière : toit panoramique et bandeau lumineux continu.",
+      it: "Dall'alto e da dietro: tetto panoramico e barra luminosa continua."
+    },
+    'Das Cockpit mit gebogenem Display, Sport-Chrono-Uhr und Beifahrer-Bildschirm.': {
+      en: 'The cockpit with curved display, Sport Chrono stopwatch and passenger screen.',
+      fr: 'Le cockpit avec écran incurvé, chronomètre Sport Chrono et écran passager.',
+      it: 'La plancia con display curvo, cronometro Sport Chrono e schermo passeggero.'
+    },
+    'Sitze in schwarzem Leder, das Wappen in den Kopfstützen geprägt.': {
+      en: 'Seats in black leather, the crest embossed into the headrests.',
+      fr: 'Sièges en cuir noir, écusson gaufré dans les appuie-tête.',
+      it: 'Sedili in pelle nera, lo stemma goffrato nei poggiatesta.'
+    },
+    'Die Burmester-Anlage in der Türverkleidung, Klang auf Konzertniveau.': {
+      en: 'The Burmester system in the door trim, concert-grade sound.',
+      fr: 'Le système Burmester dans le panneau de porte, un son de concert.',
+      it: 'Il sistema Burmester nel pannello porta, un suono da concerto.'
     }
   };
 
