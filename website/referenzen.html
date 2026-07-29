@@ -173,8 +173,9 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .sold-tile:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 16px 36px rgba(0,0,0,0.1); }
+    /* Kachelformat = Fotoformat (3:2). So wird kein Auto angeschnitten. */
     .sold-photo {
-      height: 255px;
+      aspect-ratio: 3 / 2;
       background: #f2f2f2;
       display: flex;
       align-items: center;
@@ -223,6 +224,7 @@
       padding-top: 1.5rem;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
       font-size: 0.82rem;
@@ -303,7 +305,6 @@
       section { padding: 4rem 6vw; }
       .pride-grid { grid-template-columns: 1fr; }
       .sold-grid { grid-template-columns: 1fr; }
-      .sold-photo { height: 180px; }
       .pride-photo.wide { aspect-ratio: 16 / 10; }
       .reviews-grid { grid-template-columns: 1fr; }
     }
@@ -340,8 +341,8 @@
   </section>
 
   <section class="pride reveal">
-    <p class="section-label">Mein stolzester Besitz</p>
-    <h2 class="pride-title">Lamborghini Gallardo Arancio Borealis</h2>
+    <p class="section-label">Kuratierte Perfektion</p>
+    <h2 class="pride-title">Lamborghini Gallardo in Arancio Borealis</h2>
     <div class="pride-grid">
       <a class="pride-photo wide" href="Referenzen/gallardo.html">
         <img src="Referenzen/gallardo/Haupt.jpg" alt="Lamborghini Gallardo 5.0 Gated Manual in Arancio Borealis – Frontansicht">
@@ -362,28 +363,28 @@
     <p class="section-label">Verkaufte Fahrzeuge</p>
     <div class="sold-grid">
       <a class="sold-tile" href="Referenzen/taycan-schwarz.html">
-        <div class="sold-photo"><img src="Referenzen/taycan-schwarz/Main.jpg" alt="Porsche Taycan GTS in Tiefschwarz Metallic"></div>
-        <div class="sold-info"><h3>Taycan GTS Tiefschwarz Metallic</h3><span class="sold-badge">Verkauft</span></div>
+        <div class="sold-photo"><img src="Referenzen/taycan-schwarz/Main.jpg" alt="Porsche Taycan GTS in tiefschwarzmetallic"></div>
+        <div class="sold-info"><h3>Taycan GTS in tiefschwarzmetallic</h3><span class="sold-badge">Verkauft</span></div>
       </a>
       <a class="sold-tile" href="Referenzen/taycan-weiss.html">
-        <div class="sold-photo"><img src="Referenzen/taycan-weiss/Main.jpg" alt="Porsche Taycan GTS in Carraraweiß Metallic"></div>
-        <div class="sold-info"><h3>Taycan GTS Carraraweiß Metallic</h3><span class="sold-badge">Verkauft</span></div>
+        <div class="sold-photo"><img src="Referenzen/taycan-weiss/Main.jpg" alt="Porsche Taycan GTS in carraraweißmetallic"></div>
+        <div class="sold-info"><h3>Taycan GTS in carraraweißmetallic</h3><span class="sold-badge">Verkauft</span></div>
       </a>
       <a class="sold-tile" href="Referenzen/cayenne-diesel.html">
-        <div class="sold-photo"><img src="Referenzen/cayenne-diesel/Main.jpg" alt="Porsche Cayenne S Diesel in Palladium Metallic"></div>
-        <div class="sold-info"><h3>Cayenne S Diesel Palladium Metallic</h3><span class="sold-badge">Verkauft</span></div>
+        <div class="sold-photo"><img src="Referenzen/cayenne-diesel/Main.jpg" alt="Porsche Cayenne S Diesel in palladiummetallic"></div>
+        <div class="sold-info"><h3>Cayenne S Diesel in palladiummetallic</h3><span class="sold-badge">Verkauft</span></div>
       </a>
       <a class="sold-tile" href="Referenzen/cayenne-hybrid.html">
-        <div class="sold-photo"><img src="Referenzen/cayenne-hybrid/101256_FR-Sportwagen-Porsche-Cayenne_2.jpg" alt="Porsche Cayenne E-Hybrid in Quarzitgrau Metallic"></div>
-        <div class="sold-info"><h3>Cayenne E-Hybrid Quarzitgrau Metallic</h3><span class="sold-badge">Verkauft</span></div>
+        <div class="sold-photo"><img src="Referenzen/cayenne-hybrid/101256_FR-Sportwagen-Porsche-Cayenne_2.jpg" alt="Porsche Cayenne E-Hybrid in quarzitgraumetallic"></div>
+        <div class="sold-info"><h3>Cayenne E-Hybrid in quarzitgraumetallic</h3><span class="sold-badge">Verkauft</span></div>
       </a>
       <a class="sold-tile" href="Referenzen/carrera.html">
-        <div class="sold-photo"><img src="Referenzen/carrera/Haupt.jpg" alt="Porsche 991 Carrera 4S Cabriolet in Weiß"></div>
-        <div class="sold-info"><h3>991 Carrera 4S Cabriolet Weiß</h3><span class="sold-badge">Verkauft</span></div>
+        <div class="sold-photo"><img src="Referenzen/carrera/Haupt.jpg" alt="Porsche 991 Carrera 4S Cabriolet in weiß"></div>
+        <div class="sold-info"><h3>991 Carrera 4S Cabriolet in weiß</h3><span class="sold-badge">Verkauft</span></div>
       </a>
       <a class="sold-tile" href="Referenzen/targa.html">
-        <div class="sold-photo"><img src="Referenzen/targa/Haupt.jpg" alt="Porsche 911 Targa G-Modell in Schwarz"></div>
-        <div class="sold-info"><h3>911 Targa G-Modell Schwarz</h3><span class="sold-badge">Verkauft</span></div>
+        <div class="sold-photo"><img src="Referenzen/targa/Haupt.jpg" alt="Porsche 911 Targa 3.2 G-Modell in schwarz"></div>
+        <div class="sold-info"><h3>911 Targa 3.2 G-Modell in schwarz</h3><span class="sold-badge">Verkauft</span></div>
       </a>
     </div>
   </section>
@@ -448,7 +449,7 @@
     </div>
     <div class="footer-bar">
       <span>&copy; 2026 FR Sportwagen &middot; Fabian Rupp</span>
-      <span class="footer-phones">Mobil <a href="tel:+4915115491199">+49&nbsp;151&nbsp;15491199</a> &middot; Festnetz <a href="tel:+4964329240761">+49&nbsp;6432&nbsp;9240761</a></span>
+      <span class="footer-phones">Mobil <a href="tel:+4915115491199">+49&nbsp;151&nbsp;15491199</a><br>Festnetz <a href="tel:+4964329240761">+49&nbsp;6432&nbsp;9240761</a></span>
       <span><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></span>
     </div>
     <p class="design-credit">Design &amp; Umsetzung: <a class="design-link" href="https://mhhtechsolutions.de" target="_blank" rel="noopener noreferrer">MHH Tech Solutions</a></p>

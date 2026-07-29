@@ -138,8 +138,9 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .car-tile:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 16px 36px rgba(0,0,0,0.1); }
+    /* Kachelformat = Fotoformat (3:2). So wird kein Auto angeschnitten. */
     .car-photo {
-      height: 255px;
+      aspect-ratio: 3 / 2;
       background: #f2f2f2;
       display: flex; align-items: center; justify-content: center;
       color: #c0c0c0;
@@ -199,6 +200,7 @@
       padding-top: 1.5rem;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
       font-size: 0.82rem;
@@ -225,7 +227,6 @@
       nav a:not(.cta) { display: none; }
       section { padding: 4rem 6vw; }
       .cars-grid { grid-template-columns: 1fr; }
-      .car-photo { height: 200px; }
     }
   </style>
 </head>
@@ -275,7 +276,7 @@
     </div>
     <div class="footer-bar">
       <span>&copy; 2026 FR Sportwagen &middot; Fabian Rupp</span>
-      <span class="footer-phones">Mobil <a href="tel:+4915115491199">+49&nbsp;151&nbsp;15491199</a> &middot; Festnetz <a href="tel:+4964329240761">+49&nbsp;6432&nbsp;9240761</a></span>
+      <span class="footer-phones">Mobil <a href="tel:+4915115491199">+49&nbsp;151&nbsp;15491199</a><br>Festnetz <a href="tel:+4964329240761">+49&nbsp;6432&nbsp;9240761</a></span>
       <span><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></span>
     </div>
     <p class="design-credit">Design &amp; Umsetzung: <a class="design-link" href="https://mhhtechsolutions.de" target="_blank" rel="noopener noreferrer">MHH Tech Solutions</a></p>

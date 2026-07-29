@@ -122,7 +122,7 @@
       fr: 'Rétrospective : des véhicules qui ont trouvé de nouveaux propriétaires par mon intermédiaire.',
       it: 'Uno sguardo al passato: veicoli che hanno trovato nuovi proprietari grazie a me.'
     },
-    'Mein stolzester Besitz': { en: 'My proudest possession', fr: 'Ma plus grande fierté', it: 'Il mio orgoglio più grande' },
+    'Kuratierte Perfektion': { en: 'Curated perfection', fr: 'Perfection choisie', it: 'Perfezione curata' },
     'Verkaufte Fahrzeuge': { en: 'Sold vehicles', fr: 'Véhicules vendus', it: 'Veicoli venduti' },
 
     /* Suche-Seite */
@@ -383,12 +383,19 @@
     'Alle Fotos': { en: 'All photos', fr: 'Toutes les photos', it: 'Tutte le foto' },
     'Zurück zu den Referenzen': { en: 'Back to references', fr: 'Retour aux références', it: 'Torna alle referenze' },
 
+    /* Rubriken über den Bildunterschriften (auf allen Referenzseiten gleich) */
+    'Exterieur': { en: 'Exterior', fr: 'Extérieur', it: 'Esterni' },
+    'Interieur': { en: 'Interior', fr: 'Intérieur', it: 'Interni' },
+    'Detail': { en: 'Detail', fr: 'Détail', it: 'Dettaglio' },
+    'Motor': { en: 'Engine', fr: 'Moteur', it: 'Motore' },
+    'Verdeck': { en: 'Roof', fr: 'Capote', it: 'Capote' },
+
     /* Carrera-Seite */
     'Referenz · Verkauft': { en: 'Reference · Sold', fr: 'Référence · Vendue', it: 'Referenza · Venduta' },
-    'Allradantrieb, offenes Verdeck und die klassische Elfer-Silhouette in strahlendem Weiß. Verkauft an seinen neuen Besitzer.': {
-      en: 'All-wheel drive, an open roof and the classic 911 silhouette in gleaming white. Sold to its new owner.',
-      fr: "Transmission intégrale, toit ouvert et la silhouette classique de la 911 en blanc éclatant. Vendue à son nouveau propriétaire.",
-      it: 'Trazione integrale, tetto aperto e la classica silhouette della 911 in bianco brillante. Venduta al suo nuovo proprietario.'
+    'Allradantrieb, offenes Verdeck und die klassische Elfer-Silhouette in weiß. Verkauft an seinen neuen Besitzer.': {
+      en: 'All-wheel drive, an open roof and the classic 911 silhouette in white. Sold to its new owner.',
+      fr: "Transmission intégrale, toit ouvert et la silhouette classique de la 911 en blanc. Vendue à son nouveau propriétaire.",
+      it: 'Trazione integrale, tetto aperto e la classica silhouette della 911 in bianco. Venduta al suo nuovo proprietario.'
     },
     'Offen zeigt der 991 seine ganze Eleganz. Die Seitenlinie bleibt unverkennbar 911.': {
       en: 'With the top down, the 991 shows all its elegance. The side profile remains unmistakably 911.',
@@ -459,20 +466,20 @@
     },
 
     /* Cayenne-E-Hybrid-Seite */
-    'Quarzitgrau Metallic, schwarze Räder und der leise Antritt des E-Hybrid. Ein Porsche, der jeden Tag kann. Verkauft an seinen neuen Besitzer.': {
-      en: 'Quartzite Grey Metallic, black wheels and the quiet pull of the E-Hybrid. A Porsche for every day. Sold to its new owner.',
-      fr: "Gris quartzite métallisé, jantes noires et la poussée silencieuse de l'E-Hybrid. Une Porsche pour tous les jours. Vendue à son nouveau propriétaire.",
-      it: "Grigio quarzite metallizzato, cerchi neri e la spinta silenziosa dell'E-Hybrid. Una Porsche per ogni giorno. Venduta al suo nuovo proprietario."
+    'Außen quarzitgraumetallic, dazu schwarze Räder und der leise Antritt des E-Hybrid. Ein Porsche, der jeden Tag kann. Verkauft an seinen neuen Besitzer.': {
+      en: 'Finished in quarzitgraumetallic, with black wheels and the quiet pull of the E-Hybrid. A Porsche for every day. Sold to its new owner.',
+      fr: "Peinture quarzitgraumetallic, jantes noires et la poussée silencieuse de l'E-Hybrid. Une Porsche pour tous les jours. Vendue à son nouveau propriétaire.",
+      it: "Vernice quarzitgraumetallic, cerchi neri e la spinta silenziosa dell'E-Hybrid. Una Porsche per ogni giorno. Venduta al suo nuovo proprietario."
     },
     'Die Front im Studio: breit gezeichnet, mit tiefen Lufteinlässen.': {
       en: 'The front in the studio: broad in stance, with deep air intakes.',
       fr: "L'avant en studio : dessin large, avec de profondes prises d'air.",
       it: "Il frontale in studio: disegno largo, con prese d'aria profonde."
     },
-    'Die Seitenlinie in Quarzitgrau Metallic, dazu Räder in Schwarz mit poliertem Stern.': {
-      en: 'The side profile in Quartzite Grey Metallic, with black wheels and a polished star.',
-      fr: 'La ligne latérale en gris quartzite métallisé, avec des jantes noires à étoile polie.',
-      it: 'La linea laterale in grigio quarzite metallizzato, con cerchi neri a stella lucidata.'
+    'Die Seitenlinie in quarzitgraumetallic, dazu schwarze Räder mit poliertem Stern.': {
+      en: 'The side profile in quarzitgraumetallic, with black wheels and a polished star.',
+      fr: 'La ligne latérale en quarzitgraumetallic, avec des jantes noires à étoile polie.',
+      it: 'La linea laterale in quarzitgraumetallic, con cerchi neri a stella lucidata.'
     },
     'Von hinten oben zeigen sich Panoramadach und durchgehendes Leuchtband.': {
       en: 'From above and behind: panoramic roof and a full-width light bar.',
@@ -496,15 +503,15 @@
     },
 
     /* Cayenne-S-Diesel-Seite */
-    'Palladium Metallic außen, helles Leder innen und ein Diesel, der die lange Strecke liebt. Verkauft an seinen neuen Besitzer.': {
-      en: 'Palladium Metallic outside, light leather inside and a diesel that loves the long haul. Sold to its new owner.',
-      fr: 'Palladium métallisé à l\'extérieur, cuir clair à l\'intérieur et un diesel qui aime les longues distances. Vendu à son nouveau propriétaire.',
-      it: 'Palladio metallizzato fuori, pelle chiara dentro e un diesel che ama i lunghi viaggi. Venduto al suo nuovo proprietario.'
+    'Außen palladiummetallic, innen helles Leder und ein Diesel, der die lange Strecke liebt. Verkauft an seinen neuen Besitzer.': {
+      en: 'Finished in palladiummetallic, light leather inside and a diesel that loves the long haul. Sold to its new owner.',
+      fr: 'Extérieur palladiummetallic, cuir clair à l\'intérieur et un diesel qui aime les longues distances. Vendu à son nouveau propriétaire.',
+      it: 'Esterno palladiummetallic, pelle chiara dentro e un diesel che ama i lunghi viaggi. Venduto al suo nuovo proprietario.'
     },
-    'Die Seitenlinie in Palladium Metallic, eine Farbe, die im Licht changiert.': {
-      en: 'The side profile in Palladium Metallic, a colour that shifts with the light.',
-      fr: 'La ligne latérale en palladium métallisé, une couleur qui change avec la lumière.',
-      it: 'La linea laterale in palladio metallizzato, un colore che cambia con la luce.'
+    'Die Seitenlinie in palladiummetallic, eine Farbe, die im Licht changiert.': {
+      en: 'The side profile in palladiummetallic, a colour that shifts with the light.',
+      fr: 'La ligne latérale en palladiummetallic, une couleur qui change avec la lumière.',
+      it: 'La linea laterale in palladiummetallic, un colore che cambia con la luce.'
     },
     'Von oben zeigen sich die kräftigen Schultern und das große Panoramadach.': {
       en: 'From above: powerful shoulders and the large panoramic roof.',
@@ -533,20 +540,20 @@
     },
 
     /* Taycan-GTS-Seite */
-    'Carraraweiß Metallic, rote Bremssättel und der lautlose Antritt des GTS. Ein Porsche, der elektrisch fährt und trotzdem Porsche bleibt. Verkauft an seinen neuen Besitzer.': {
-      en: 'Carrara White Metallic, red brake calipers and the silent pull of the GTS. A Porsche that runs on electricity and still feels every bit a Porsche. Sold to its new owner.',
-      fr: "Blanc Carrara métallisé, étriers de frein rouges et la poussée silencieuse de la GTS. Une Porsche électrique qui reste pleinement une Porsche. Vendue à son nouveau propriétaire.",
-      it: 'Bianco Carrara metallizzato, pinze freno rosse e la spinta silenziosa della GTS. Una Porsche che va a elettricità e resta in tutto e per tutto una Porsche. Venduta al suo nuovo proprietario.'
+    'Außen carraraweißmetallic, dazu rote Bremssättel und der lautlose Antritt des GTS. Ein Porsche, der elektrisch fährt und trotzdem Porsche bleibt. Verkauft an seinen neuen Besitzer.': {
+      en: 'Finished in carraraweißmetallic, with red brake calipers and the silent pull of the GTS. A Porsche that runs on electricity and still feels every bit a Porsche. Sold to its new owner.',
+      fr: "Peinture carraraweißmetallic, étriers de frein rouges et la poussée silencieuse de la GTS. Une Porsche électrique qui reste pleinement une Porsche. Vendue à son nouveau propriétaire.",
+      it: 'Vernice carraraweißmetallic, pinze freno rosse e la spinta silenziosa della GTS. Una Porsche che va a elettricità e resta in tutto e per tutto una Porsche. Venduta al suo nuovo proprietario.'
     },
     'Unter der Lichtdecke im Studio zeigt sich die flache, breite Front.': {
       en: 'Under the studio light ceiling, the low, wide front comes into its own.',
       fr: 'Sous le plafond lumineux du studio, la face avant basse et large se révèle.',
       it: 'Sotto il soffitto luminoso dello studio emerge il frontale basso e largo.'
     },
-    'Die Seitenlinie in Carraraweiß Metallic, dazu rote Bremssättel.': {
-      en: 'The side profile in Carrara White Metallic, with red brake calipers.',
-      fr: 'La ligne latérale en blanc Carrara métallisé, avec des étriers de frein rouges.',
-      it: 'La linea laterale in bianco Carrara metallizzato, con pinze freno rosse.'
+    'Die Seitenlinie in carraraweißmetallic, dazu rote Bremssättel.': {
+      en: 'The side profile in carraraweißmetallic, with red brake calipers.',
+      fr: 'La ligne latérale en carraraweißmetallic, avec des étriers de frein rouges.',
+      it: 'La linea laterale in carraraweißmetallic, con pinze freno rosse.'
     },
     'Das Heck mit durchgehendem Leuchtband und Taycan-GTS-Schriftzug.': {
       en: 'The rear with its full-width light bar and Taycan GTS lettering.',
@@ -569,21 +576,21 @@
       it: 'Il cronometro Sport Chrono al centro della plancia.'
     },
 
-    /* Taycan-GTS-Seite in Tiefschwarz */
-    'Tiefschwarz Metallic außen, helles Leder innen und die stille Wucht des GTS. Verkauft an seinen neuen Besitzer.': {
-      en: 'Jet Black Metallic outside, light leather inside and the quiet force of the GTS. Sold to its new owner.',
-      fr: 'Noir intense métallisé à l\'extérieur, cuir clair à l\'intérieur et la force tranquille de la GTS. Vendue à son nouveau propriétaire.',
-      it: 'Nero profondo metallizzato fuori, pelle chiara dentro e la forza silenziosa della GTS. Venduta al suo nuovo proprietario.'
+    /* Taycan-GTS-Seite in tiefschwarzmetallic */
+    'Außen tiefschwarzmetallic, innen helles Leder und die stille Wucht des GTS. Verkauft an seinen neuen Besitzer.': {
+      en: 'Finished in tiefschwarzmetallic, light leather inside and the quiet force of the GTS. Sold to its new owner.',
+      fr: 'Extérieur tiefschwarzmetallic, cuir clair à l\'intérieur et la force tranquille de la GTS. Vendue à son nouveau propriétaire.',
+      it: 'Esterno tiefschwarzmetallic, pelle chiara dentro e la forza silenziosa della GTS. Venduta al suo nuovo proprietario.'
     },
-    'Die Seitenlinie in Tiefschwarz Metallic, tief und lang gestreckt.': {
-      en: 'The side profile in Jet Black Metallic, low and long.',
-      fr: 'La ligne latérale en noir intense métallisé, basse et allongée.',
-      it: 'La linea laterale in nero profondo metallizzato, bassa e allungata.'
+    'Die Seitenlinie in tiefschwarzmetallic, tief und lang gestreckt.': {
+      en: 'The side profile in tiefschwarzmetallic, low and long.',
+      fr: 'La ligne latérale en tiefschwarzmetallic, basse et allongée.',
+      it: 'La linea laterale in tiefschwarzmetallic, bassa e allungata.'
     },
-    'Von hinten oben zieht sich das Glasdach über die ganze Länge.': {
-      en: 'Seen from above and behind, the glass roof runs the full length of the car.',
-      fr: "Vu d'en haut à l'arrière, le toit vitré court sur toute la longueur.",
-      it: "Visto dall'alto e da dietro, il tetto in vetro corre per tutta la lunghezza."
+    'Das Glasdach zieht sich über die gesamte Dachfläche.': {
+      en: 'The glass roof extends across the entire roof surface.',
+      fr: 'Le toit vitré couvre toute la surface du pavillon.',
+      it: "Il tetto in vetro copre l'intera superficie del padiglione."
     },
     'Schwarze Räder, rote Bremssättel. Der GTS trägt es dezent.': {
       en: 'Black wheels, red brake calipers. The GTS wears it discreetly.',

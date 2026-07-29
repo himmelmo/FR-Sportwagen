@@ -226,8 +226,9 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .car-tile:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 16px 36px rgba(0,0,0,0.1); }
+    /* Kachelformat = Fotoformat (3:2). So wird kein Auto angeschnitten. */
     .car-photo {
-      height: 255px;
+      aspect-ratio: 3 / 2;
       background: #f2f2f2;
       display: flex; align-items: center; justify-content: center;
       color: #c0c0c0;
@@ -302,6 +303,7 @@
       padding-top: 1.5rem;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
       font-size: 0.82rem;
@@ -330,7 +332,6 @@
       .about-portrait { width: 140px; height: 140px; aspect-ratio: auto; border-radius: 50%; margin: 0 auto; }
       .about-portrait img { object-position: 50% 22%; }
       section { padding: 4rem 6vw; }
-      .car-photo { height: 180px; }
       .refs-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -420,49 +421,49 @@
       <a class="car-tile" href="Referenzen/gallardo.html">
         <div class="car-photo"><img src="Referenzen/gallardo/Haupt.jpg" alt="Lamborghini Gallardo in Arancio Borealis"></div>
         <div class="car-info">
-          <h3>Lamborghini Gallardo Arancio Borealis</h3>
+          <h3>Lamborghini Gallardo in Arancio Borealis</h3>
           <p>Verkauft</p>
         </div>
       </a>
       <a class="car-tile" href="Referenzen/taycan-schwarz.html">
-        <div class="car-photo"><img src="Referenzen/taycan-schwarz/Main.jpg" alt="Porsche Taycan GTS in Tiefschwarz Metallic" loading="lazy"></div>
+        <div class="car-photo"><img src="Referenzen/taycan-schwarz/Main.jpg" alt="Porsche Taycan GTS in tiefschwarzmetallic" loading="lazy"></div>
         <div class="car-info">
-          <h3>Taycan GTS Tiefschwarz Metallic</h3>
+          <h3>Taycan GTS in tiefschwarzmetallic</h3>
           <p>Verkauft</p>
         </div>
       </a>
       <a class="car-tile" href="Referenzen/taycan-weiss.html">
-        <div class="car-photo"><img src="Referenzen/taycan-weiss/Main.jpg" alt="Porsche Taycan GTS in Carraraweiß Metallic" loading="lazy"></div>
+        <div class="car-photo"><img src="Referenzen/taycan-weiss/Main.jpg" alt="Porsche Taycan GTS in carraraweißmetallic" loading="lazy"></div>
         <div class="car-info">
-          <h3>Taycan GTS Carraraweiß Metallic</h3>
+          <h3>Taycan GTS in carraraweißmetallic</h3>
           <p>Verkauft</p>
         </div>
       </a>
       <a class="car-tile" href="Referenzen/cayenne-diesel.html">
-        <div class="car-photo"><img src="Referenzen/cayenne-diesel/Main.jpg" alt="Porsche Cayenne S Diesel in Palladium Metallic" loading="lazy"></div>
+        <div class="car-photo"><img src="Referenzen/cayenne-diesel/Main.jpg" alt="Porsche Cayenne S Diesel in palladiummetallic" loading="lazy"></div>
         <div class="car-info">
-          <h3>Cayenne S Diesel Palladium Metallic</h3>
+          <h3>Cayenne S Diesel in palladiummetallic</h3>
           <p>Verkauft</p>
         </div>
       </a>
       <a class="car-tile" href="Referenzen/cayenne-hybrid.html">
-        <div class="car-photo"><img src="Referenzen/cayenne-hybrid/101256_FR-Sportwagen-Porsche-Cayenne_2.jpg" alt="Porsche Cayenne E-Hybrid in Quarzitgrau Metallic" loading="lazy"></div>
+        <div class="car-photo"><img src="Referenzen/cayenne-hybrid/101256_FR-Sportwagen-Porsche-Cayenne_2.jpg" alt="Porsche Cayenne E-Hybrid in quarzitgraumetallic" loading="lazy"></div>
         <div class="car-info">
-          <h3>Cayenne E-Hybrid Quarzitgrau Metallic</h3>
+          <h3>Cayenne E-Hybrid in quarzitgraumetallic</h3>
           <p>Verkauft</p>
         </div>
       </a>
       <a class="car-tile" href="Referenzen/carrera.html">
-        <div class="car-photo"><img src="Referenzen/carrera/Haupt.jpg" alt="Porsche 991 Carrera 4S Cabriolet in Weiß" loading="lazy"></div>
+        <div class="car-photo"><img src="Referenzen/carrera/Haupt.jpg" alt="Porsche 991 Carrera 4S Cabriolet in weiß" loading="lazy"></div>
         <div class="car-info">
-          <h3>991 Carrera 4S Cabriolet Weiß</h3>
+          <h3>991 Carrera 4S Cabriolet in weiß</h3>
           <p>Verkauft</p>
         </div>
       </a>
       <a class="car-tile" href="Referenzen/targa.html">
-        <div class="car-photo"><img src="Referenzen/targa/Haupt.jpg" alt="Porsche 911 Targa G-Modell in Schwarz" loading="lazy"></div>
+        <div class="car-photo"><img src="Referenzen/targa/Haupt.jpg" alt="Porsche 911 Targa 3.2 G-Modell in schwarz" loading="lazy"></div>
         <div class="car-info">
-          <h3>911 Targa G-Modell Schwarz</h3>
+          <h3>911 Targa 3.2 G-Modell in schwarz</h3>
           <p>Verkauft</p>
         </div>
       </a>
@@ -492,7 +493,7 @@
     </div>
     <div class="footer-bar">
       <span>&copy; 2026 FR Sportwagen &middot; Fabian Rupp</span>
-      <span class="footer-phones">Mobil <a href="tel:+4915115491199">+49&nbsp;151&nbsp;15491199</a> &middot; Festnetz <a href="tel:+4964329240761">+49&nbsp;6432&nbsp;9240761</a></span>
+      <span class="footer-phones">Mobil <a href="tel:+4915115491199">+49&nbsp;151&nbsp;15491199</a><br>Festnetz <a href="tel:+4964329240761">+49&nbsp;6432&nbsp;9240761</a></span>
       <span><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></span>
     </div>
     <p class="design-credit">Design &amp; Umsetzung: <a class="design-link" href="https://mhhtechsolutions.de" target="_blank" rel="noopener noreferrer">MHH Tech Solutions</a></p>
