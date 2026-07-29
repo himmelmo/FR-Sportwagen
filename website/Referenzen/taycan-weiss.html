@@ -83,7 +83,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       opacity: 0;
       transition: opacity 1.1s ease;
     }
@@ -414,19 +414,36 @@
       var lbCount = document.getElementById('lb-count');
       var lbIndex = 0;
 
+      /* Solange die Lightbox offen ist, darf die Seite dahinter nicht mitscrollen.
+         Sonst steht man nach dem Schliessen unvermittelt am Seitenende. */
+      function seiteSperren(sperren) {
+        if (sperren) {
+          var luecke = window.innerWidth - document.documentElement.clientWidth;
+          document.body.style.paddingRight = luecke + 'px';
+          document.documentElement.style.overflow = 'hidden';
+        } else {
+          document.body.style.paddingRight = '';
+          document.documentElement.style.overflow = '';
+        }
+      }
+      function schliesseLb() {
+        lightbox.classList.remove('open');
+        seiteSperren(false);
+      }
       function openLb(i) {
         lbIndex = (i + alle.length) % alle.length;
         lbImg.src = alle[lbIndex];
         lbCount.textContent = (lbIndex + 1) + ' / ' + alle.length;
         lightbox.classList.add('open');
+        seiteSperren(true);
       }
-      lightbox.querySelector('.lb-close').addEventListener('click', function () { lightbox.classList.remove('open'); });
+      lightbox.querySelector('.lb-close').addEventListener('click', function () { schliesseLb(); });
       lightbox.querySelector('.lb-prev').addEventListener('click', function () { openLb(lbIndex - 1); });
       lightbox.querySelector('.lb-next').addEventListener('click', function () { openLb(lbIndex + 1); });
-      lightbox.addEventListener('click', function (e) { if (e.target === lightbox) lightbox.classList.remove('open'); });
+      lightbox.addEventListener('click', function (e) { if (e.target === lightbox) schliesseLb(); });
       document.addEventListener('keydown', function (e) {
         if (!lightbox.classList.contains('open')) return;
-        if (e.key === 'Escape') lightbox.classList.remove('open');
+        if (e.key === 'Escape') schliesseLb();
         if (e.key === 'ArrowLeft') openLb(lbIndex - 1);
         if (e.key === 'ArrowRight') openLb(lbIndex + 1);
       });
