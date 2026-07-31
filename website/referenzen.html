@@ -173,8 +173,11 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .sold-tile:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 16px 36px rgba(0,0,0,0.1); }
+    /* Seitenverhaeltnis statt fester Hoehe: Die Kachel waechst proportional mit
+       der Bildschirmbreite, der Bildausschnitt bleibt auf jedem Monitor gleich.
+       3:2 entspricht dem Format der Fotos, es wird also nichts abgeschnitten. */
     .sold-photo {
-      height: 255px;
+      aspect-ratio: 3 / 2;
       background: #f2f2f2;
       display: flex;
       align-items: center;
@@ -315,7 +318,6 @@
       section { padding: 4rem 6vw; }
       .pride-grid { grid-template-columns: 1fr; }
       .sold-grid { grid-template-columns: 1fr; }
-      .sold-photo { height: 180px; }
       .pride-photo.wide { aspect-ratio: 16 / 10; }
       .reviews-grid { grid-template-columns: 1fr; }
     }

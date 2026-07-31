@@ -226,8 +226,11 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .car-tile:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 16px 36px rgba(0,0,0,0.1); }
+    /* Seitenverhaeltnis statt fester Hoehe: Die Kachel waechst proportional mit
+       der Bildschirmbreite, der Bildausschnitt bleibt auf jedem Monitor gleich.
+       3:2 entspricht dem Format der Fotos, es wird also nichts abgeschnitten. */
     .car-photo {
-      height: 255px;
+      aspect-ratio: 3 / 2;
       background: #f2f2f2;
       display: flex; align-items: center; justify-content: center;
       color: #c0c0c0;
@@ -331,7 +334,6 @@
       .about-portrait { width: 140px; height: 140px; aspect-ratio: auto; border-radius: 50%; margin: 0 auto; }
       .about-portrait img { object-position: 50% 22%; }
       section { padding: 4rem 6vw; }
-      .car-photo { height: 180px; }
       .refs-grid { grid-template-columns: 1fr; }
     }
   </style>
