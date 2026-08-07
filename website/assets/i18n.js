@@ -13,6 +13,7 @@
     'Referenzen': { en: 'References', fr: 'Références', it: 'Referenze' },
     'Ankauf': { en: 'Purchase', fr: 'Rachat', it: 'Acquisto' },
     'Kontakt': { en: 'Contact', fr: 'Contact', it: 'Contatti' },
+    'Menü': { en: 'Menu', fr: 'Menu', it: 'Menu' },
 
     /* Startseite – Hero */
     'Auserwählte und exklusive Sportwagen.': {
