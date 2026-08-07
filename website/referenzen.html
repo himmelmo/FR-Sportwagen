@@ -64,11 +64,11 @@
     }
     nav a.cta:hover { background: var(--white); color: var(--black); }
 
-    /* Seitenkopf: Bild-Bühne im Stil des Hero-Videos */
+    /* Seitenkopf: Vollbild-Diashow im Stil des Hero-Videos */
     .ref-hero {
       position: relative;
-      height: 70vh;
-      min-height: 420px;
+      height: 100vh;
+      min-height: 560px;
       display: flex;
       align-items: flex-end;
       background: linear-gradient(160deg, #0a0a0a 0%, #1c1c1c 55%, #0a0a0a 100%);
@@ -96,7 +96,7 @@
     .ref-hero-content {
       position: relative;
       z-index: 2;
-      padding: 0 6vw 3.5rem;
+      padding: 0 6vw 4.5rem;
       opacity: 0;
       transform: translateY(28px);
       animation: hero-in 0.9s ease 0.15s forwards;
@@ -113,6 +113,20 @@
       color: #c9c9c9;
       margin-top: 0.75rem;
       max-width: 560px;
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255,255,255,0.5);
+      font-size: 1.4rem;
+      animation: bob 2s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 8px); }
     }
 
     /* Abschnitte */
@@ -340,17 +354,13 @@
   </header>
 
   <section class="ref-hero">
-    <!-- Referenz-Bilder: Dateien unter assets/referenz-1.jpg bis referenz-4.jpg ablegen.
-         Vorhandene Bilder wechseln automatisch durch; fehlende werden übersprungen.
-         Solange keine Datei vorhanden ist, zeigt die Seite den dunklen Hintergrund. -->
-    <img class="slide" src="assets/referenz-1.jpg" alt="" onerror="this.remove()">
-    <img class="slide" src="assets/referenz-2.jpg" alt="" onerror="this.remove()">
-    <img class="slide" src="assets/referenz-3.jpg" alt="" onerror="this.remove()">
-    <img class="slide" src="assets/referenz-4.jpg" alt="" onerror="this.remove()">
+    <!-- Die Diashow-Bilder baut das Skript unten auf: bei jedem Besuch
+         6 zufällige Außenaufnahmen der verkauften Fahrzeuge. -->
     <div class="ref-hero-content">
       <h1>Referenzen</h1>
       <p>Ein Blick zurück: Fahrzeuge, die ihren Weg über mich zu neuen Besitzern gefunden haben.</p>
     </div>
+    <div class="scroll-hint"><svg class="ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 9l6 6l6 -6"/></svg></div>
   </section>
 
   <section class="pride reveal">
@@ -475,27 +485,69 @@
     <p class="design-credit">Design &amp; Umsetzung: <a class="design-link" href="https://mhhtechsolutions.de" target="_blank" rel="noopener noreferrer">MHH Tech Solutions</a></p>
   </footer>
 
-  <script src="assets/i18n.js?v=2"></script>
+  <script src="assets/i18n.js?v=3"></script>
+  <script src="assets/nav.js?v=1"></script>
   <script>
-    /* Bild-Bühne: vorhandene Referenzbilder alle 5 Sekunden weich überblenden */
+    /* Vollbild-Diashow: 6 zufällige Außenaufnahmen der verkauften Fahrzeuge,
+       alle 5 Sekunden weich überblendet. Pro Fahrzeug stehen nur kuratierte
+       Exterieur-Fotos im Pool, gezogen werden 6 verschiedene Fahrzeuge. */
     (function () {
-      var current = 0;
-      function slides() { return document.querySelectorAll('.ref-hero .slide'); }
-      function show(i) {
-        slides().forEach(function (img, idx) { img.classList.toggle('active', idx === i); });
+      var POOL = [
+        { alt: 'Lamborghini Gallardo in Arancio Borealis', bilder: [
+          'gallardo/Haupt.jpg',
+          'gallardo/101240_Fabian-Lamborghini-Gallardo_0.jpg',
+          'gallardo/101240_Fabian-Lamborghini-Gallardo_4.jpg'] },
+        { alt: 'Porsche 991 Carrera 4S Cabriolet in weiß', bilder: [
+          'carrera/Haupt.jpg',
+          'carrera/101192_FR-Sportwagen-Porsche-991-Cabrio_4.jpg',
+          'carrera/101192_FR-Sportwagen-Porsche-991-Cabrio_5.jpg'] },
+        { alt: 'Porsche 911 Targa 3.2 G-Modell in schwarz', bilder: [
+          'targa/Haupt.jpg',
+          'targa/L2200239_Ansicht.jpg',
+          'targa/L2200248_Ansicht.jpg'] },
+        { alt: 'Porsche Cayenne S Diesel in palladiummetallic', bilder: [
+          'cayenne-diesel/Main.jpg',
+          'cayenne-diesel/101253_FR-Sportwagen-Porsche-Cayenne-S_0.jpg',
+          'cayenne-diesel/101253_FR-Sportwagen-Porsche-Cayenne-S_2.jpg'] },
+        { alt: 'Porsche Cayenne E-Hybrid in quarzitgraumetallic', bilder: [
+          'cayenne-hybrid/101256_FR-Sportwagen-Porsche-Cayenne_2.jpg',
+          'cayenne-hybrid/101256_FR-Sportwagen-Porsche-Cayenne_1.jpg',
+          'cayenne-hybrid/101256_FR-Sportwagen-Porsche-Cayenne_0.jpg'] },
+        { alt: 'Porsche Taycan GTS in tiefschwarzmetallic', bilder: [
+          'taycan-schwarz/Main.jpg',
+          'taycan-schwarz/101264_FR-Sportwagen-Porsche-Taycan-GTS_0.jpg',
+          'taycan-schwarz/101264_FR-Sportwagen-Porsche-Taycan-GTS_2.jpg'] },
+        { alt: 'Porsche Taycan GTS in carraraweißmetallic', bilder: [
+          'taycan-weiss/Main.jpg',
+          'taycan-weiss/101194_FR-Sportwagen-Porsche-Taycan-GTS_0.jpg',
+          'taycan-weiss/101194_FR-Sportwagen-Porsche-Taycan-GTS_2.jpg'] }
+      ];
+
+      function mischen(liste) {
+        for (var i = liste.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = liste[i]; liste[i] = liste[j]; liste[j] = t;
+        }
+        return liste;
       }
-      window.addEventListener('load', function () {
-        var imgs = slides();
-        if (!imgs.length) return;
-        show(0);
-        if (imgs.length < 2) return;
-        setInterval(function () {
-          var list = slides();
-          if (list.length < 2) return;
-          current = (current + 1) % list.length;
-          show(current);
-        }, 5000);
+
+      var hero = document.querySelector('.ref-hero');
+      var inhalt = hero.querySelector('.ref-hero-content');
+      var slides = mischen(POOL.slice()).slice(0, 6).map(function (auto, i) {
+        var img = document.createElement('img');
+        img.className = 'slide' + (i === 0 ? ' active' : '');
+        img.src = 'Referenzen/' + auto.bilder[Math.floor(Math.random() * auto.bilder.length)];
+        img.alt = auto.alt;
+        img.decoding = 'async';
+        hero.insertBefore(img, inhalt);
+        return img;
       });
+
+      var aktiv = 0;
+      setInterval(function () {
+        aktiv = (aktiv + 1) % slides.length;
+        slides.forEach(function (img, idx) { img.classList.toggle('active', idx === aktiv); });
+      }, 5000);
     })();
 
     var observer = new IntersectionObserver(function (entries) {
